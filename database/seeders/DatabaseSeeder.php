@@ -30,5 +30,12 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password123'),
             'role' => 'admin',
         ]);
+        User::create([
+            'name' => 'adi palguna',
+            'email' => 'adipalguna@gmail.com',
+            'email_verified_at' => Carbon::now(),
+            'password' => Hash::make('password123'),
+            'role' => 'user',
+        ]);
     }
 }

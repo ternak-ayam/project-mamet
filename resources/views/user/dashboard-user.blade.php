@@ -70,10 +70,12 @@
                                                 <span class="text-muted">Sabar ya, Bukti Pembayaran sedang
                                                     ditinjau</span><br />
                                             @elseif($item->status_pembayaran == '1')
-                                                <button type="button"
-                                                    class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2">
-                                                    <i class="fa fa-print"></i>
-                                                </button>
+                                                <a href="{{ route('dashboard-user-cetak', $item->id) }}">
+                                                    <button type="button"
+                                                        class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2">
+                                                        <i class="fa fa-print"></i>
+                                                    </button>
+                                                </a>
                                             @else
                                                 <span class="text-muted">Bukti Pembayaran Belum Sesuai nih, Upload Ulang
                                                     Yaa!</span><br />
