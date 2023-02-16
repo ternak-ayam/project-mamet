@@ -18,75 +18,68 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://demo.getstisla.com/assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://demo.getstisla.com/assets/modules/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://demo.getstisla.com/assets/modules/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="https://demo.getstisla.com/assets/modules/bootstrap-social/bootstrap-social.css">
+    <link rel="stylesheet" href="https://demo.getstisla.com/assets/css/components.css">
 
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<div id="app">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+        <div class="container px-5">
+            <a class="navbar-brand fw-bold" href="#page-top">{{ config('app.name') }}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    @if(Auth::user()->role == "admin")
-                                    <a class="dropdown-item" href="{{ route('dashboard-admin.index') }}"> Dashboard
-                                    </a>
-                                    @else
-                                    <a class="dropdown-item" href="{{ route('dashboard-user') }}"> Dashboard
-                                    </a>
-                                    @endif
-
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                  document.getElementById('logout-form').submit();">
-                                     {{ __('Logout') }}
-                                 </a>
-
-                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                     @csrf
-                                 </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+                </ul>
+                @guest
+                    <a href="{{ route('login') }}" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0">
+                        <span class="d-flex align-items-center">
+                            <span class="small">Login</span>
+                        </span>
+                    </a>
+                @else
+                    @if(Auth::user()->role == "admin")
+                        <a href="{{ route('dashboard-admin.index') }}"
+                           class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0 mx-1">
+                            <span class="d-flex align-items-center">
+                                <span class="small">Dashboard</span>
+                            </span>
+                        </a>
+                    @else
+                        <a href="{{ route('dashboard-user') }}"
+                           class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0 mx-1">
+                            <span class="d-flex align-items-center">
+                                <span class="small">Dashboard</span>
+                            </span>
+                        </a>
+                    @endif
+                @endguest
             </div>
-        </nav>
-
-        <main style="background-color: #8473cc" >
-            @yield('content')
-        </main>
-    </div>
+        </div>
+    </nav>
+    <main>
+        @yield('content')
+    </main>
+    <footer class="bg-black text-center py-5">
+        <div class="container px-5">
+            <div class="text-white-50 small">
+                <div class="mb-2">© {{ config('app.name') }} {{ now()->format('Y') }}. All Rights Reserved.</div>
+                <a href="#!">Privacy</a>
+                <span class="mx-1">·</span>
+                <a href="#!">Terms</a>
+                <span class="mx-1">·</span>
+                <a href="#!">FAQ</a>
+            </div>
+        </div>
+    </footer>
+</div>
 </body>
 </html>

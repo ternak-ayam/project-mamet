@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.guest')
 
 @section('content')
 <div class="container vh-100">
     <div class="row justify-content-center " style="padding-top: 200px">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card card-primary">
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">

@@ -20,21 +20,21 @@ class DatabaseSeeder extends Seeder
             'name' => 'Arsyad',
             'email' => 'Arsyad@gmail.com',
             'email_verified_at' => Carbon::now(),
-            'password' => Hash::make('password123'),
+            'password' => Hash::make('password'),
             'role' => 'admin',
         ]);
         User::create([
             'name' => 'mamet',
             'email' => 'mamet@gmail.com',
             'email_verified_at' => Carbon::now(),
-            'password' => Hash::make('password123'),
+            'password' => Hash::make('password'),
             'role' => 'admin',
         ]);
         User::create([
             'name' => 'adi palguna',
             'email' => 'adipalguna@gmail.com',
             'email_verified_at' => Carbon::now(),
-            'password' => Hash::make('password123'),
+            'password' => Hash::make('password'),
             'role' => 'user',
         ]);
     }
