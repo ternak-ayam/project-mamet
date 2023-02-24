@@ -11,7 +11,7 @@
                     </div>
                     <p class="lead">{{ $data->deskripsi }}</p>
                     <div class="d-flex">
-                        <a href="{{ route('home') }}">
+                        <a href="{{ route('kelas') }}">
                             <button class="btn btn-danger flex-shrink-0 me-2" type="button">
                                 <i class="bi-cart-fill me-1"></i>
                                 Kembali

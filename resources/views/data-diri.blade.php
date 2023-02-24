@@ -16,12 +16,8 @@
                             <input type="text" class="form-control" name="email" >
                         </div>
                         <div class="col-md-6">
-                            <label for="inputAddress2" class="form-label">Nama Ayah</label>
-                            <input type="text" class="form-control" name="nama_ayah" >
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputAddress2" class="form-label">Nama Ibu</label>
-                            <input type="text" class="form-control" name="nama_ibu" >
+                            <label for="inputAddress2" class="form-label">Nama Orang Tua</label>
+                            <input type="text" class="form-control" name="nama_orangtua" >
                         </div>
                         <div class="col-md-6">
                             <label for="inputAddress2" class="form-label">Nomor Hp</label>

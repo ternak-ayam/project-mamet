@@ -126,16 +126,16 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="nav nav-pills navbar-nav ms-auto me-4 my-3 my-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#scrollspyHeading1">Home</a>
+                            <a class="nav-link" href="{{ route('home') }}/#scrollspyHeading1">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#scrollspyHeading2">Gallery</a>
+                            <a class="nav-link" href="{{ route('home') }}/#scrollspyHeading2">Gallery</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#scrollspyHeading3">Class</a>
+                            <a class="nav-link" href="{{ route('kelas') }}/#scrollspyHeading3">Class</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#scrollspyHeading4">Contact</a>
+                            <a class="nav-link" href="{{ route('home') }}/#scrollspyHeading4">Contact</a>
                         </li>
                         @guest
                             <li class="nav-item">

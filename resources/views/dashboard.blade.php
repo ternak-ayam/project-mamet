@@ -18,8 +18,8 @@
 </head>
 <style>
     .nav-link, .sb-nav-link-icon, .sb-topnav .navbar-brand, .sb-topnav.navbar-dark #sidebarToggle{
-        color:black !important;
-        font-weight: 600
+        color:white !important;
+        font-weight: 600;
     }
 </style>
 <body class="sb-nav-fixed">

@@ -34,6 +34,11 @@ class HomeController extends Controller
         $daftarkelas = Kelas::latest()->get();
         return view('home', compact('daftarkelas'));
     }
+    public function kelas()
+    {
+        $daftarkelas = Kelas::latest()->get();
+        return view('kelas', compact('daftarkelas'));
+    }
 
 
 
@@ -89,8 +94,7 @@ class HomeController extends Controller
                 $this->validate($request, [
                     'name' => 'required', 'string', 'max:255',
                     'email' => 'required', 'string', 'email', 'max:255', 'unique:users',
-                    'nama_ayah' => 'required', 'string', 'max:255',
-                    'nama_ibu' => 'required', 'string', 'max:255',
+                    'nama_orangtua' => 'required', 'string', 'max:255',
                     'no_telp' => 'required', 'string', 'max:255',
                     'alamat' => 'required', 'string', 'max:255',
                 ]);
@@ -98,8 +102,7 @@ class HomeController extends Controller
                 User::create([
                     'name' => $request->name,
                     'email' => $request->email,
-                    'nama_ayah' => $request->nama_ayah,
-                    'nama_ibu' =>  $request->nama_ibu,
+                    'nama_orangtua' => $request->nama_orangtua,
                     'no_telp' =>  $request->no_telp,
                     'alamat' =>  $request->alamat,
                     'email_verified_at' => Carbon::now(),
@@ -158,8 +161,7 @@ class HomeController extends Controller
             $this->validate($request, [
                 'name'              => ['required', 'string', 'max:255'],
                 'email'             => ['required', 'string', 'email', 'max:255'],
-                'nama_ayah'         => ['required', 'string', 'max:255'],
-                'nama_ibu'          => ['required', 'string', 'max:255'],
+                'nama_orangtua'     => ['required', 'string', 'max:255'],
                 'no_telp'           => ['required', 'string', 'max:255'],
                 'alamat'            => ['required', 'string', 'max:255'],
                 'password'          => ['required', 'string', 'min:8', 'confirmed'],
@@ -173,7 +175,7 @@ class HomeController extends Controller
                 'name'              => $request->name,
                 'email'             => $request->email,
                 'email_verified_at' => Carbon::now(),
-                'nama_ayah'         => $request->nama_ayah,
+                'nama_orangtua'     => $request->nama_orangtua,
                 'nama_ibu'          => $request->nama_ibu,
                 'no_telp'           => $request->no_telp,
                 'alamat'            => $request->alamat,

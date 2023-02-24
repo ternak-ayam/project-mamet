@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pembelian;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 
 class TopManajemenController extends Controller
@@ -13,7 +14,10 @@ class TopManajemenController extends Controller
         $datakelas = Pembelian::with(['user', 'kelas', 'days', 'times'])
         ->where('status_pembayaran', '1')
         ->get();
-        return view('topmanajemen.dashboard-topmanajemen', compact('datakelas'));
+        $data_member =  User::where('role', 'user')->get();
+        $data_nonmember =  User::where('role', 'nonuser')->get();
+        $data_peserta =  Pembelian::where('status_pembayaran', 1)->get();
+        return view('topmanajemen.dashboard-topmanajemen', compact('datakelas','data_member','data_nonmember','data_peserta'));
     }
     public function cari(Request $request)
     {

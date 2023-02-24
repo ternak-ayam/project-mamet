@@ -27,18 +27,16 @@ class AdminController extends Controller
         $kelas_data = str_replace([':', '\\', '/', '*', '[', ']'], ' ', $kelascollection);
 
 
-        
-        $pembelian = Pembelian::groupBy('kelas_id')->with(['kelas', 'user'])->get();
-
+        $kelas = Kelas::all();
         $users = [];
-        $nonuser = [];
-        foreach ($pembelian as $values) {
-            $users[] = Pembelian::with(['kelas', 'user'])->where('kelas_id', $values->kelas->id)
+        $nonusers = [];
+        foreach ($kelas as $values) {
+            $users[] = Pembelian::with(['kelas', 'user'])->where('kelas_id', $values->id)
             ->whereHas('user', function($query){
                 $query->where('role', 'user');
             })
             ->count();
-            $nonusers[] = Pembelian::with(['kelas', 'user'])->where('kelas_id', $values->kelas->id)
+            $nonusers[] = Pembelian::with(['kelas', 'user'])->where('kelas_id', $values->id)
             ->whereHas('user', function($query){
                 $query->where('role', 'nonuser');
             })
@@ -53,10 +51,13 @@ class AdminController extends Controller
         $collectnonusers = json_encode($nonusersobject);
         $nonusers_data = str_replace([':', '\\', '/', '*', '[', ']'], ' ', $collectnonusers);
 
-
+        $bothusers = array_merge($users, $nonusers);
 
         $data = Pembelian::with(['user', 'kelas'])->latest()->get();
-        return view('admin.dashboard-admin', compact('data', 'kelas_data', 'users_data','nonusers_data'));
+        $data_member =  User::where('role', 'user')->get();
+        $data_nonmember =  User::where('role', 'nonuser')->get();
+        $data_peserta =  Pembelian::where('status_pembayaran', 1)->get();
+        return view('admin.dashboard-admin', compact('data', 'kelas_data', 'users_data','nonusers_data','data_member','data_nonmember','data_peserta'));
     }
 
     /**

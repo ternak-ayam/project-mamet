@@ -16,7 +16,7 @@ class PesertaExport implements FromCollection, WithMapping
             // this is an example, not exactly like your database structure 
             return Pembelian::with(['user'])
             ->where('status_pembayaran', '1')
-            ->groupBy('kelas_id')       
+            ->groupBy('user_id')       
             ->get();
         }
     
@@ -27,8 +27,7 @@ class PesertaExport implements FromCollection, WithMapping
                 $row->id, 
                 $row->user->name,
                 $row->user->email,
-                $row->user->nama_ayah,
-                $row->user->nama_ibu,
+                $row->user->nama_orangtua,
                 $row->user->no_telp,
                 $row->user->alamat,
             ];
@@ -40,8 +39,7 @@ class PesertaExport implements FromCollection, WithMapping
                 'id',
                 'nama peserta',
                 'email',
-                'nama ayah',
-                'nama ibu',
+                'nama orangtua',
                 'no hp',
                 'alamat',
             ];

@@ -14,8 +14,7 @@ class AddSomeColumnsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('nama_ayah');
-            $table->string('nama_ibu');
+            $table->string('nama_orangtua');
             $table->string('alamat');
             $table->string('no_telp');
         });

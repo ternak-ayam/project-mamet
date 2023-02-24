@@ -1,6 +1,5 @@
 @extends('dashboard')
 @section('content')
-
     <div class="container">
         @if ($message = Session::get('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -11,22 +10,42 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="chart-container">
-                    <h5 class="card-title text-uppercase mb-0">Jumlah Member dan Non Member Yang Terdaftar</h5>
-                    <div class="chart has-fixed-height" id="bars_basic" style="width: 100%; height: 500px;"></div>
+                    @if ($data->isEmpty())
+                        <h5 class="card-title text-uppercase mb-0">Jumlah Member dan Non Member Yang Terdaftar</h5>
+                        <h5 class="card-title text-uppercase  text-center my-5">Maaf Data Belum tersedia</h5>
+                    @else
+                        <h5 class="card-title text-uppercase mb-0">Jumlah Member dan Non Member Yang Terdaftar</h5>
+                        <div class="chart has-fixed-height" id="bars_basic" style="width: 100%; height: 500px;"></div>
+                    @endif
+
                 </div>
+                {{-- {{ dd($nonusers_data) }} --}}
                 <div class="card p-4 rounded">
                     <div class="card-body">
                         <h5 class="card-title text-uppercase mb-0">Manage Users</h5>
                     </div>
                     <div class="table-responsive">
-                        <button type="button" class="btn btn-primary p-2 m-3"><a class="text-white text-decoration-none"
-                                href="{{ route('admin-export-user') }} " target="_blank">Export Data Member</a></button>
-                        <button type="button" class="btn btn-primary p-2 m-3"><a class="text-white text-decoration-none"
-                                href="{{ route('admin-export-nonuser') }} " target="_blank">Export Data
-                                NonMember</a></button>
-                        <button type="button" class="btn btn-primary p-2 m-3"><a class="text-white text-decoration-none"
-                                href="{{ route('admin-export-peserta') }}" target="_blank">Export Data Peserta
-                                Kelas</a></button>
+                        @if ($data_member->isEmpty())
+                        @else
+                            <button type="button" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0 p-2 m-3"><a
+                                    class="text-white text-decoration-none " href="{{ route('admin-export-user') }} "
+                                    target="_blank">Export Data Member</a></button>
+                        @endif
+                        @if ($data_nonmember->isEmpty())
+                        @else
+                            <button type="button" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0 p-2 m-3"><a
+                                    class="text-white text-decoration-none " href="{{ route('admin-export-nonuser') }} "
+                                    target="_blank">Export Data
+                                    NonMember</a></button>
+                        @endif
+                        @if ($data_peserta->isEmpty())
+                        @else
+                            <button type="button" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0 p-2 m-3"><a
+                                    class="text-white text-decoration-none " href="{{ route('admin-export-peserta') }}"
+                                    target="_blank">Export Data Peserta
+                                    Kelas</a></button>
+                        @endif
+
                         <table class="table no-wrap user-table mb-0">
                             <thead>
                                 <tr class="text-center">
@@ -58,7 +77,7 @@
                             </thead>
                             <tbody class="text-center">
                                 <?php $i = 1; ?>
-                                @foreach ($data as $item)
+                                @forelse ($data as $item)
                                     <tr>
                                         <td class="pl-4">{{ $i++ }}</td>
                                         <td>
@@ -132,7 +151,13 @@
                                             </td>
                                         @endif
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="8">
+                                            Maaf Belum Ada Data Tersedia
+                                        </td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
@@ -145,7 +170,17 @@
             background: #edf1f5;
             margin-top: 20px;
         }
+        .btn-primary {
+            color: #8C52FF !important;
+            background-color: #9d6efc !important;
+            border-color: #8C52FF !important;
+        }
 
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #8C52FF !important;
+            border-color: #8C52FF !important;
+        }
         .card {
             position: relative;
             display: flex;
@@ -212,13 +247,15 @@
             border-radius: 20px;
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.1/echarts.min.js" integrity="sha512-OTbGFYPLe3jhy4bUwbB8nls0TFgz10kn0TLkmyA+l3FyivDs31zsXCjOis7YGDtE2Jsy0+fzW+3/OVoPVujPmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.1/echarts.min.js"
+        integrity="sha512-OTbGFYPLe3jhy4bUwbB8nls0TFgz10kn0TLkmyA+l3FyivDs31zsXCjOis7YGDtE2Jsy0+fzW+3/OVoPVujPmQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript">
         var bars_basic_element = document.getElementById('bars_basic');
         if (bars_basic_element) {
             var bars_basic = echarts.init(bars_basic_element);
             bars_basic.setOption({
-                color: ['#e541cd','#ead1dc'],
+                color: ['#e541cd', '#ead1dc'],
                 tooltip: {
                     trigger: 'axis',
                     axisPointer: {
@@ -241,24 +278,23 @@
                 yAxis: [{
                     type: 'value'
                 }],
-                series: [
+                series: [{
+                        name: 'Jumlah User',
+                        type: 'bar',
+                        barWidth: '20%',
+                        data: [
+                            {{ $users_data }},
+                        ]
+                    },
                     {
-                    name: 'Jumlah User',
-                    type: 'bar',
-                    barWidth: '20%',
-                    data: [
-                        {{ $users_data }},
-                    ]
-                },
-                    {
-                    name: 'Jumlah NonUser',
-                    type: 'bar',
-                    barWidth: '20%',
-                    data: [
-                        {{ $nonusers_data }},
-                    ]
-                },
-            ]
+                        name: 'Jumlah NonUser',
+                        type: 'bar',
+                        barWidth: '20%',
+                        data: [
+                            {{ $nonusers_data }},
+                        ]
+                    },
+                ]
             });
         }
     </script>

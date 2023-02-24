@@ -39,25 +39,12 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="nama_ayah" class="col-md-4 col-form-label text-md-end">{{ __('Nama Ayah') }}</label>
+                            <label for="nama_orangtua" class="col-md-4 col-form-label text-md-end">{{ __('Nama Orang Tua') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nama_ayah" type="text" class="form-control @error('nama_ayah') is-invalid @enderror" name="nama_ayah" value="{{ old('nama_ayah') }}" required >
+                                <input id="nama_orangtua" type="text" class="form-control @error('nama_orangtua') is-invalid @enderror" name="nama_orangtua" value="{{ old('nama_orangtua') }}" required >
 
-                                @error('nama_ayah')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="nama_ibu" class="col-md-4 col-form-label text-md-end">{{ __('Nama Ibu') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="nama_ibu" type="text" class="form-control @error('nama_ibu') is-invalid @enderror" name="nama_ibu" value="{{ old('nama_ibu') }}" required autocomplete="nama_ibu">
-
-                                @error('nama_ibu')
+                                @error('nama_orangtua')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

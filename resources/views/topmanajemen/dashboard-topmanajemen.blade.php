@@ -14,14 +14,33 @@
                         <h5 class="card-title text-uppercase mb-0">Manage Users</h5>
                     </div>
                     <div class="table-responsive">
-                        <button type="button" class="btn btn-primary p-2 m-3"><a class="text-white text-decoration-none"
-                                href="{{ route('top-manajemen-export-jadwal') }} " target="_blank">Export Jadwal Kelas</a></button>
-                        <button type="button" class="btn btn-primary p-2 m-3"><a class="text-white text-decoration-none"
-                                href="{{ route('top-manajemen-export-peserta') }} " target="_blank">Export Peserta Kelas</a></button>
-                        <button type="button" class="btn btn-primary p-2 m-3"><a class="text-white text-decoration-none"
-                                href="{{ route('top-manajemen-export-user') }} " target="_blank">Export Member</a></button>
-                        <button type="button" class="btn btn-primary p-2 m-3"><a class="text-white text-decoration-none"
-                                href="{{ route('top-manajemen-export-nonuser') }} " target="_blank">Export NonMember</a></button>
+                        @if ($data_member->isEmpty())
+                        @else
+                            <button type="button" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-3 p-2 m-3 purple"><a
+                                    class="text-white text-decoration-none" href="{{ route('top-manajemen-export-user') }} "
+                                    target="_blank">Export Data Member</a></button>
+                        @endif
+                        @if ($data_nonmember->isEmpty())
+                        @else
+                            <button type="button" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-3 p-2 m-3 purple"><a
+                                    class="text-white text-decoration-none" href="{{ route('top-manajemen-export-nonuser') }} "
+                                    target="_blank">Export Data
+                                    NonMember</a></button>
+                        @endif
+                        @if ($data_peserta->isEmpty())
+                        @else
+                            <button type="button" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-3 p-2 m-3 purple"><a
+                                    class="text-white text-decoration-none" href="{{ route('top-manajemen-export-peserta') }}"
+                                    target="_blank">Export Data Peserta
+                                    Kelas</a></button>
+                        @endif
+                        @if ($datakelas->isEmpty())
+                        @else
+                            <button type="button" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-3 p-2 m-3 purple"><a
+                                    class="text-white text-decoration-none" href="{{ route('top-manajemen-export-jadwal') }}"
+                                    target="_blank">Export Jadwal Kelas
+                                    Kelas</a></button>
+                        @endif
                         <form action="{{ route('dashboard-topmanajemen-search') }}" method="GET">
                             <div class="input-group">
                                 <input type="text" name="keyword" value="{{ request()->keyword }}" class="form-control "
@@ -81,7 +100,17 @@
             background: #edf1f5;
             margin-top: 20px;
         }
+        .purple {
+            color: #8C52FF !important;
+            background-color: #9d6efc !important;
+            border-color: #8C52FF !important;
+        }
 
+        .purple:hover {
+            color: #fff;
+            background-color: #8C52FF !important;
+            border-color: #8C52FF !important;
+        }
         .card {
             position: relative;
             display: flex;

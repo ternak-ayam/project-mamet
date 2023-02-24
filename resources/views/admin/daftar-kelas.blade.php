@@ -14,8 +14,9 @@
                         <h5 class="card-title text-uppercase mb-0">Daftar Kelas</h5>
                     </div>
                     <div class="table-responsive">
-                        <button type="button" class="btn btn-primary p-2 m-3"><a class="text-white text-decoration-none"
-                                href="{{ route('daftar-kelas.create') }}">Tambah Kelas</a></button>
+                        <button type="button" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0 p-2 m-3"><a
+                                class="text-white text-decoration-none" href="{{ route('daftar-kelas.create') }}">Tambah
+                                Kelas</a></button>
                         <table class="table no-wrap user-table mb-0">
                             <thead>
                                 <tr>
@@ -54,10 +55,11 @@
                                             <span class="text-muted">Rp @convert($item['harga'])</span><br />
                                         </td>
                                         <td>
-                                            <a href="{{ url('storage/gambar_kelas/' . $item->gambar_kelas) }}" target="_blank"
-                                                style="text-decoration:none">
+                                            <a href="{{ url('storage/gambar_kelas/' . $item->gambar_kelas) }}"
+                                                target="_blank" style="text-decoration:none">
                                                 <img src="{{ url('storage/gambar_kelas/' . $item->gambar_kelas) }}"
-                                                    alt="job image" width="50" height="100" title="job image">
+                                                    alt="job image" width="50" height="100" class="object-fit-cover"
+                                                    title="job image">
                                             </a>
                                         </td>
                                         <td>
@@ -88,6 +90,18 @@
         </div>
     </div>
     <style type="text/css">
+        .btn-primary {
+            color: #8C52FF !important;
+            background-color: #9d6efc !important;
+            border-color: #8C52FF !important;
+        }
+
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #8C52FF !important;
+            border-color: #8C52FF !important;
+        }
+
         body {
             background: #edf1f5;
             margin-top: 20px;

@@ -12,6 +12,6 @@ class UserExport implements FromCollection
     */
     public function collection()
     {
-        return User::select('name','email','nama_ayah','nama_ibu','no_telp','alamat')->where('role', 'user')->get();
+        return User::select('name','email','nama_orangtua','no_telp','alamat')->where('role', 'user')->get();
     }
 }

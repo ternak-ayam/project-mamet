@@ -7,7 +7,8 @@
                 <p>Tambah Kelas</p>
             </div>
             <div class="col-12 col-md-8 text-center form-floating mb-3 " style="margin: 0 auto">
-                <input type="text" class="form-control" id="floatingInput" name="nama_kelas" placeholder="name@example.com">
+                <input type="text" class="form-control" id="floatingInput" name="nama_kelas"
+                    placeholder="name@example.com">
                 <label class="mx-2" for="floatingInput">Nama Kelas</label>
                 <!-- error message untuk title -->
                 @error('nama_kelas')
@@ -35,7 +36,8 @@
                 @enderror
             </div>
             <div class="col-12 col-md-8 text-center form-floating mb-3" style="margin: 0 auto">
-                <input type="file" class="form-control" id="floatingInput" name="gambar_kelas" placeholder="name@example.com">
+                <input type="file" class="form-control" id="floatingInput" name="gambar_kelas"
+                    placeholder="name@example.com">
                 <label class="mx-2" for="floatingInput">Gambar Kelas</label>
                 @error('harga')
                     <div class="alert alert-danger mt-2">

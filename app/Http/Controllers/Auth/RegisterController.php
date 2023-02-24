@@ -53,8 +53,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'nama_ayah' => ['required', 'string', 'max:255'],
-                'nama_ibu' => ['required', 'string', 'max:255'],
+                'nama_orangtua' => ['required', 'string', 'max:255'],
                 'no_telp' => ['required', 'string', 'max:255'],
                 'alamat' => ['required', 'string', 'max:255'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -72,8 +71,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'nama_ayah' => $data['nama_ayah'],
-            'nama_ibu' => $data['nama_ibu'],
+            'nama_orangtua' => $data['nama_orangtua'],
             'no_telp' => $data['no_telp'],
             'alamat' => $data['alamat'],
             'email_verified_at' => Carbon::now(),

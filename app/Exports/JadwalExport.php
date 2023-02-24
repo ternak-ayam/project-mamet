@@ -12,7 +12,7 @@ class JadwalExport implements FromCollection, WithMapping
     public function collection()
     {
         // this is an example, not exactly like your database structure 
-        return Pembelian::with(['user', 'kelas', 'days', 'times'])->get();
+        return Pembelian::with(['user', 'kelas', 'days', 'times'])->where('status_pembayaran',1)->get();
     }
 
     public function map($row): array

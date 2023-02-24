@@ -1,5 +1,5 @@
 <div id="layoutSidenav_nav">
-    <nav class="sb-sidenav accordion sb-sidenav-dark" style="background-color: #B693FB !important; margin-top:30px;" id="sidenavAccordion">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" style="background-color: #B693FB !important; margin-top:30px; " id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
                 @if (Auth::check())

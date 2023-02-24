@@ -21,44 +21,6 @@ class JadwalKelasController extends Controller
         $datakelas = Pembelian::with(['user', 'kelas', 'days', 'times'])
         ->where('status_pembayaran', '1')
         ->get();
-
-        // if ($request->ajax()) {
-        //     return Datatables::of($datakelas)
-        //             ->addIndexColumn()
-        //             ->addColumn('action', function($row){
-
-        //                    $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
-
-        //                     return $btn;
-        //             })
-        //             ->rawColumns(['action'])
-        //             ->make(true);
-        // }
-        
-        // dd($datakelas);
-        // $collection = $datakelas->map(function ($array) {
-        //     return collect($array)->unique('kelas_id')->all();
-        // });
-        // $results1= DB::table('pembelians')->where('status_pembayaran','1')
-        //      ->select('kelas_id','days_id','times_id', DB::raw('count(*) as count'))
-        //      ->groupBy(['kelas_id','days_id','times_id'])
-        //      ->get();
-        //  dd($results1);
-        // // foreach($datakelas as $data){
-        // //     dd($data);
-
-        // // }
-        // $uniqueData = DB::table('pembelians')
-        //         //   ->groupBy(['kelas_id', 'days_id','times_id'])
-        //           ->select(['kelas_id'], (DB::raw('count(*) as count')))
-        //           ->get()
-        //           ->toArray();
-        //            dd($uniqueData);  
-        // $duplicates = DB::table('pembelians')
-        // ->select('kelas_id', (DB::raw('COUNT(kelas_id)')))
-        // ->groupBy('kelas_id')
-        // ->get();
-        // dd($duplicates);
         return view('admin.jadwal-kelas.index', compact('datakelas'));
     }
      
