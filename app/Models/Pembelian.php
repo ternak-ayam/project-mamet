@@ -11,6 +11,8 @@ class Pembelian extends Model
     protected $fillable = [
         'user_id',
         'kelas_id',
+        'days_id',
+        'times_id',
         'bukti_pembayaran',
         'sertifikat'
     ];
@@ -19,5 +21,11 @@ class Pembelian extends Model
     }
     public function kelas(){
         return $this->belongsTo(Kelas::class);
+    }
+    public function days(){
+        return $this->belongsTo(Days::class);
+    }
+    public function times(){
+        return $this->belongsTo(Time::class);
     }
 }

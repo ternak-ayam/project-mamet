@@ -1,5 +1,6 @@
 @extends('dashboard')
 @section('content')
+
     <div class="container">
         @if ($message = Session::get('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -9,11 +10,23 @@
         @endif
         <div class="row">
             <div class="col-md-12">
+                <div class="chart-container">
+                    <h5 class="card-title text-uppercase mb-0">Jumlah Member dan Non Member Yang Terdaftar</h5>
+                    <div class="chart has-fixed-height" id="bars_basic" style="width: 100%; height: 500px;"></div>
+                </div>
                 <div class="card p-4 rounded">
                     <div class="card-body">
                         <h5 class="card-title text-uppercase mb-0">Manage Users</h5>
                     </div>
                     <div class="table-responsive">
+                        <button type="button" class="btn btn-primary p-2 m-3"><a class="text-white text-decoration-none"
+                                href="{{ route('admin-export-user') }} " target="_blank">Export Data Member</a></button>
+                        <button type="button" class="btn btn-primary p-2 m-3"><a class="text-white text-decoration-none"
+                                href="{{ route('admin-export-nonuser') }} " target="_blank">Export Data
+                                NonMember</a></button>
+                        <button type="button" class="btn btn-primary p-2 m-3"><a class="text-white text-decoration-none"
+                                href="{{ route('admin-export-peserta') }}" target="_blank">Export Data Peserta
+                                Kelas</a></button>
                         <table class="table no-wrap user-table mb-0">
                             <thead>
                                 <tr class="text-center">
@@ -199,4 +212,54 @@
             border-radius: 20px;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.1/echarts.min.js" integrity="sha512-OTbGFYPLe3jhy4bUwbB8nls0TFgz10kn0TLkmyA+l3FyivDs31zsXCjOis7YGDtE2Jsy0+fzW+3/OVoPVujPmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript">
+        var bars_basic_element = document.getElementById('bars_basic');
+        if (bars_basic_element) {
+            var bars_basic = echarts.init(bars_basic_element);
+            bars_basic.setOption({
+                color: ['#e541cd','#ead1dc'],
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: [{
+                    type: 'category',
+                    data: [{!! $kelas_data !!}],
+                    axisTick: {
+                        alignWithLabel: true
+                    }
+                }],
+                yAxis: [{
+                    type: 'value'
+                }],
+                series: [
+                    {
+                    name: 'Jumlah User',
+                    type: 'bar',
+                    barWidth: '20%',
+                    data: [
+                        {{ $users_data }},
+                    ]
+                },
+                    {
+                    name: 'Jumlah NonUser',
+                    type: 'bar',
+                    barWidth: '20%',
+                    data: [
+                        {{ $nonusers_data }},
+                    ]
+                },
+            ]
+            });
+        }
+    </script>
 @endsection

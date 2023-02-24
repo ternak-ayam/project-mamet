@@ -20,12 +20,12 @@ class KelasSeeder extends Seeder
             'harga' => '500000',
             'gambar_kelas' => '-'
         ]);
-        // Kelas::create([
-        //     'nama_kelas' => 'Kelas Kedua',
-        //     'deskripsi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam laudantium, beatae omnis quod iure similique delectus voluptas quas incidunt quidem iste, natus aperiam ratione saepe itaque nihil sint officiis! Quisquam?',
-        //     'harga' => '600000',
-        //     'gambar_kelas' => '-'
-        // ]);
+        Kelas::create([
+            'nama_kelas' => 'Kelas Kedua',
+            'deskripsi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam laudantium, beatae omnis quod iure similique delectus voluptas quas incidunt quidem iste, natus aperiam ratione saepe itaque nihil sint officiis! Quisquam?',
+            'harga' => '600000',
+            'gambar_kelas' => '-'
+        ]);
         Kelas::create([
             'nama_kelas' => 'Kelas Ketiga',
             'deskripsi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam laudantium, beatae omnis quod iure similique delectus voluptas quas incidunt quidem iste, natus aperiam ratione saepe itaque nihil sint officiis! Quisquam?',

@@ -3,7 +3,7 @@
     <section class="py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
-                <div class="col-md-12 text-white">
+                <div class="col-md-12 text-black">
                     <h1 class="mb-4">Update Bukti Pembayaran</h1>
                     <form action="{{ route('dashboard-user-update-bp', $data->id) }}" method="POST" enctype="multipart/form-data" class="row g-3">
                         @csrf
@@ -26,9 +26,17 @@
                             <label for="inputAddress" class="form-label">Harga Kelas</label>
                             <input type="text" class="form-control" value="{{ $data->kelas->harga }}" readonly>
                         </div>
+                        <div class="col-md-6">
+                            <label for="inputAddress" class="form-label">Hari</label>
+                            <input type="text" class="form-control" value="{{ $data->days->daysname }}" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputAddress" class="form-label">Jam</label>
+                            <input type="text" class="form-control" value="{{ $data->times->jam_kelas }}" readonly>
+                        </div>
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Input File Bukti Pembayaran</label>
-                            <div  class="form-text text-white-50">Please Upload file with this type: png, jpg, jpeg, pdf</div>
+                            <div  class="form-text text-black-50">Please Upload file with this type: png, jpg, jpeg, pdf</div>
                             <input class="form-control" name="bukti_pembayaran" type="file" id="formFile">
                             @error('bukti_pembayaran')
                                 <div class="alert alert-danger mt-2">

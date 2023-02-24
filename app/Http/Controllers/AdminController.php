@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
 use App\Models\Pembelian;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -14,8 +17,46 @@ class AdminController extends Controller
      */
     public function index()
     {
+        $kelas = Kelas::all();
+        $namakelas = [];
+        foreach ($kelas as $item => $key) {
+            $namakelas[] = $key->nama_kelas;
+        }
+        $kelasobject = collect($namakelas);
+        $kelascollection = json_encode($kelasobject);
+        $kelas_data = str_replace([':', '\\', '/', '*', '[', ']'], ' ', $kelascollection);
+
+
+        
+        $pembelian = Pembelian::groupBy('kelas_id')->with(['kelas', 'user'])->get();
+
+        $users = [];
+        $nonuser = [];
+        foreach ($pembelian as $values) {
+            $users[] = Pembelian::with(['kelas', 'user'])->where('kelas_id', $values->kelas->id)
+            ->whereHas('user', function($query){
+                $query->where('role', 'user');
+            })
+            ->count();
+            $nonusers[] = Pembelian::with(['kelas', 'user'])->where('kelas_id', $values->kelas->id)
+            ->whereHas('user', function($query){
+                $query->where('role', 'nonuser');
+            })
+            ->count();
+        }
+        $usersobject = collect($users);
+        $collectusers = json_encode($usersobject);
+        $users_data = str_replace([':', '\\', '/', '*', '[', ']'], ' ', $collectusers);
+
+
+        $nonusersobject = collect($nonusers);
+        $collectnonusers = json_encode($nonusersobject);
+        $nonusers_data = str_replace([':', '\\', '/', '*', '[', ']'], ' ', $collectnonusers);
+
+
+
         $data = Pembelian::with(['user', 'kelas'])->latest()->get();
-        return view('admin.dashboard-admin', compact('data'));
+        return view('admin.dashboard-admin', compact('data', 'kelas_data', 'users_data','nonusers_data'));
     }
 
     /**

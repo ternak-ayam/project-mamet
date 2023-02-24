@@ -18,7 +18,7 @@
                             </button>
                         </a>
                         @guest
-                        <a href="{{ route('login') }}">
+                        <a href="{{ route('datadiri', $data->id) }}">
                             <button class="btn btn-primary flex-shrink-0" type="submit">
                                 <i class="bi-cart-fill me-1"></i>
                                 Beli Sekarang
@@ -38,10 +38,5 @@
             </div>
         </div>
     </section>
-    <!-- Footer-->
-    <footer class="py-5" style="background-color:#FFFFFF">
-        <div class="container">
-            <p class="m-0 text-center text-dark">Copyright &copy; Your Website 2022</p>
-        </div>
-    </footer>
+ 
 @endsection
