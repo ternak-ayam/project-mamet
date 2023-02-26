@@ -5,8 +5,9 @@ namespace App\Exports;
 use App\Models\Pembelian;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class PesertaExport implements FromCollection, WithMapping
+class PesertaExport implements FromCollection, WithMapping, WithHeadings
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -24,7 +25,6 @@ class PesertaExport implements FromCollection, WithMapping
         {
     
             return [
-                $row->id, 
                 $row->user->name,
                 $row->user->email,
                 $row->user->nama_orangtua,
@@ -36,12 +36,11 @@ class PesertaExport implements FromCollection, WithMapping
         public function headings(): array
         {
             return [
-                'id',
-                'nama peserta',
-                'email',
-                'nama orangtua',
-                'no hp',
-                'alamat',
+                'Nama Peserta',
+                'Email',
+                'Nama Orangtua',
+                'Nomor Hp',
+                'Alamat',
             ];
         }
     }

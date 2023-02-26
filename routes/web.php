@@ -26,6 +26,10 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
     Route::get('dashboard-admin/user/export_nonuser', 'ExportUserController@export_nonuser')->name('admin-export-nonuser');
     Route::get('dashboard-admin/jadwal/export_excel', 'ExportUserController@jadwal_export_excel')->name('admin-export-jadwal');
     Route::get('dashboard-admin/peserta/export_excel', 'ExportUserController@peserta_export_excel')->name('admin-export-peserta');
+    Route::get('dashboard-admin/pembayaranlunas/export_excel', 'ExportUserController@filterpembayaran_export_excel')->name('admin-export-pembayaran');
+    Route::get('dashboard-admin/pembayaranbelumlunas/export_excel', 'ExportUserController@belumlunas_export_excel')->name('admin-export-pembayaranbelumlunas');
+    Route::get('dashboard-admin/jeniskelas/export_excel/{id}', 'ExportUserController@jeniskelas_export_excel')->name('admin-export-jeniskelas');
+    Route::get('dashboard-admin/historypeserta/export_excel', 'ExportUserController@historypeserta_export_excel')->name('admin-export-history');
     Route::get('jadwal-kelas', 'JadwalKelasController@index')->name('jadwal-kelas');
     Route::get('jadwal-kelas/cari', 'JadwalKelasController@cari')->name('cari-jadwal-kelas');
 });

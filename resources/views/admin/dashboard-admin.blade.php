@@ -45,6 +45,25 @@
                                     target="_blank">Export Data Peserta
                                     Kelas</a></button>
                         @endif
+                        @if ($data->isEmpty())
+                        @else
+                            <button type="button" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0 p-2 m-3"><a
+                                    class="text-white text-decoration-none " href="{{ route('admin-export-pembayaran') }}"
+                                    target="_blank">Export Pembayaran Lunas</a></button>
+                        @endif
+                        @if ($data->isEmpty())
+                        @else
+                            <button type="button" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0 p-2 m-3"><a
+                                    class="text-white text-decoration-none " href="{{ route('admin-export-pembayaranbelumlunas') }}"
+                                    target="_blank">Export Pembayaran Belum Lunas</a></button>
+                        @endif
+                        @if ($data->isEmpty())
+                        @else
+                            <button type="button" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0 p-2 m-3"><a
+                                    class="text-white text-decoration-none " href="{{ route('admin-export-history') }}"
+                                    target="_blank">Export History Peserta</a></button>
+                        @endif
+
 
                         <table class="table no-wrap user-table mb-0">
                             <thead>

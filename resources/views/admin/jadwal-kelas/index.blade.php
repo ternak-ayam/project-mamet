@@ -14,7 +14,7 @@
                         <h5 class="card-title text-uppercase mb-0">Manage Users</h5>
                     </div>
                     <div class="table-responsive">
-                        <button type="button" class="btn btn-primary p-2 m-3"><a class="text-white text-decoration-none"
+                        <button type="button" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg- p-2 m-3"><a class="text-white text-decoration-none"
                                 href="{{ route('admin-export-jadwal') }} " target="_blank">Export Jadwal Kelas</a></button>
                         <form action="{{ route('cari-jadwal-kelas') }}" method="GET">
                             <div class="input-group">
@@ -75,7 +75,17 @@
             background: #edf1f5;
             margin-top: 20px;
         }
+        .btn-primary {
+            color: #8C52FF !important;
+            background-color: #9d6efc !important;
+            border-color: #8C52FF !important;
+        }
 
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #8C52FF !important;
+            border-color: #8C52FF !important;
+        }
         .card {
             position: relative;
             display: flex;

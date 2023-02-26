@@ -152,121 +152,119 @@
         </div>
 
 
+        <div class="content" id="scrollspyHeading4">
 
-     
-            <div class="content" id="scrollspyHeading4">
-
-                <div class="container card p-5 d-flex flex-md-row" >
-                    <div class="row align-items-stretch no-gutters contact-wrap" style="flex: 0 0 50% !important;">
-                        <div class="col-md-12">
-                            <div class="form mb-5">
-                                <h6 class="text-start">Contact Detail</h6>
-                                <p>Whatsapp: <span class="text-success text-decoration-underline">+62 837 2398 3247</span></p>
-                                <p><span class="text-success text-decoration-underline">ahaiemail@gmail.com</span></p>
-                                <p><span class="text-success text-decoration-underline">maestro@gmail.com</span></p>
-                                <p><span class="text-success text-decoration-underline">sozialice@gmail.com</span></p>
-                            </div>
-                            <div class="form mb-5">
-                                <h6 class="text-start">Go Kreatif Address</h6>
-                                <p>Jalan Dahlia Raya, Pecatu, Kuta Selatan, Kabupaten Badung, Bali</p>
-                            </div>
+            <div class="container card p-5 d-flex flex-md-row">
+                <div class="row align-items-stretch no-gutters contact-wrap" style="flex: 0 0 50% !important;">
+                    <div class="col-md-12">
+                        <div class="form mb-5">
+                            <h6 class="text-start">Contact Detail</h6>
+                            <p>Whatsapp: <span class="text-success text-decoration-underline">+62 837 2398 3247</span></p>
+                            <p><span class="text-success text-decoration-underline">ahaiemail@gmail.com</span></p>
+                            <p><span class="text-success text-decoration-underline">maestro@gmail.com</span></p>
+                            <p><span class="text-success text-decoration-underline">sozialice@gmail.com</span></p>
                         </div>
-                    </div>
-                    <div class="row align-items-stretch no-gutters contact-wrap">
-                        <div class="col-md-12">
-                            <div class="form h-100">
-                                <h6 class="text-start">Contact Form</h6>
-                                <form class="mb-5" method="post" id="contactForm" name="contactForm"
-                                    action="{{ route('contactUs') }}">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-md-6 form-group mb-3">
-                                            <label for="" class="col-form-label">Name *</label>
-                                            <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                                name="name" id="name" placeholder="Your name">
-
-                                            @error('name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6 form-group mb-3">
-                                            <label for="" class="col-form-label">Email *</label>
-                                            <input type="text"
-                                                class="form-control  @error('email') is-invalid @enderror" name="email"
-                                                id="email" placeholder="Your email">
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6 form-group mb-3">
-                                            <label for="" class="col-form-label">Phone Number *</label>
-                                            <input type="number"
-                                                class="form-control @error('phone_number') is-invalid @enderror"
-                                                name="phone_number" id="phone_number" placeholder="Your Phone Number">
-                                            @error('phone_number')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6 form-group mb-3">
-                                            <label for="" class="col-form-label">Subject *</label>
-                                            <input type="text"
-                                                class="form-control @error('subject') is-invalid @enderror" name="subject"
-                                                id="subject" placeholder="Your Subject">
-                                            @error('subject')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row">
-                                        <div class="col-md-12 form-group mb-3">
-                                            <label for="message" class="col-form-label">Message *</label>
-                                            <textarea class="form-control @error('message') is-invalid @enderror" name="message" id="message" cols="30"
-                                                rows="4" placeholder="Write your message"></textarea>
-                                            @error('message')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12 form-group">
-                                            <input type="submit" value="Send Message"
-                                                class="btn btn-primary rounded-0 py-2 px-4">
-                                            <span class="submitting"></span>
-                                        </div>
-                                    </div>
-                                </form>
-
-
-
-                            </div>
+                        <div class="form mb-5">
+                            <h6 class="text-start">Go Kreatif Address</h6>
+                            <p>Jalan Dahlia Raya, Pecatu, Kuta Selatan, Kabupaten Badung, Bali</p>
                         </div>
                     </div>
                 </div>
+                <div class="row align-items-stretch no-gutters contact-wrap">
+                    <div class="col-md-12">
+                        <div class="form h-100">
+                            <h6 class="text-start">Contact Form</h6>
+                            <form class="mb-5" method="post" id="contactForm" name="contactForm"
+                                action="{{ route('contactUs') }}">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="" class="col-form-label">Name *</label>
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                            name="name" id="name" placeholder="Your name">
 
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="" class="col-form-label">Email *</label>
+                                        <input type="text" class="form-control  @error('email') is-invalid @enderror"
+                                            name="email" id="email" placeholder="Your email">
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="" class="col-form-label">Phone Number *</label>
+                                        <input type="number"
+                                            class="form-control @error('phone_number') is-invalid @enderror"
+                                            name="phone_number" id="phone_number" placeholder="Your Phone Number">
+                                        @error('phone_number')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="" class="col-form-label">Subject *</label>
+                                        <input type="text" class="form-control @error('subject') is-invalid @enderror"
+                                            name="subject" id="subject" placeholder="Your Subject">
+                                        @error('subject')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-12 form-group mb-3">
+                                        <label for="message" class="col-form-label">Message *</label>
+                                        <textarea class="form-control @error('message') is-invalid @enderror" name="message" id="message" cols="30"
+                                            rows="4" placeholder="Write your message"></textarea>
+                                        @error('message')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <input type="submit" value="Send Message"
+                                            class="btn btn-primary rounded-0 py-2 px-4">
+                                        <span class="submitting"></span>
+                                    </div>
+                                </div>
+                            </form>
+
+
+
+                        </div>
+                    </div>
+                </div>
             </div>
+
+        </div>
     </div>
     </section>
     <style>
-        .purple{
-            margin:60px 0;
-            word-wrap:break-word;
+        
+        .purple {
+            margin: 60px 0;
+            word-wrap: break-word;
             font-size: 1.5rem;
             color: #B693FB !important;
-            font-weight:bolder !important;
+            font-weight: bolder !important;
         }
-        .carousel-item {
+
+        .carousel-item1 {
             max-height: 40vw !important;
         }
 

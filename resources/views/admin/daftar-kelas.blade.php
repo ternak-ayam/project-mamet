@@ -14,7 +14,7 @@
                         <h5 class="card-title text-uppercase mb-0">Daftar Kelas</h5>
                     </div>
                     <div class="table-responsive">
-                        <button type="button" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0 p-2 m-3"><a
+                        <button type="button" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0 p-2 m-3 "><a
                                 class="text-white text-decoration-none" href="{{ route('daftar-kelas.create') }}">Tambah
                                 Kelas</a></button>
                         <table class="table no-wrap user-table mb-0">
@@ -38,6 +38,9 @@
                                     <th scope="col" class="border-0 text-uppercase font-medium">
                                         Manage
                                     </th>
+                                    <th scope="col" class="border-0 text-uppercase font-medium">
+                                        Export Kelas
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,7 +51,7 @@
                                         <td>
                                             <h5 class="font-medium mb-0">{{ $item['nama_kelas'] }}</h5>
                                         </td>
-                                        <td class="w-50">
+                                        <td class="w-25">
                                             <span class="text-muted">{{ $item['deskripsi'] }}</span><br />
                                         </td>
                                         <td>
@@ -77,6 +80,14 @@
                                                 <button type="button"
                                                     class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2">
                                                     <i class="fa fa-edit"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('admin-export-jeniskelas', $item->id) }}">
+                                                <button type="button"
+                                                    class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2">
+                                                    <i class="fa fa-download"></i>
                                                 </button>
                                             </a>
                                         </td>
