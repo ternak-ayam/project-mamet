@@ -133,8 +133,8 @@
         </nav> --}}
         <nav id="navbar-example2" class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
             <div class="container ">
-                <img src="{{ asset('img/logo.png') }}" style="width:33px" alt="GoKreatif">
-                <a class="navbar-brand fw-bold" href="{{ route('home') }}">{{ config('app.name') }}</a>
+               
+                <a  href="{{ route('home') }}"> <img src="{{ asset('img/logo.jpg') }}" style="width:120px" alt="GoKreatif"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation">

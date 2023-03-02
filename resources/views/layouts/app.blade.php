@@ -21,10 +21,12 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://demo.getstisla.com/assets/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://demo.getstisla.com/assets/modules/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://demo.getstisla.com/assets/modules/fontawesome/css/all.min.css">
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://demo.getstisla.com/assets/modules/bootstrap-social/bootstrap-social.css">
     <link rel="stylesheet" href="https://demo.getstisla.com/assets/css/components.css">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <style>
@@ -114,8 +116,7 @@
         <nav id="navbar-example2" class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
             <div class="container ">
                 <div class="">
-                    <img src="{{ asset('img/logo.png') }}" style="width:33px" alt="GoKreatif">
-                    <a class="navbar-brand fw-bold" href="#page-top">{{ config('app.name') }}</a>
+                    <a  href="{{ route('home') }}"> <img src="{{ asset('img/logo.jpg') }}" style="width:120px" alt="GoKreatif"></a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
@@ -126,16 +127,16 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="nav nav-pills navbar-nav ms-auto me-4 my-3 my-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}/#scrollspyHeading1">Home</a>
+                            <a class="nav-link {{ (request()->is('/')) ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}/#scrollspyHeading2">Gallery</a>
+                            <a class="nav-link {{ (request()->is('gallery')) ? 'active' : '' }}" href="{{ route('gallery') }}">Gallery</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('kelas') }}/#scrollspyHeading3">Class</a>
+                            <a class="nav-link {{ (request()->is('kelas')) ? 'active' : '' }}" href="{{ route('kelas') }}">Class</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}/#scrollspyHeading4">Contact</a>
+                            <a class="nav-link {{ (request()->is('contact')) ? 'active' : '' }}" href="{{ route('contact') }}">Contact</a>
                         </li>
                         @guest
                             <li class="nav-item">

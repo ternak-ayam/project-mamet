@@ -39,6 +39,16 @@ class HomeController extends Controller
         $daftarkelas = Kelas::latest()->get();
         return view('kelas', compact('daftarkelas'));
     }
+    public function gallery()
+    {
+        $daftarkelas = Kelas::latest()->get();
+        return view('gallery', compact('daftarkelas'));
+    }
+    public function contact()
+    {
+        $daftarkelas = Kelas::latest()->get();
+        return view('contact', compact('daftarkelas'));
+    }
 
 
 

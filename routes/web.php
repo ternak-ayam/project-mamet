@@ -58,6 +58,8 @@ Route::group(['middleware' => ['auth', 'topmanajemen']], function() {
 Route::get('/', 'HomeController@index')->name('home');
 Route::post('/', 'HomeController@contactUs')->name('contactUs');
 Route::get('/kelas', 'HomeController@kelas')->name('kelas');
+Route::get('/gallery', 'HomeController@gallery')->name('gallery');
+Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::get('/data-diri/{id}', 'HomeController@filldatadiri')->name('datadiri');
 Route::post('/data-diri', 'HomeController@storedatadiri')->name('storedatadiri');
 
