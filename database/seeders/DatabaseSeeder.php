@@ -19,8 +19,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Arsyad',
             'email' => 'Arsyad@gmail.com',
-            'nama_ayah' => 'Marzuki Arsyad',
-            'nama_ibu' => 'Asyanti',
+            'nama_orangtua' => 'Marzuki Arsyad',
             'no_telp' => '085682685256',
             'alamat' => 'Jalan pegangsaan timur no 87',
             'email_verified_at' => Carbon::now(),
@@ -30,8 +29,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'mamet',
             'email' => 'mamet@gmail.com',
-            'nama_ayah' => 'Syaipudin Sukron',
-            'nama_ibu' => 'Susanti',
+            'nama_orangtua' => 'Syaipudin Sukron',
             'no_telp' => '081565452631',
             'alamat' => 'Jalan anyer selatan no 1',
             'email_verified_at' => Carbon::now(),
@@ -41,8 +39,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'ahmad',
             'email' => 'ahmad@gmail.com',
-            'nama_ayah' => 'Jaenal',
-            'nama_ibu' => 'Lailatul',
+            'nama_orangtua' => 'Jaenal',
             'no_telp' => '085682685256',
             'alamat' => 'Jalan pegangsaan timur no 87',
             'email_verified_at' => Carbon::now(),
@@ -52,8 +49,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'adi palguna',
             'email' => 'adipalguna@gmail.com',
-            'nama_ayah' => 'Komang Tamba',
-            'nama_ibu' => 'Made Surtini',
+            'nama_orangtua' => 'Komang Tamba',
             'no_telp' => '085682685256',
             'alamat' => 'Jalan pegangsaan timur no 87',
             'email_verified_at' => Carbon::now(),

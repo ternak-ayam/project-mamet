@@ -63,9 +63,13 @@ class PembelianController extends Controller
                 'bukti_pembayaran'     => $image->hashName(),
                 'sertifikat'     => '-',
             ]);
+            
+            $kelas = Kelas::find($request->kelas_id);
+            $kelas->decrement('kuota',1);
+            $kelas->save();
+
 
             if ($pembelian) {
-                // dd($pembelian->user->role == 'nonuser');
                 if ($pembelian->user->role == 'nonuser') {
                     return redirect()->route('dashboard-nonuser')->with(['success' => 'Data Berhasil Disimpan!']);
                 } elseif ($pembelian->user->role == 'user') {

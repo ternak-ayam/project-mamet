@@ -33,6 +33,9 @@
                                         Harga
                                     </th>
                                     <th scope="col" class="border-0 text-uppercase font-medium">
+                                        Kuota
+                                    </th>
+                                    <th scope="col" class="border-0 text-uppercase font-medium">
                                         Gambar Kelas
                                     </th>
                                     <th scope="col" class="border-0 text-uppercase font-medium">
@@ -56,6 +59,9 @@
                                         </td>
                                         <td>
                                             <span class="text-muted">Rp @convert($item['harga'])</span><br />
+                                        </td>
+                                        <td>
+                                            <span class="text-muted">{{ $item['kuota'] }}</span><br />
                                         </td>
                                         <td>
                                             <a href="{{ url('storage/gambar_kelas/' . $item->gambar_kelas) }}"

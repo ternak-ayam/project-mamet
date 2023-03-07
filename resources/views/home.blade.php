@@ -65,17 +65,17 @@
                 </div>
             </section>
             <div class="text-center d-flex w-75 my-0 mx-auto flex-col justify-content-start">
-                <p class="fw-bold font-size text-stickleft bottom-align-text text-black">
+                <p class="fw-bold font-size text-stickleft bottom-align-text text-center text-black">
                     Visi GoKreatif
                 </p>
-                <p class="lead fw-normal text-stickleft bottom-align-text text-black mb-5">
+                <p class="lead fw-normal text-stickleft bottom-align-text text-center text-black mb-5">
                     Visi GoKreatif adalah
                     terwujudnya wadah bagi masyarakat untuk meningkatkan kreativitas dan keterampilan mendukung
                     kemajuan Teknologi.
                 </p>
-                <p class="fw-bold font-size text-stickleft bottom-align-text text-black">
+                <p class="fw-bold font-size text-stickleft bottom-align-text text-center text-black">
                     Misi GoKreatif </p>
-                <p class="lead fw-normal text-stickleft bottom-align-text text-black mb-5">
+                <p class="lead fw-normal text-stickleft bottom-align-text text-center text-black mb-5">
                     Misi GoKreatif adalah
                     menyelenggarakan kelas ketrampilan yang kreatif,
                     Menciptakan masyarakat yang memiliki kompetensi dan professional,

@@ -270,6 +270,8 @@
         integrity="sha512-OTbGFYPLe3jhy4bUwbB8nls0TFgz10kn0TLkmyA+l3FyivDs31zsXCjOis7YGDtE2Jsy0+fzW+3/OVoPVujPmQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript">
+                    console.log({!! $kelas_data !!})
+
         var bars_basic_element = document.getElementById('bars_basic');
         if (bars_basic_element) {
             var bars_basic = echarts.init(bars_basic_element);
