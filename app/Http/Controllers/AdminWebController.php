@@ -185,13 +185,13 @@ class AdminWebController extends Controller
         $users = Pembelian::where('user_id', $id)->with('kelas', 'days', 'times')->get();
         $data = User::findOrFail($id);
         // dd($users);
-        return view('admin.peserta-kelas.detail', compact('users', 'data'));
+        return view('admin-web.peserta-kelas.detail', compact('users', 'data'));
     }
     public function index_peserta_kelas()
     {
-        $datauser = User::where('role', 'user')->orWhere('role', 'nonuser')->get();
+        $datauser = User::where('role', 'user')->orWhere('role', 'nonuser')->orWhere('role', 'admin')->orWhere('role', 'topmanajemen')->get();
         // dd($datakelas);
-        return view('admin.peserta-kelas.index', compact('datauser'));
+        return view('admin-web.peserta-kelas.index', compact('datauser'));
     }
     public function cari_peserta_kelas(Request $request)
     {
@@ -202,14 +202,14 @@ class AdminWebController extends Controller
                 $query->where('name', 'like', "%" . $cari . "%")
                     ->orWhere('email', 'LIKE', '%' . $cari . '%');
             })->where(function ($query) {
-                $query->where('role', 'user')->orWhere('role', 'nonuser');
+                $query->where('role', 'user')->orWhere('role', 'nonuser')->orWhere('role', 'admin')->orWhere('role', 'topmanajemen');
             })->where(function ($query) use ($filter) {
                 if ($filter != "all") {
                     $query->where('role', $filter);
                 }
             })
                 ->get();
-            return view('admin.peserta-kelas.index', compact('datauser'));
+            return view('admin-web.peserta-kelas.index', compact('datauser'));
         } catch (\Exception $e) {
             return $e->getMessage();
         }

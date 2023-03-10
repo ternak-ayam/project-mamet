@@ -42,7 +42,6 @@
                                                         <th scope="col">Email</th>
                                                         <th scope="col">Role</th>
                                                         <th scope="col">Action</th>
-                                                        <th scope="col">Kelas Yang Diikuti</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -72,12 +71,6 @@
                                                                 <a href="{{ route('dashboard-adminweb-edit', $item->id) }}">
                                                                     <button type="button" class="btn btn-warning"><i
                                                                             class="fa fa-edit"></i></button>
-                                                                </a>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="{{ route('dashboard-adminweb-detail-list-member', $item->id) }}">
-                                                                    <button type="button" class="btn btn-info"><i
-                                                                            class="fa-sharp fa-solid fa-landmark"></i></button>
                                                                 </a>
                                                             </td>
                                                         </tr>

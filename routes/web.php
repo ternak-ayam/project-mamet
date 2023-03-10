@@ -151,10 +151,16 @@ Route::group(['middleware' => ['auth', 'adminweb']], function() {
     Route::patch('/dashboard-adminweb/{id}', 'AdminWebController@update')->name('dashboard-adminweb-update');
     Route::delete('/dashboard-adminweb/{id}', 'AdminWebController@destroy')->name('dashboard-adminweb-delete');
     Route::get('/dashboard-adminweb/{id}/kelas_member', 'AdminWebController@detail_member')->name('dashboard-adminweb-detail-list-member');
+    Route::get('/dashboard-adminweb/peserta-kelas', 'AdminWebController@index_peserta_kelas')->name('adminweb-peserta-kelas');
+    Route::get('/dashboard-adminweb/peserta-kelas/cari-peserta-kelas', 'AdminWebController@cari_peserta_kelas')->name('adminweb-cari-list-member');
+    Route::get('/dashboard-adminweb/{id}/kelas-peserta', 'AdminWebController@detail_member_peserta_kelas')->name('adminweb-detail-peserta-kelas');
+
     Route::get('dashboard-adminweb/user/export_excel', 'ExportUserController@export_excel')->name('adminweb-export-user');
     Route::get('dashboard-adminweb/nonuser/export_excel', 'ExportUserController@export_nonuser')->name('adminweb-export-nonuser');
     Route::get('dashboard-adminweb/jadwal/export_excel', 'ExportUserController@jadwal_export_excel')->name('adminweb-export-jadwal');
     Route::get('dashboard-adminweb/peserta/export_excel', 'ExportUserController@peserta_export_excel')->name('adminweb-export-peserta');
+    Route::get('dashboard-adminweb/kelas-peserta/export_excel/{id}', 'ExportUserController@kelaspeserta_export_excel')->name('adminweb-kelas-peserta-export');
+
 });
 
 

@@ -3,11 +3,11 @@
 namespace App\Exports;
 
 use App\Models\Pembelian;
+use App\Models\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class PesertaExport implements FromCollection, WithMapping, WithHeadings
+class PesertaExport implements FromCollection, WithHeadings
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -15,32 +15,12 @@ class PesertaExport implements FromCollection, WithMapping, WithHeadings
         public function collection()
         {
             // this is an example, not exactly like your database structure 
-            return Pembelian::with(['user'])
-            ->where('status_pembayaran', '1')
-            ->groupBy('user_id')       
-            ->get();
+            return User::select('name','email','nama_orangtua','no_telp','alamat','role')->where('role','!=','adminweb')->get();
         }
     
-        public function map($row): array
-        {
-    
-            return [
-                $row->user->name,
-                $row->user->email,
-                $row->user->nama_orangtua,
-                $row->user->no_telp,
-                $row->user->alamat,
-            ];
-        }
     
         public function headings(): array
         {
-            return [
-                'Nama Peserta',
-                'Email',
-                'Nama Orangtua',
-                'Nomor Hp',
-                'Alamat',
-            ];
+            return ["Nama Peserta", "Email Peserta","Nama Orang Tua", "Nomor Telepon","Alamat","Role ('User = Member', 'NonUser = NonMember')"];
         }
     }

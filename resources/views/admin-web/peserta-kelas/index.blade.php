@@ -17,17 +17,13 @@
                                     <div class="card-body p-0">
                                         <div class="card-body px-0">
                                             <h5 class="card-title text-uppercase mb-0">Laporan Peserta Kelas</h5>
-                                            <form action="{{ route('cari-peserta-kelas') }}" method="GET">
+                                            <form action="{{ route('adminweb-cari-list-member') }}" method="GET">
                                                 <div class="input-group mt-5  justify-content-between">
                                                     <div class="w-50 d-flex">
                                                     <button type="button" class="btn btn-success rounded "><a
                                                             class="text-white text-decoration-none"
-                                                            href="{{ route('admin-export-user') }}">  <i
-                                                            class="fa fa-download"></i>Export Member</a></button>
-                                                    <button type="button" class="btn btn-success rounded ms-4"><a
-                                                            class="text-white text-decoration-none"
-                                                            href="{{ route('admin-export-nonuser') }}">  <i
-                                                            class="fa fa-download"></i>Export Non Member</a></button>
+                                                            href="{{ route('adminweb-export-peserta') }}">  <i
+                                                            class="fa fa-download"></i>Export Users</a></button>
                                                     </div>
                                                     <div class="w-50 d-flex">
                                                         <input type="text" name="keyword"
@@ -38,6 +34,8 @@
                                                             <option @if(request()->filter == 'all') selected @endif value="all">All</option>
                                                             <option @if(request()->filter == 'user') selected @endif value="user">Member</option>
                                                             <option @if(request()->filter == 'nonuser') selected @endif value="nonuser">Non Member</option>
+                                                            <option @if(request()->filter == 'admin') selected @endif value="admin">Admin</option>
+                                                            <option @if(request()->filter == 'topmanajemen') selected @endif value="topmanajemen">Top Manajemen</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -84,11 +82,15 @@
                                                                         <span class="text-muted">Member</span>
                                                                     @elseif($item->role == 'nonuser')
                                                                         <span class="text-muted">Non Member</span>
+                                                                    @elseif($item->role == 'admin')
+                                                                        <span class="text-muted">Admin</span>
+                                                                    @elseif($item->role == 'topmanajemen')
+                                                                        <span class="text-muted">Top Manajemen</span>
                                                                     @endif 
                                                                 </span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <a href="{{ route('detail-peserta-kelas', $item->id) }}">
+                                                                <a href="{{ route('adminweb-detail-peserta-kelas', $item->id) }}">
                                                                     <button type="button" class="btn btn-info"><i
                                                                             class="fa-solid fa-landmark"></i></button>
                                                                 </a>
