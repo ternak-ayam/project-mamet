@@ -16,12 +16,12 @@
                                 <div class="card">
                                     <div class="card-body p-0">
                                         <div class="card-body px-0">
-                                            <h5 class="card-title text-uppercase mb-0">Jadwal Kelas</h5>
+                                            <h5 class="card-title text-uppercase mb-0">Nama Kelas Yang Diikuti</h5>
                                             <button type="button"
-                                                class="btn btn-primary rounded  px-3 mb-2 mb-lg-0 p-2 my-3 "><a
+                                                class="btn btn-danger rounded  px-3 mb-2 mb-lg-0 p-2 my-3 "><a
                                                     class="text-white text-decoration-none"
-                                                    href="{{ route('daftar-kelas.create') }}">Tambah
-                                                    Kelas</a></button>
+                                                    href="{{ route('list-member') }}"> <i
+                                                    class="fa fa-arrow-left"></i>Kembali</a></button>
                                         </div>
                                         <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
                                             style="position: relative; height: 700px">
@@ -30,61 +30,40 @@
                                                     <tr class="font">
                                                         <th scope="col">No</th>
                                                         <th scope="col">Nama Kelas</th>
-                                                        <th scope="col">Deskripsi</th>
-                                                        <th scope="col">Harga</th>
-                                                        <th scope="col">Kuota</th>
-                                                        <th scope="col">Gambar</th>
-                                                        <th scope="col">Manage</th>
-                                                        <th scope="col">Peserta</th>
+                                                        <th scope="col">Hari</th>
+                                                        <th scope="col">Jam Kelas</th>
+                                                        {{-- <th scope="col">Action</th> --}}
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php $i = 1; ?>
-                                                    @foreach ($datakelas as $item)
+                                                    @foreach ($detailgambar as $item)
                                                         <tr>
                                                             <td class="pl-4 text-center">{{ $i++ }}</td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">{{ $item['nama_kelas'] }}</span>
-                                                            </td>
-                                                            <td class="w-25">
-                                                                <span
-                                                                    class="text-muted">{{ \Illuminate\Support\Str::limit($item['deskripsi'], 50, $end = '...') }}</span><br />
+                                                                <span class="text-muted">{{ $item->kelas->nama_kelas }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">Rp @convert($item['harga'])</span><br />
+                                                                <span class="text-muted">{{ $item->days->daysname }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">{{ $item['kuota'] }}</span><br />
+                                                                <span class="text-muted">{{ $item->times->jam_kelas }}</span>
                                                             </td>
-                                                            <td class="text-center">
-                                                                <a href="{{ url('storage/gambar_kelas/' . $item->gambar_kelas) }}"
-                                                                    target="_blank" style="text-decoration:none">
-                                                                    <img src="{{ url('storage/gambar_kelas/' . $item->gambar_kelas) }}"
-                                                                        alt="job image" width="50" height="100"
-                                                                        class="object-fit-cover"  title="job image">
-                                                                </a>
-                                                            </td>
-                                                            <td class="text-center">
+                                                            {{-- <td class="text-center">
                                                                 <form style="height: 50px; width:50px; display:contents;"
                                                                     onsubmit="return confirm('Apakah Anda Yakin ?');"
-                                                                    action="{{ route('daftar-kelas.destroy', $item->id) }}"
+                                                                    action="{{ route('delete-gambar-kegiatan-kelas', $item->id) }}"
                                                                     method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
                                                                     <button type="submit" class="btn btn-danger"><i
                                                                             class="fa fa-trash"></i></button>
                                                                 </form>
-                                                                <a href="{{ route('daftar-kelas.edit', $item->id) }}">
+                                                                <a href="{{ route('edit-gambar-kegiatan-kelas', $item->id) }}">
                                                                     <button type="button" class="btn btn-warning"><i
                                                                             class="fa fa-edit"></i></button>
                                                                 </a>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="{{ route('peserta-kelas', $item->id) }}">
-                                                                    <button type="button" class="btn btn-info"><i
-                                                                            class="fa-solid fa-users"></i></button>
-                                                                </a>
-                                                            </td>
+                                                            </td> --}}
                                                         </tr>
                                                     @endforeach
 

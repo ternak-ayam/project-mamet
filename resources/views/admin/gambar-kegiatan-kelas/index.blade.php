@@ -16,12 +16,12 @@
                                 <div class="card">
                                     <div class="card-body p-0">
                                         <div class="card-body px-0">
-                                            <h5 class="card-title text-uppercase mb-0">Jadwal Kelas</h5>
+                                            <h5 class="card-title text-uppercase mb-0">Nama Kegiatan Kelas</h5>
                                             <button type="button"
                                                 class="btn btn-primary rounded  px-3 mb-2 mb-lg-0 p-2 my-3 "><a
                                                     class="text-white text-decoration-none"
-                                                    href="{{ route('daftar-kelas.create') }}">Tambah
-                                                    Kelas</a></button>
+                                                    href="{{ route('add-gambar-kegiatan-kelas') }}">Tambah
+                                                    Gambar</a></button>
                                         </div>
                                         <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
                                             style="position: relative; height: 700px">
@@ -30,59 +30,20 @@
                                                     <tr class="font">
                                                         <th scope="col">No</th>
                                                         <th scope="col">Nama Kelas</th>
-                                                        <th scope="col">Deskripsi</th>
-                                                        <th scope="col">Harga</th>
-                                                        <th scope="col">Kuota</th>
                                                         <th scope="col">Gambar</th>
-                                                        <th scope="col">Manage</th>
-                                                        <th scope="col">Peserta</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php $i = 1; ?>
-                                                    @foreach ($datakelas as $item)
+                                                    @foreach ($gambarkelas as $item)
                                                         <tr>
                                                             <td class="pl-4 text-center">{{ $i++ }}</td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">{{ $item['nama_kelas'] }}</span>
-                                                            </td>
-                                                            <td class="w-25">
-                                                                <span
-                                                                    class="text-muted">{{ \Illuminate\Support\Str::limit($item['deskripsi'], 50, $end = '...') }}</span><br />
+                                                                <span class="text-muted">{{ $item->nama_kelas->jenis_kelas }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">Rp @convert($item['harga'])</span><br />
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <span class="text-muted">{{ $item['kuota'] }}</span><br />
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="{{ url('storage/gambar_kelas/' . $item->gambar_kelas) }}"
-                                                                    target="_blank" style="text-decoration:none">
-                                                                    <img src="{{ url('storage/gambar_kelas/' . $item->gambar_kelas) }}"
-                                                                        alt="job image" width="50" height="100"
-                                                                        class="object-fit-cover"  title="job image">
-                                                                </a>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <form style="height: 50px; width:50px; display:contents;"
-                                                                    onsubmit="return confirm('Apakah Anda Yakin ?');"
-                                                                    action="{{ route('daftar-kelas.destroy', $item->id) }}"
-                                                                    method="POST">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit" class="btn btn-danger"><i
-                                                                            class="fa fa-trash"></i></button>
-                                                                </form>
-                                                                <a href="{{ route('daftar-kelas.edit', $item->id) }}">
-                                                                    <button type="button" class="btn btn-warning"><i
-                                                                            class="fa fa-edit"></i></button>
-                                                                </a>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="{{ route('peserta-kelas', $item->id) }}">
-                                                                    <button type="button" class="btn btn-info"><i
-                                                                            class="fa-solid fa-users"></i></button>
+                                                                <a href="{{ route('detail-gambar-kegiatan-kelas', $item->nama_kelas->id) }}">
+                                                                    <button type="button" class="btn btn-info"><i class="fa-regular fa-images"></i></button>
                                                                 </a>
                                                             </td>
                                                         </tr>

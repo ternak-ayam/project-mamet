@@ -1,4 +1,5 @@
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" style="background-color:#B693FB !important;">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark"
+    style="background-color:white !important; text-color:#B693FB">
 
     <a class="navbar-brand ps-3" style="font-weight:400" href="{{ route('dashboard-admin.index') }}">Go Kreatif</a>
 
@@ -9,7 +10,7 @@
     <!-- Navbar Brand-->
     @if (Auth::check())
         @if (Auth::user()->role == 'admin')
-            <a class="navbar-brand ps-3" href="{{ route('dashboard-admin.index') }}">Halaman Admin</a>
+            <a class="navbar-brand ps-3" href="{{ route('dashboard-admin.index') }}">Halaman Staf Administrator</a>
         @elseif(Auth::user()->role == 'user')
             <a class="navbar-brand ps-3" href="{{ route('dashboard-user') }}">Halaman Member</a>
         @elseif(Auth::user()->role == 'topmanajemen')
@@ -36,6 +37,9 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{{ route('home') }}">Home</a></li>
                 @if (Auth::check())
+                    @if (Auth::user()->role == 'user')
+                        <li><a class="dropdown-item" href="{{ route('edit-profile', Auth::user()->id) }}">Profile</a></li>
+                    @endif
                     <li><a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                               document.getElementById('logout-form').submit();">
@@ -47,7 +51,6 @@
                         </form>
                     </li>
                 @else
-                    
                 @endif
             </ul>
         </li>

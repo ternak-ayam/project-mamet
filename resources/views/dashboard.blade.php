@@ -21,6 +21,9 @@
         color:white !important;
         font-weight: 600;
     }
+    a.navbar-brand.ps-3, .sb-topnav.navbar-dark #sidebarToggle, a#navbarDropdown, p.text-light{
+        color:#B693FB !important;
+    }
 </style>
 <body class="sb-nav-fixed">
     @include('partials.navbar')

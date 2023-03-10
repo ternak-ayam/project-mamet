@@ -117,16 +117,14 @@ class PembelianController extends Controller
     public function update(Request $request, Pembelian $pembelian, $id)
     {
         try {
-            // dd($request);
             $this->validate($request, [
                 'user_id' => 'required',
                 'kelas_id' => 'required',
                 'days_id' => 'required',
                 'times_id' => 'required',
-                'sertifikat'     => 'required|mimes:png,jpg,jpeg,pdf',
+                'sertifikat'     => 'required|mimes:image/png,png,jpg,jpeg,pdf',
                 'bukti_pembayaran' => 'required',
             ]);
-
             //get data Blog by ID
             $pembelian = Pembelian::findOrFail($id);
 
@@ -145,7 +143,6 @@ class PembelianController extends Controller
                 'sertifikat'        => $sertifikat->hashName(),
                 'bukti_pembayaran'  => $request->bukti_pembayaran,
             ]);
-
             if ($pembelian) {
                 //redirect dengan pesan sukses
                 return redirect()->route('dashboard-admin.index')->with(['success' => 'Data Berhasil Diupdate!']);

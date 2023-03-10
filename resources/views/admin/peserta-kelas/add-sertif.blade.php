@@ -65,7 +65,7 @@
                         <button class="btn btn-primary" type="submit"><a> Submit </a></button>
                     </div>
                     <div class="d-grid gap-1 col-6 col-md-6 ">
-                        <a class="btn btn-danger" href="{{ route('dashboard-admin.index') }}">Kembali </a>
+                        <a class="btn btn-danger" href="{{ route('data-kelas') }}">Kembali </a>
                     </div>
                 </div>
             </div>

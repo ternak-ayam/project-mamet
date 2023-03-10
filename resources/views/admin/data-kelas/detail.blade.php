@@ -20,8 +20,12 @@
                                             <button type="button"
                                                 class="btn btn-danger rounded  px-3 mb-2 mb-lg-0 p-2 my-3 "><a
                                                     class="text-white text-decoration-none"
-                                                    href="{{ route('dashboard-admin.index') }}"> <i
+                                                    href="{{ route('data-kelas') }}"> <i
                                                     class="fa fa-arrow-left"></i>Kembali</a></button>
+                                            <button type="button"
+                                                class="btn btn-success rounded  px-3 mb-2 mb-lg-0 p-2 my-3 "><a
+                                                    class="text-white text-decoration-none"
+                                                    href="{{ route('admin-export-jeniskelas', $data->id)  }}"> <i class="fa fa-download"></i>Export Data Peserta</a></button>
                                         </div>
                                         <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
                                             style="position: relative;">
@@ -40,7 +44,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php $i = 1; ?>
-                                                    @foreach ($datakelas as $item)
+                                                    @foreach ($users as $item)
                                                         <tr>
                                                             <td class="pl-4 text-center">{{ $i++ }}</td>
                                                             <td class="text-center">
@@ -64,41 +68,43 @@
                                                             </td>
                                                             <td>
                                                                 <form style="height: 50px; width:50px; display:contents;"
-                                                                    action="{{ route('dashboard-admin.update', $item->id) }}" method="POST">
+                                                                    action="{{ route('update_payment_status', $item->id) }}" method="POST">
                                                                     @csrf
                                                                     @method('PATCH')
                                                                     <button type="submit"
                                                                         class="btn btn-primary">
                                                                         <i class="fa fa-check"></i>
                                                                         <input type="hidden" name="status_pembayaran" value="1">
+                                                                        <input type="hidden" name="kelas_id" value="{{ $item->kelas_id }}">
                                                                     </button>
                                                                 </form>
                     
                     
                                                                 <form style="height: 50px; width:50px; display:contents;"
-                                                                    action="{{ route('dashboard-admin.update', $item->id) }}" method="POST">
+                                                                    action="{{ route('update_payment_status', $item->id) }}" method="POST">
                                                                     @csrf
                                                                     @method('PATCH')
                                                                     <button type="submit"
                                                                         class="btn btn-danger">
                                                                         <i class="fa fa-x"></i>
                                                                         <input type="hidden" name="status_pembayaran" value="0">
+                                                                        <input type="hidden" name="kelas_id" value="{{ $item->kelas_id }}">
                                                                     </button>
                                                                 </form>
                     
                                                             </td>
                                                             <td class="text-center">
                                                                 @if ($item->status_pembayaran == '1')
-                                                                    <span class="text-muted">Approved</span>
+                                                                    <span class="text-muted">Sudah Bayar</span>
                                                                 @elseif($item->status_pembayaran == '0')
-                                                                    <span class="text-muted">Declined</span>
+                                                                    <span class="text-muted">Belum Bayar</span>
                                                                 @elseif($item->status_pembayaran == '-')
                                                                     <span class="text-muted">Belum Dicek</span>
                                                                 @endif
                                                             </td>
                                                             @if ($item->sertifikat == '-')
                                                                 <td class="text-center">
-                                                                    <a href="{{ route('checkout.edit', $item->id) }}">
+                                                                    <a href="{{ route('edit-sertif-data-kelas', $item->id) }}">
                                                                         <button type="button" class="btn btn-success">
                                                                             <i class="fa fa-upload"></i>
                                                                         </button>

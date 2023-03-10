@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ContactUs;
+use App\Models\GambarKegiatanKelas;
 use App\Models\Kelas;
 use App\Models\Nonusers;
 use App\Models\Pembelian;
@@ -42,7 +43,10 @@ class HomeController extends Controller
     public function gallery()
     {
         $daftarkelas = Kelas::latest()->get();
-        return view('gallery', compact('daftarkelas'));
+        $flower = GambarKegiatanKelas::where('jenis_kelas_id', 2)->get();
+        $painting = GambarKegiatanKelas::where('jenis_kelas_id', 1)->get();
+        $art = GambarKegiatanKelas::where('jenis_kelas_id', 3)->get();
+        return view('gallery', compact('daftarkelas','flower','painting','art'));
     }
     public function contact()
     {

@@ -21,7 +21,7 @@ class JenisKelasExport implements FromCollection, WithMapping, WithHeadings
     }
     public function collection()
     {
-        return Pembelian::where('status_pembayaran', 1)->where('kelas_id', $this->id)->with(['user', 'kelas', 'days', 'times'])->select('user_id', 'kelas_id', 'days_id', 'times_id')->get();
+        return Pembelian::where('kelas_id', $this->id)->with(['user', 'kelas', 'days', 'times'])->select('user_id', 'kelas_id', 'days_id', 'times_id')->get();
     }
     public function map($row): array
     {
@@ -29,11 +29,15 @@ class JenisKelasExport implements FromCollection, WithMapping, WithHeadings
             $row->kelas->nama_kelas,
             $row->days->daysname,
             $row->times->jam_kelas,
-            $row->user->name
+            $row->user->name,
+            $row->user->nama_orangtua,
+            $row->user->alamat,
+            $row->user->no_telp,
+            $row->user->email,
         ];
     }
     public function headings(): array
     {
-        return ["Nama Kelas", "Hari Kelas", "Jam Kelas", "Nama Peserta"];
+        return ["Nama Kelas", "Hari Kelas", "Jam Kelas", "Nama Peserta","Nama Orang Tua","Tempat Tinggal", "Nomor Telepon", "Email"];
     }
 }

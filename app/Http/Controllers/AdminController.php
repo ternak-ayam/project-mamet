@@ -57,8 +57,9 @@ class AdminController extends Controller
         $data_member =  User::where('role', 'user')->get();
         $data_nonmember =  User::where('role', 'nonuser')->get();
         $data_peserta =  Pembelian::where('status_pembayaran', 1)->get();
+        $datakelas = Kelas::all();
 
-        return view('admin.dashboard-admin', compact('data', 'kelas_data', 'users_data','nonusers_data','data_member','data_nonmember','data_peserta'));
+        return view('admin.dashboard-admin', compact('datakelas','data', 'kelas_data', 'users_data','nonusers_data','data_member','data_nonmember','data_peserta'));
     }
 
     /**

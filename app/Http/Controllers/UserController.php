@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pembelian;
+use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -15,14 +18,55 @@ class UserController extends Controller
         $data = Pembelian::where('user_id', auth()->user()->id)->with(['user', 'kelas'])->latest()->get();
         return view('user.dashboard-user', compact('data'));
     }
+    public function profile($id)
+    {
+        $data = User::findorFail($id);
+        return view('user.profile', compact('data'));
+    }
+    public function profile_update(Request $request, $id)
+    {
+        // dd($request);
+        try {
+            $this->validate($request, [
+                'name' => 'required', 'string', 'max:255',
+                'email' => 'required', 'string', 'email', 'max:255', 'unique:users',
+                'nama_orangtua' => 'required', 'string', 'max:255',
+                'no_telp' => 'required', 'string', 'max:255',
+                'alamat' => 'required', 'string', 'max:255',
+                'password' => 'required', 'string', 'min:8', 'confirmed',
+                'role' => 'required',
+            ]);
+            // dd($request);
+            if (User::where('email', $request->email)->first() != null) {
+                if ($request->email == auth()->user()->email) {
+                    $user = User::findOrFail($id);
+                    $user->update([
+                        'name' => $request->name,
+                        'email' => $request->email,
+                        'nama_orangtua' => $request->nama_orangtua,
+                        'no_telp' =>  $request->no_telp,
+                        'alamat' =>  $request->alamat,
+                        'email_verified_at' => Carbon::now(),
+                        'password' => Hash::make($request->password),
+                        'role' =>  $request->role,
+                    ]);
+                    return redirect()->route('dashboard-user')->with(['success' => 'Profile berhasil diubah!']);
+
+                }
+                return redirect()->route('edit-profile',$id)->with(['error' => 'Maaf Email Sudah Ada Yang Punya!']);
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
 
 
     public function jadwal_kelas()
     {
         $data = Pembelian::where(function ($query) {
-            $query->where('status_pembayaran','=', '1');
-        })->where(function ($query){
-            $query->where('user_id','=', auth()->user()->id);
+            $query->where('status_pembayaran', '=', '1');
+        })->where(function ($query) {
+            $query->where('user_id', '=', auth()->user()->id);
         })
             ->with(['user', 'kelas', 'days', 'times'])
             ->latest()->get();

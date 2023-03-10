@@ -26,9 +26,9 @@
 
             <div id="owl-demo" class="owl-carousel owl-theme w-75 my-0 mx-auto p-4">
 
-                @foreach (File::glob(public_path('img/home/painting') . '/*') as $path)
+                @foreach ($painting as $item)
                     <div class="item">
-                        <img src="{{ str_replace(public_path(), '', $path) }}" class="img-fluid">
+                        <img src="{{ url('storage/gambar_kegiatan_kelas/' . $item->gambar) }}" class="img-fluid">
                     </div>
                 @endforeach
             </div>
@@ -39,9 +39,9 @@
             <p class="purple text-center" id="flowerclass">Go Kreatif aktivity on Flower Class</p>
 
             <div id="owl-demo2" class="owl-carousel owl-theme w-75 my-0 mx-auto p-4">
-                @foreach (File::glob(public_path('img/home/flower') . '/*') as $path)
+                @foreach ($flower as $item)
                     <div class="item">
-                        <img src="{{ str_replace(public_path(), '', $path) }}" class="img-fluid">
+                        <img src="{{ url('storage/gambar_kegiatan_kelas/' . $item->gambar) }}" class="img-fluid">
                     </div>
                 @endforeach
 
@@ -54,9 +54,9 @@
 
             <div id="owl-demo3" class="owl-carousel owl-theme w-75 my-0 mx-auto p-4">
 
-                @foreach (File::glob(public_path('img/home/art') . '/*') as $path)
+                @foreach ($art as $item)
                     <div class="item">
-                        <img src="{{ str_replace(public_path(), '', $path) }}" class="img-fluid">
+                        <img src="{{ url('storage/gambar_kegiatan_kelas/' . $item->gambar) }}" class="img-fluid">
                     </div>
                 @endforeach
 

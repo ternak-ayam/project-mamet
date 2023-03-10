@@ -12,6 +12,7 @@ class Kelas extends Model
         'nama_kelas',
         'deskripsi',
         'harga',
+        'kouta',
         'gambar_kelas',
     ];
     public function pembelian(){
