@@ -51,6 +51,10 @@
                                     <span class="fw-bold">Rp.@convert($item['harga'])</span>
                                     <span
                                         class="d-block mb-3">Kuota Tersedia : <span class="fw-bold">{{ $item['kuota'] }}</span></span>
+                                    <span
+                                        class=" mb-3"> <span class="fw-bold">{{ $item['hari'] }}</span></span>
+                                    <span
+                                        class=" mb-3"><span class="fw-bold">{{ $item['jam'] }}</span></span>
                                     
                                 </div>
                             </div>

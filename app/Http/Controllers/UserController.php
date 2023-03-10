@@ -64,8 +64,6 @@ class UserController extends Controller
     public function jadwal_kelas()
     {
         $data = Pembelian::where(function ($query) {
-            $query->where('status_pembayaran', '=', '1');
-        })->where(function ($query) {
             $query->where('user_id', '=', auth()->user()->id);
         })
             ->with(['user', 'kelas', 'days', 'times'])

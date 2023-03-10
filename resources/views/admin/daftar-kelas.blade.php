@@ -89,9 +89,9 @@
                                                             </td>
                                                             <td class="text-center">
                                                                 @if ($item->status_pembayaran == '1')
-                                                                    <span class="text-muted">Approved</span>
+                                                                    <span class="text-muted">Sudah Bayar</span>
                                                                 @elseif($item->status_pembayaran == '0')
-                                                                    <span class="text-muted">Declined</span>
+                                                                    <span class="text-muted">Belum Bayar</span>
                                                                 @elseif($item->status_pembayaran == '-')
                                                                     <span class="text-muted">Belum Dicek</span>
                                                                 @endif

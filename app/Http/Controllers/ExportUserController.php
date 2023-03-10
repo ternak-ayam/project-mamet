@@ -7,6 +7,7 @@ use App\Exports\ExportNonUser;
 use App\Exports\HistoryPesertaExport;
 use App\Exports\JadwalExport;
 use App\Exports\JenisKelasExport;
+use App\Exports\KelasUserExport;
 use App\Exports\PembayaranFilterExport;
 use App\Exports\PesertaExport;
 use App\Exports\UserExport;
@@ -22,7 +23,7 @@ class ExportUserController extends Controller
 	}
     public function export_nonuser()
 	{
-		return Excel::download(new ExportNonUser, 'user.xlsx');
+		return Excel::download(new ExportNonUser, 'nonuser.xlsx');
 	}
     public function jadwal_export_excel()
 	{
@@ -47,5 +48,9 @@ class ExportUserController extends Controller
     public function jeniskelas_export_excel($id)
 	{
 		return Excel::download(new JenisKelasExport($id), 'JenisKelas.xlsx');
+	}
+    public function kelaspeserta_export_excel($id)
+	{
+		return Excel::download(new KelasUserExport($id), 'KelasPeserta.xlsx');
 	}
 }

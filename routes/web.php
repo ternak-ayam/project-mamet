@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::group(['middleware' => ['auth', 'admin']], function() {
     Route::resource('dashboard-admin', 'AdminController');
-    Route::get('peserta/{id}', 'DaftarKelas@peserta')->name('peserta-kelas');
+    Route::get('peserta/{id}', 'DaftarKelas@peserta')->name('admin-peserta-kelas');
     Route::resource('daftar-kelas', 'DaftarKelas');
 
     // menu admin gambar
@@ -79,6 +79,7 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
     Route::get('dashboard-admin/user/export_nonuser', 'ExportUserController@export_nonuser')->name('admin-export-nonuser');
     Route::get('dashboard-admin/jadwal/export_excel', 'ExportUserController@jadwal_export_excel')->name('admin-export-jadwal');
     Route::get('dashboard-admin/peserta/export_excel', 'ExportUserController@peserta_export_excel')->name('admin-export-peserta');
+    Route::get('dashboard-admin/kelas-peserta/export_excel/{id}', 'ExportUserController@kelaspeserta_export_excel')->name('kelas-peserta-export');
     Route::get('dashboard-admin/pembayaranlunas/export_excel', 'ExportUserController@filterpembayaran_export_excel')->name('admin-export-pembayaran');
     Route::get('dashboard-admin/pembayaranbelumlunas/export_excel', 'ExportUserController@belumlunas_export_excel')->name('admin-export-pembayaranbelumlunas');
     Route::get('dashboard-admin/jeniskelas/export_excel/{id}', 'ExportUserController@jeniskelas_export_excel')->name('admin-export-jeniskelas');
@@ -100,23 +101,60 @@ Route::group(['middleware' => ['auth', 'user']], function() {
 });
 
 Route::group(['middleware' => ['auth', 'topmanajemen']], function() {
+    // laporan data kelas
     Route::get('/dashboard-topmanajemen', 'TopManajemenController@index')->name('dashboard-topmanajemen');
-    Route::get('/dashboard-topmanajemen/cari', 'TopManajemenController@cari')->name('dashboard-topmanajemen-search');
-    Route::get('dashboard-topmanajemen/user/export_excel', 'ExportUserController@export_excel')->name('top-manajemen-export-user');
-    Route::get('dashboard-topmanajemen/nonuser/export_excel', 'ExportUserController@export_nonuser')->name('top-manajemen-export-nonuser');
-    Route::get('dashboard-topmanajemen/jadwal/export_excel', 'ExportUserController@jadwal_export_excel')->name('top-manajemen-export-jadwal');
-    Route::get('dashboard-topmanajemen/peserta/export_excel', 'ExportUserController@peserta_export_excel')->name('top-manajemen-export-peserta');
+    Route::get('data-kelas-topmanajemen/add', 'TopManajemenController@create')->name('add-data-kelas-topmanajemen');
+    Route::post('data-kelas-topmanajemen/add', 'TopManajemenController@store')->name('store-data-kelas-topmanajemen');
+    Route::get('data-kelas-topmanajemen/{id}/peserta', 'TopManajemenController@detail_member')->name('detail-data-kelas-topmanajemen');
+    Route::get('data-kelas-topmanajemen/{id}/edit-kelas', 'TopManajemenController@edit')->name('edit-data-kelas-topmanajemen');
+    Route::patch('data-kelas-topmanajemen/{id}/update-payment-status', 'TopManajemenController@update_payment')->name('update_payment_status-topmanajemen');
+    Route::patch('data-kelas-topmanajemen/{id}', 'TopManajemenController@update')->name('update-data-kelas-topmanajemen');
+    Route::get('data-kelas-topmanajemen/{id}/edit-sertif', 'TopManajemenController@edit_sertif')->name('edit-sertif-data-kelas-topmanajemen');
+    Route::patch('data-kelas-topmanajemen/{id}', 'TopManajemenController@update_sertif')->name('update-sertif-data-kelas-topmanajemen');
+    Route::delete('delete-data-kelas-topmanajemen/{id}', 'TopManajemenController@destroy')->name('delete-data-kelas-topmanajemen');
+    Route::get('cari-data-kelas-topmanajemen/cari', 'TopManajemenController@cari')->name('cari-data-kelas-topmanajemen');
+
+
+    // laporan peserta kelas
+    Route::get('peserta-kelas-topmanajemen', 'TopmanajemenController@index_topmanajemen')->name('peserta-kelas-topmanajemen');
+    Route::get('peserta-kelas-topmanajemen/add', 'TopmanajemenController@create_topmanajemen')->name('add-peserta-kelas-topmanajemen');
+    Route::post('peserta-kelas-topmanajemen/add', 'TopmanajemenController@store_topmanajemen')->name('store-peserta-kelas-topmanajemen');
+    Route::get('peserta-kelas-topmanajemen/{id}/kelas-peserta', 'TopmanajemenController@detail_member_topmanajemen')->name('detail-peserta-kelas-topmanajemen');
+    Route::get('peserta-kelas-topmanajemen/{id}/edit-kelas', 'TopmanajemenController@edit_topmanajemen')->name('edit-peserta-kelas-topmanajemen');
+    Route::patch('peserta-kelas-topmanajemen/{id}/update-payment-status', 'TopmanajemenController@update_payment_topmanajemen')->name('update_payment_status-topmanajemen');
+    Route::patch('peserta-kelas-topmanajemen/{id}', 'TopmanajemenController@update_topmanajemen')->name('update-peserta-kelas-topmanajemen');
+    Route::get('peserta-kelas-topmanajemen/{id}/edit-sertif', 'TopmanajemenController@edit_sertif_topmanajemen')->name('edit-sertif-peserta-kelas-topmanajemen');
+    Route::patch('peserta-kelas-topmanajemen/{id}', 'TopmanajemenController@update_sertif_topmanajemen')->name('update-sertif-peserta-kelas-topmanajemen');
+    Route::delete('delete-peserta-kelas-topmanajemen/{id}', 'TopmanajemenController@destroy_topmanajemen')->name('delete-peserta-kelas-topmanajemen');
+    Route::get('cari-peserta-kelas-topmanajemen/cari', 'TopmanajemenController@cari_topmanajemen')->name('cari-peserta-kelas-topmanajemen');
+
+    // export export
+    Route::get('dashboard-topmanajemen/user/export_excel', 'ExportUserController@export_excel')->name('topmanajemen-export-user');
+    Route::get('dashboard-topmanajemen/user/export_nonuser', 'ExportUserController@export_nonuser')->name('topmanajemen-export-nonuser');
+    Route::get('dashboard-topmanajemen/jadwal/export_excel', 'ExportUserController@jadwal_export_excel')->name('topmanajemen-export-jadwal');
+    Route::get('dashboard-topmanajemen/peserta/export_excel', 'ExportUserController@peserta_export_excel')->name('topmanajemen-export-peserta');
+    Route::get('dashboard-topmanajemen/kelas-peserta/export_excel/{id}', 'ExportUserController@kelaspeserta_export_excel')->name('topmanajemen-kelas-peserta-export');
+    Route::get('dashboard-topmanajemen/pembayaranlunas/export_excel', 'ExportUserController@filterpembayaran_export_excel')->name('topmanajemen-export-pembayaran');
+    Route::get('dashboard-topmanajemen/pembayaranbelumlunas/export_excel', 'ExportUserController@belumlunas_export_excel')->name('topmanajemen-export-pembayaranbelumlunas');
+    Route::get('dashboard-topmanajemen/jeniskelas/export_excel/{id}', 'ExportUserController@jeniskelas_export_excel')->name('topmanajemen-export-jeniskelas');
+    Route::get('dashboard-topmanajemen/historypeserta/export_excel', 'ExportUserController@historypeserta_export_excel')->name('topmanajemen-export-history');
 });
 
 
 
 Route::group(['middleware' => ['auth', 'adminweb']], function() {
-    Route::get('/dashboard-adminweb', 'adminwebController@index')->name('dashboard-adminweb');
-    Route::get('/dashboard-adminweb/cari', 'adminwebController@cari')->name('dashboard-adminweb-search');
-    Route::get('dashboard-adminweb/user/export_excel', 'ExportUserController@export_excel')->name('top-manajemen-export-user');
-    Route::get('dashboard-adminweb/nonuser/export_excel', 'ExportUserController@export_nonuser')->name('top-manajemen-export-nonuser');
-    Route::get('dashboard-adminweb/jadwal/export_excel', 'ExportUserController@jadwal_export_excel')->name('top-manajemen-export-jadwal');
-    Route::get('dashboard-adminweb/peserta/export_excel', 'ExportUserController@peserta_export_excel')->name('top-manajemen-export-peserta');
+    Route::get('/dashboard-adminweb', 'AdminWebController@index')->name('dashboard-adminweb');
+    Route::get('/dashboard-adminweb/cari', 'AdminWebController@cari')->name('dashboard-adminweb-search');
+    Route::get('/dashboard-adminweb/add', 'AdminWebController@create')->name('dashboard-adminweb-add');
+    Route::post('/dashboard-adminweb/add', 'AdminWebController@store')->name('dashboard-adminweb-store');
+    Route::get('/dashboard-adminweb/{id}/edit', 'AdminWebController@edit')->name('dashboard-adminweb-edit');
+    Route::patch('/dashboard-adminweb/{id}', 'AdminWebController@update')->name('dashboard-adminweb-update');
+    Route::delete('/dashboard-adminweb/{id}', 'AdminWebController@destroy')->name('dashboard-adminweb-delete');
+    Route::get('/dashboard-adminweb/{id}/kelas_member', 'AdminWebController@detail_member')->name('dashboard-adminweb-detail-list-member');
+    Route::get('dashboard-adminweb/user/export_excel', 'ExportUserController@export_excel')->name('adminweb-export-user');
+    Route::get('dashboard-adminweb/nonuser/export_excel', 'ExportUserController@export_nonuser')->name('adminweb-export-nonuser');
+    Route::get('dashboard-adminweb/jadwal/export_excel', 'ExportUserController@jadwal_export_excel')->name('adminweb-export-jadwal');
+    Route::get('dashboard-adminweb/peserta/export_excel', 'ExportUserController@peserta_export_excel')->name('adminweb-export-peserta');
 });
 
 

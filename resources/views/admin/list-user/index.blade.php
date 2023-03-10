@@ -42,7 +42,6 @@
                                                         <th scope="col">Email</th>
                                                         <th scope="col">Role</th>
                                                         <th scope="col">Action</th>
-                                                        <th scope="col">Kelas Yang Diikuti</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -57,7 +56,13 @@
                                                                 <span class="text-muted">{{ $item->email }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">{{ $item->role }}</span>
+                                                                <span class="text-muted">
+                                                                    @if ($item->role == 'user')
+                                                                        <span class="text-muted">Member</span>
+                                                                    @elseif($item->role == 'nonuser')
+                                                                        <span class="text-muted">Non Member</span>
+                                                                    @endif 
+                                                                </span>
                                                             </td>
                                                              <td class="text-center">
                                                                 <form style="height: 50px; width:50px; display:contents;"
@@ -72,12 +77,6 @@
                                                                 <a href="{{ route('edit-role-list-member', $item->id) }}">
                                                                     <button type="button" class="btn btn-warning"><i
                                                                             class="fa fa-edit"></i></button>
-                                                                </a>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="{{ route('detail-list-member', $item->id) }}">
-                                                                    <button type="button" class="btn btn-info"><i
-                                                                            class="fa-sharp fa-solid fa-landmark"></i></button>
                                                                 </a>
                                                             </td>
                                                         </tr>

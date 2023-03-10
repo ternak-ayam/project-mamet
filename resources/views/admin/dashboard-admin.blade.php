@@ -33,6 +33,8 @@
                                                         <th scope="col">Deskripsi</th>
                                                         <th scope="col">Harga</th>
                                                         <th scope="col">Kuota</th>
+                                                        <th scope="col">Hari</th>
+                                                        <th scope="col">Jam Kelas</th>
                                                         <th scope="col">Gambar</th>
                                                         <th scope="col">Manage</th>
                                                         <th scope="col">Peserta</th>
@@ -55,6 +57,12 @@
                                                             </td>
                                                             <td class="text-center">
                                                                 <span class="text-muted">{{ $item['kuota'] }}</span><br />
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <span class="text-muted">{{ $item['hari'] }}</span><br />
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <span class="text-muted">{{ $item['jam'] }}</span><br />
                                                             </td>
                                                             <td class="text-center">
                                                                 <a href="{{ url('storage/gambar_kelas/' . $item->gambar_kelas) }}"
@@ -80,7 +88,7 @@
                                                                 </a>
                                                             </td>
                                                             <td class="text-center">
-                                                                <a href="{{ route('peserta-kelas', $item->id) }}">
+                                                                <a href="{{ route('admin-peserta-kelas', $item->id) }}">
                                                                     <button type="button" class="btn btn-info"><i
                                                                             class="fa-solid fa-users"></i></button>
                                                                 </a>
@@ -162,7 +170,7 @@
         }
 
         .container {
-            max-width: 90% !important;
+            max-width: 100% !important;
         }
 
         .card {

@@ -16,32 +16,21 @@
                                 <div class="card">
                                     <div class="card-body p-0">
                                         <div class="card-body px-0">
-                                            <h5 class="card-title text-uppercase mb-0">Laporan Peserta Kelas</h5>
-                                            <form action="{{ route('cari-peserta-kelas') }}" method="GET">
+                                            <h5 class="card-title text-uppercase mb-0">Laporan Data Kelas</h5>
+                                            {{-- <form action="{{ route('cari-list-member') }}" method="GET">
                                                 <div class="input-group mt-5  justify-content-between">
-                                                    <div class="w-50 d-flex">
-                                                    <button type="button" class="btn btn-success rounded "><a
+                                                    <button type="button" class="btn btn-primary rounded"><a
                                                             class="text-white text-decoration-none"
-                                                            href="{{ route('admin-export-user') }}">  <i
-                                                            class="fa fa-download"></i>Export Member</a></button>
-                                                    <button type="button" class="btn btn-success rounded ms-4"><a
-                                                            class="text-white text-decoration-none"
-                                                            href="{{ route('admin-export-nonuser') }}">  <i
-                                                            class="fa fa-download"></i>Export Non Member</a></button>
-                                                    </div>
+                                                            href="{{ route('add-list-member') }}">Tambah
+                                                            User</a></button>
                                                     <div class="w-50 d-flex">
                                                         <input type="text" name="keyword"
                                                             value="{{ request()->keyword }}" class="form-control "
                                                             placeholder="Search...">
                                                         <button class="btn btn-color">Search</button>
-                                                        <select name="filter" class="ms-4 form-control" onchange="this.form.submit()">
-                                                            <option @if(request()->filter == 'all') selected @endif value="all">All</option>
-                                                            <option @if(request()->filter == 'user') selected @endif value="user">Member</option>
-                                                            <option @if(request()->filter == 'nonuser') selected @endif value="nonuser">Non Member</option>
-                                                        </select>
                                                     </div>
                                                 </div>
-                                            </form>
+                                            </form> --}}
                                         </div>
                                         <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
                                             style="position: relative; height: 700px">
@@ -49,51 +38,45 @@
                                                 <thead style="background-color: #B693FB;">
                                                     <tr class="font">
                                                         <th scope="col">No</th>
-                                                        <th scope="col">Nama</th>
-                                                        <th scope="col">Email</th>
-                                                        <th scope="col">Alamat</th>
-                                                        <th scope="col">No Telp</th>
-                                                        <th scope="col">Nama Orang Tua</th>
-                                                        <th scope="col">Role</th>
-                                                        <th scope="col">Kelas Yang Mengikuti</th>
+                                                        <th scope="col">Nama Kelas</th>
+                                                        <th scope="col">Deskripsi</th>
+                                                        <th scope="col">Harga</th>
+                                                        <th scope="col">Kuota</th>
+                                                        <th scope="col">Hari</th>
+                                                        <th scope="col">Jam</th>
+                                                        <th scope="col">Users Yang Mengikuti</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php $i = 1; ?>
-                                                    @foreach ($datauser as $item)
+                                                    @foreach ($datakelas as $item)
                                                         <tr>
                                                             <td class="pl-4 text-center">{{ $i++ }}</td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">{{ $item->name }}</span>
+                                                                <span class="text-muted">{{ $item->nama_kelas }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">{{ $item->email }}</span>
+                                                                <span class="text-muted">{{ \Illuminate\Support\Str::limit($item->deskripsi, 50, $end = '...') }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">{{ $item->alamat }}</span>
+                                                                <span class="text-muted">{{ $item->harga }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">{{ $item->no_telp }}</span>
+                                                                <span class="text-muted">{{ $item->kuota }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">{{ $item->nama_orangtua }}</span>
+                                                                <span class="text-muted">{{ $item->hari }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">
-                                                                    @if ($item->role == 'user')
-                                                                        <span class="text-muted">Member</span>
-                                                                    @elseif($item->role == 'nonuser')
-                                                                        <span class="text-muted">Non Member</span>
-                                                                    @endif 
-                                                                </span>
+                                                                <span class="text-muted">{{ $item->jam }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <a href="{{ route('detail-peserta-kelas', $item->id) }}">
+                                                                <a href="{{ route('detail-data-kelas-topmanajemen', $item->id) }}">
                                                                     <button type="button" class="btn btn-info"><i
-                                                                            class="fa-solid fa-landmark"></i></button>
+                                                                            class="fa-solid fa-users"></i></button>
                                                                 </a>
                                                             </td>
-
+                                                           
                                                         </tr>
                                                     @endforeach
 
@@ -110,6 +93,7 @@
         </section>
     </div>
     <style type="text/css">
+    
         .melengkung {
             border-radius: 20px;
             box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;

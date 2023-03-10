@@ -44,26 +44,11 @@
                                                                 <span class="text-muted">{{ $item->kelas->nama_kelas }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">{{ $item->days->daysname }}</span>
+                                                                <span class="text-muted">{{ $item->kelas->hari }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">{{ $item->times->jam_kelas }}</span>
+                                                                <span class="text-muted">{{ $item->kelas->jam }}</span>
                                                             </td>
-                                                            {{-- <td class="text-center">
-                                                                <form style="height: 50px; width:50px; display:contents;"
-                                                                    onsubmit="return confirm('Apakah Anda Yakin ?');"
-                                                                    action="{{ route('delete-gambar-kegiatan-kelas', $item->id) }}"
-                                                                    method="POST">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit" class="btn btn-danger"><i
-                                                                            class="fa fa-trash"></i></button>
-                                                                </form>
-                                                                <a href="{{ route('edit-gambar-kegiatan-kelas', $item->id) }}">
-                                                                    <button type="button" class="btn btn-warning"><i
-                                                                            class="fa fa-edit"></i></button>
-                                                                </a>
-                                                            </td> --}}
                                                         </tr>
                                                     @endforeach
 

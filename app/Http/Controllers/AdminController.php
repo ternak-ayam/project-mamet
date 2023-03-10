@@ -17,49 +17,49 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $kelas = Kelas::all();
-        $namakelas = [];
-        foreach ($kelas as $item => $key) {
-            $namakelas[] = $key->nama_kelas;
-        }
-        $kelasobject = collect($namakelas);
-        $kelascollection = json_encode($kelasobject);
-        $kelas_data = str_replace([':', '\\', '/', '*', '[', ']'], ' ', $kelascollection);
+        // $kelas = Kelas::all();
+        // $namakelas = [];
+        // foreach ($kelas as $item => $key) {
+        //     $namakelas[] = $key->nama_kelas;
+        // }
+        // $kelasobject = collect($namakelas);
+        // $kelascollection = json_encode($kelasobject);
+        // $kelas_data = str_replace([':', '\\', '/', '*', '[', ']'], ' ', $kelascollection);
 
 
-        $kelas = Kelas::all();
-        $users = [];
-        $nonusers = [];
-        foreach ($kelas as $values) {
-            $users[] = Pembelian::with(['kelas', 'user'])->where('kelas_id', $values->id)
-            ->whereHas('user', function($query){
-                $query->where('role', 'user');
-            })
-            ->count();
-            $nonusers[] = Pembelian::with(['kelas', 'user'])->where('kelas_id', $values->id)
-            ->whereHas('user', function($query){
-                $query->where('role', 'nonuser');
-            })
-            ->count();
-        }
-        $usersobject = collect($users);
-        $collectusers = json_encode($usersobject);
-        $users_data = str_replace([':', '\\', '/', '*', '[', ']'], ' ', $collectusers);
+        // $kelas = Kelas::all();
+        // $users = [];
+        // $nonusers = [];
+        // foreach ($kelas as $values) {
+        //     $users[] = Pembelian::with(['kelas', 'user'])->where('kelas_id', $values->id)
+        //     ->whereHas('user', function($query){
+        //         $query->where('role', 'user');
+        //     })
+        //     ->count();
+        //     $nonusers[] = Pembelian::with(['kelas', 'user'])->where('kelas_id', $values->id)
+        //     ->whereHas('user', function($query){
+        //         $query->where('role', 'nonuser');
+        //     })
+        //     ->count();
+        // }
+        // $usersobject = collect($users);
+        // $collectusers = json_encode($usersobject);
+        // $users_data = str_replace([':', '\\', '/', '*', '[', ']'], ' ', $collectusers);
 
 
-        $nonusersobject = collect($nonusers);
-        $collectnonusers = json_encode($nonusersobject);
-        $nonusers_data = str_replace([':', '\\', '/', '*', '[', ']'], ' ', $collectnonusers);
+        // $nonusersobject = collect($nonusers);
+        // $collectnonusers = json_encode($nonusersobject);
+        // $nonusers_data = str_replace([':', '\\', '/', '*', '[', ']'], ' ', $collectnonusers);
 
-        $bothusers = array_merge($users, $nonusers);
+        // $bothusers = array_merge($users, $nonusers);
 
-        $data = Pembelian::with(['user', 'kelas'])->latest()->get();
-        $data_member =  User::where('role', 'user')->get();
-        $data_nonmember =  User::where('role', 'nonuser')->get();
-        $data_peserta =  Pembelian::where('status_pembayaran', 1)->get();
+        // $data = Pembelian::with(['user', 'kelas'])->latest()->get();
+        // $data_member =  User::where('role', 'user')->get();
+        // $data_nonmember =  User::where('role', 'nonuser')->get();
+        // $data_peserta =  Pembelian::where('status_pembayaran', 1)->get();
         $datakelas = Kelas::all();
 
-        return view('admin.dashboard-admin', compact('datakelas','data', 'kelas_data', 'users_data','nonusers_data','data_member','data_nonmember','data_peserta'));
+        return view('admin.dashboard-admin', compact('datakelas'));
     }
 
     /**

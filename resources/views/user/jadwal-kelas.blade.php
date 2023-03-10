@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 <div class="card p-4 rounded">
                     <div class="card-body">
-                        <h5 class="card-title text-uppercase mb-0">Jadwal Kelas</h5>
+                        <h5 class="card-title text-uppercase mb-0">Laporan History Kelas</h5>
                     </div>
                     <div class="table-responsive">
                         <table id="table_id" class="display table no-wrap user-table mb-0">
@@ -43,10 +43,10 @@
                                             <span class="text-muted">{{ $item->kelas->nama_kelas }}</span>
                                         </td>
                                         <td>
-                                            <span class="text-muted">{{ $item->days->daysname }}</span>
+                                            <span class="text-muted">{{ $item->kelas->hari }}</span>
                                         </td>
                                         <td>
-                                            <span class="text-muted">{{ $item->times->jam_kelas }}</span>
+                                            <span class="text-muted">{{ $item->kelas->jam }}</span>
                                         </td>
                                         <td>
                                             <span class="text-muted">{{ $item->user->name }}</span>

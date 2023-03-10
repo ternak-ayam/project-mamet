@@ -15,10 +15,10 @@
                     </div>
                     <div class="table-responsive">
                         <table class="table no-wrap user-table mb-0">
-                            <thead class="text-center">
+                            <thead class="text-start">
                                 <tr>
                                     <th scope="col" class="border-0 text-uppercase font-medium pl-4">
-                                        #
+                                        No
                                     </th>
                                     <th scope="col" class="border-0 text-uppercase font-medium">
                                         Nama Kelas
@@ -37,13 +37,13 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="text-center">
+                            <tbody class="text-start">
                                 <?php $i = 1; ?>
                                 @foreach ($data as $item)
                                     <tr>
                                         <td class="pl-4">{{ $i++ }}</td>
                                         <td>
-                                            <h5 class="font-medium mb-0">{{ $item->kelas->nama_kelas }}</h5>
+                                            <span class="text-muted">{{ $item->kelas->nama_kelas }}</span>
                                         </td>
                                         <td class="w-50">
                                             <span class="text-muted">{{ $item->kelas->deskripsi }}</span><br />
@@ -53,16 +53,20 @@
                                         </td>
                                         @if ($item->sertifikat == '-')
                                             <td>
-                                                <span class="text-muted">Maaf Sertif Belum Tersedia</span><br />
+                                                <div class="d-flex">
+                                                    <span class="text-muted w-50">Maaf Sertif Belum Tersedia</span><br />
+                                                </div>
                                             </td>
                                         @else
                                             <td>
-                                                <a href="{{ route('dashboard-user-sertifikat', $item->id) }}">
-                                                    <button type="button"
-                                                        class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2">
-                                                        <i class="fa fa-print"></i>
-                                                    </button>
-                                                </a>
+                                                <div class="d-flex">
+                                                    <span class="text-muted">Silahkan Download Sertif!</span>
+                                                    <a href="{{ route('dashboard-user-sertifikat', $item->id) }}">
+                                                        <button type="button" class="btn btn-info">
+                                                            <i class="fa fa-print"></i>
+                                                        </button>
+                                                    </a>
+                                                </div>
                                             </td>
                                         @endif
                                         <td>
@@ -70,22 +74,25 @@
                                                 <span class="text-muted">Sabar ya, Bukti Pembayaran sedang
                                                     ditinjau</span><br />
                                             @elseif($item->status_pembayaran == '1')
-                                                <a href="{{ route('dashboard-user-cetak', $item->id) }}">
-                                                    <button type="button"
-                                                        class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2">
-                                                        <i class="fa fa-print"></i>
-                                                    </button>
-                                                </a>
+                                                <div class="d-flex">
+                                                    <span class="text-muted">Bukti Pembayaran Sudah Diterima, Silahkan
+                                                        Unduh!</span>
+                                                    <a href="{{ route('dashboard-user-cetak', $item->id) }}">
+                                                        <button type="button" class="btn btn-info">
+                                                            <i class="fa fa-print"></i>
+                                                        </button>
+                                                    </a>
+                                                </div>
                                             @else
-                                                <span class="text-muted">Bukti Pembayaran Belum Sesuai nih, Upload Ulang
-                                                    Yaa!</span><br />
-                                                <hr>
-                                                <a href="{{ route('dashboard-user-view-update-bp', $item->id) }}">
-                                                    <button type="button"
-                                                        class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2">
-                                                        <i class="fa fa-pen-to-square"></i>
-                                                    </button>
-                                                </a>
+                                                <div class="d-flex">
+                                                    <span class="text-muted">Bukti Pembayaran Belum Sesuai nih, Upload Ulang
+                                                        Yaa!</span>
+                                                    <a href="{{ route('dashboard-user-view-update-bp', $item->id) }}">
+                                                        <button type="button" class="btn btn-info">
+                                                            <i class="fa fa-pen-to-square"></i>
+                                                        </button>
+                                                    </a>
+                                                </div>
                                             @endif
                                         </td>
                                     </tr>

@@ -37,7 +37,6 @@
                                                         <th scope="col">Email</th>
                                                         <th scope="col">No Telp</th>
                                                         <th scope="col">Bukti Pembayaran</th>
-                                                        <th scope="col">Action</th>
                                                         <th scope="col">Status Pembayaran</th>
                                                         <th scope="col">Upload Sertif</th>
                                                     </tr>
@@ -66,33 +65,7 @@
                                                                     </button>
                                                                 </a>
                                                             </td>
-                                                            <td>
-                                                                <form style="height: 50px; width:50px; display:contents;"
-                                                                    action="{{ route('update_payment_status', $item->id) }}" method="POST">
-                                                                    @csrf
-                                                                    @method('PATCH')
-                                                                    <button type="submit"
-                                                                        class="btn btn-primary">
-                                                                        <i class="fa fa-check"></i>
-                                                                        <input type="hidden" name="status_pembayaran" value="1">
-                                                                        <input type="hidden" name="kelas_id" value="{{ $item->kelas_id }}">
-                                                                    </button>
-                                                                </form>
-                    
-                    
-                                                                <form style="height: 50px; width:50px; display:contents;"
-                                                                    action="{{ route('update_payment_status', $item->id) }}" method="POST">
-                                                                    @csrf
-                                                                    @method('PATCH')
-                                                                    <button type="submit"
-                                                                        class="btn btn-danger">
-                                                                        <i class="fa fa-x"></i>
-                                                                        <input type="hidden" name="status_pembayaran" value="0">
-                                                                        <input type="hidden" name="kelas_id" value="{{ $item->kelas_id }}">
-                                                                    </button>
-                                                                </form>
-                    
-                                                            </td>
+                                                            
                                                             <td class="text-center">
                                                                 @if ($item->status_pembayaran == '1')
                                                                     <span class="text-muted">Sudah Bayar</span>

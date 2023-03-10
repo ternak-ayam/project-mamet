@@ -16,29 +16,18 @@
                                 <div class="card">
                                     <div class="card-body p-0">
                                         <div class="card-body px-0">
-                                            <h5 class="card-title text-uppercase mb-0">Laporan Peserta Kelas</h5>
-                                            <form action="{{ route('cari-peserta-kelas') }}" method="GET">
+                                            <h5 class="card-title text-uppercase mb-0">Daftar User</h5>
+                                            <form action="{{ route('dashboard-adminweb-search') }}" method="GET">
                                                 <div class="input-group mt-5  justify-content-between">
-                                                    <div class="w-50 d-flex">
-                                                    <button type="button" class="btn btn-success rounded "><a
+                                                    <button type="button" class="btn btn-primary rounded"><a
                                                             class="text-white text-decoration-none"
-                                                            href="{{ route('admin-export-user') }}">  <i
-                                                            class="fa fa-download"></i>Export Member</a></button>
-                                                    <button type="button" class="btn btn-success rounded ms-4"><a
-                                                            class="text-white text-decoration-none"
-                                                            href="{{ route('admin-export-nonuser') }}">  <i
-                                                            class="fa fa-download"></i>Export Non Member</a></button>
-                                                    </div>
+                                                            href="{{ route('dashboard-adminweb-add') }}">Tambah
+                                                            User</a></button>
                                                     <div class="w-50 d-flex">
                                                         <input type="text" name="keyword"
                                                             value="{{ request()->keyword }}" class="form-control "
                                                             placeholder="Search...">
                                                         <button class="btn btn-color">Search</button>
-                                                        <select name="filter" class="ms-4 form-control" onchange="this.form.submit()">
-                                                            <option @if(request()->filter == 'all') selected @endif value="all">All</option>
-                                                            <option @if(request()->filter == 'user') selected @endif value="user">Member</option>
-                                                            <option @if(request()->filter == 'nonuser') selected @endif value="nonuser">Non Member</option>
-                                                        </select>
                                                     </div>
                                                 </div>
                                             </form>
@@ -49,13 +38,11 @@
                                                 <thead style="background-color: #B693FB;">
                                                     <tr class="font">
                                                         <th scope="col">No</th>
-                                                        <th scope="col">Nama</th>
+                                                        <th scope="col">Nama User</th>
                                                         <th scope="col">Email</th>
-                                                        <th scope="col">Alamat</th>
-                                                        <th scope="col">No Telp</th>
-                                                        <th scope="col">Nama Orang Tua</th>
                                                         <th scope="col">Role</th>
-                                                        <th scope="col">Kelas Yang Mengikuti</th>
+                                                        <th scope="col">Action</th>
+                                                        <th scope="col">Kelas Yang Diikuti</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -70,30 +57,29 @@
                                                                 <span class="text-muted">{{ $item->email }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">{{ $item->alamat }}</span>
+                                                                <span class="text-muted">{{ $item->role }}</span>
                                                             </td>
-                                                            <td class="text-center">
-                                                                <span class="text-muted">{{ $item->no_telp }}</span>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <span class="text-muted">{{ $item->nama_orangtua }}</span>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <span class="text-muted">
-                                                                    @if ($item->role == 'user')
-                                                                        <span class="text-muted">Member</span>
-                                                                    @elseif($item->role == 'nonuser')
-                                                                        <span class="text-muted">Non Member</span>
-                                                                    @endif 
-                                                                </span>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="{{ route('detail-peserta-kelas', $item->id) }}">
-                                                                    <button type="button" class="btn btn-info"><i
-                                                                            class="fa-solid fa-landmark"></i></button>
+                                                             <td class="text-center">
+                                                                <form style="height: 50px; width:50px; display:contents;"
+                                                                    onsubmit="return confirm('Apakah Anda Yakin ?');"
+                                                                    action="{{ route('dashboard-adminweb-delete', $item->id) }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-danger"><i
+                                                                            class="fa fa-trash"></i></button>
+                                                                </form>
+                                                                <a href="{{ route('dashboard-adminweb-edit', $item->id) }}">
+                                                                    <button type="button" class="btn btn-warning"><i
+                                                                            class="fa fa-edit"></i></button>
                                                                 </a>
                                                             </td>
-
+                                                            <td class="text-center">
+                                                                <a href="{{ route('dashboard-adminweb-detail-list-member', $item->id) }}">
+                                                                    <button type="button" class="btn btn-info"><i
+                                                                            class="fa-sharp fa-solid fa-landmark"></i></button>
+                                                                </a>
+                                                            </td>
                                                         </tr>
                                                     @endforeach
 
@@ -178,7 +164,7 @@
         }
 
         .container {
-            max-width: 100% !important;
+            max-width: 90% !important;
         }
 
         .card {

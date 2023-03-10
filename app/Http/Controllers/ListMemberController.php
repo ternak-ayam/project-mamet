@@ -27,11 +27,13 @@ class ListMemberController extends Controller
     {
         try {
             $cari = $request->keyword;
-            $gambarkelas = User::where('role', 'user')->orWhere('role', 'nonuser')->get();
-
-            $gambarkelas = User::where('name', 'like', "%" . $cari . "%")
-                ->orWhere('email', 'LIKE', '%' . $cari . '%')
-                ->paginate(15);
+            $gambarkelas = User::where(function ($query) use ($cari) {
+                $query->where('name', 'like', "%" . $cari . "%")
+                    ->orWhere('email', 'LIKE', '%' . $cari . '%');
+            })->where(function ($query) {
+                $query->where('role', 'user')->orWhere('role', 'nonuser');
+            })
+                ->get();
             return view('admin.list-user.index', ['gambarkelas' => $gambarkelas]);
         } catch (\Exception $e) {
             return $e->getMessage();

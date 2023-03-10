@@ -23,7 +23,7 @@ class TopManajemenMiddleware
             return $next($request);
         } else{
             // abort(403, 'Wrong Accept Header');
-            return new Response(view('notauthorized')->with('role', 'admin', 'topmanajemen'));
+            return new Response(view('notauthorized')->with('role', 'topmanajemen'));
 
         }
     }

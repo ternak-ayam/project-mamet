@@ -42,6 +42,8 @@
                                                         <th scope="col">Deskripsi</th>
                                                         <th scope="col">Harga</th>
                                                         <th scope="col">Kuota</th>
+                                                        <th scope="col">Hari</th>
+                                                        <th scope="col">Jam</th>
                                                         <th scope="col">Users Yang Mengikuti</th>
                                                     </tr>
                                                 </thead>
@@ -61,6 +63,12 @@
                                                             </td>
                                                             <td class="text-center">
                                                                 <span class="text-muted">{{ $item->kuota }}</span>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <span class="text-muted">{{ $item->hari }}</span>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <span class="text-muted">{{ $item->jam }}</span>
                                                             </td>
                                                             <td class="text-center">
                                                                 <a href="{{ route('detail-data-kelas', $item->id) }}">
@@ -153,7 +161,7 @@
         }
 
         .container {
-            max-width: 90% !important;
+            max-width: 100% !important;
         }
 
         .card {

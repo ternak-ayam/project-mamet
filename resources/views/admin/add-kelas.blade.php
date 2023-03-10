@@ -54,34 +54,23 @@
                     </div>
                 @enderror
             </div>
-            {{-- <div class="form-group col-12 col-md-8  mb-3" style="margin: 0 auto">
-                <label class="mx-2">Role</label>
-                <select class="form-control" id="name" name="role">
-
-                    @foreach ($role as $item)
-                        @if ($data['role'] == $item->role)
-                            <option value="{{ $data['role'] }}" selected>{{ $data['role'] }}</option>
-                        @else
-                        <option value="{{ $item->role }}">{{ $item->role }}</option>
-                        @endif
-                    @endforeach
-                </select>
-            </div> --}}
-            <div class="col-12 col-md-8  mb-3" style="margin: 0 auto">
-                <label class="mx-2">Pilih Hari Kelas</label>
-                <select class="form-control" name="days_id">
-                    @foreach ($days as $item)
-                        <option value="{{ $item->id }}">{{ $item->daysname }}</option>
-                    @endforeach
-                </select>
+            <div class="col-12 col-md-8 text-center form-floating mb-3" style="margin: 0 auto">
+                <input type="text" class="form-control" id="floatingInput" name="hari" placeholder="name@example.com">
+                <label class="mx-2" for="floatingInput">Hari</label>
+                @error('hari')
+                    <div class="alert alert-danger mt-2">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
-            <div class="col-12 col-md-8 mb-3" style="margin: 0 auto">
-                <label class="mx-2">Pilih Jam Kelas</label>
-                <select class="form-control" name="times_id">
-                    @foreach ($times as $item)
-                        <option value="{{ $item->id }}">{{ $item->jam_kelas }}</option>
-                    @endforeach
-                </select>
+            <div class="col-12 col-md-8 text-center form-floating mb-3" style="margin: 0 auto">
+                <input type="text" class="form-control" id="floatingInput" name="jam" placeholder="name@example.com">
+                <label class="mx-2" for="floatingInput">Jam Kelas</label>
+                @error('jam_kelas')
+                    <div class="alert alert-danger mt-2">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
         </div>
         <div class="row">

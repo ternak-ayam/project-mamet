@@ -19,13 +19,13 @@ class DaftarKelas extends Controller
      */
     public function peserta($id)
     {
-        $datakelas = Pembelian::where('kelas_id', $id)->with('kelas', 'user', 'days', 'times')->get();
+        $datakelas = Pembelian::where('kelas_id', $id)->with('kelas', 'user')->get();
         $namakelas = Kelas::where('id', $id)->first();
         return view('admin.daftar-kelas', compact('datakelas', 'namakelas'));
     }
     public function index()
     {
-        $datakelas = Pembelian::with('kelas', 'user', 'days', 'times')->get();
+        $datakelas = Pembelian::with('kelas', 'user')->get();
         // dd($datakelas);
         return view('admin.dashboard-admin', compact('datakelas'));
     }
@@ -37,9 +37,7 @@ class DaftarKelas extends Controller
      */
     public function create()
     {
-        $days = Days::all();
-        $times = Time::all();
-        return view('admin.add-kelas', compact('days','times'));
+        return view('admin.add-kelas');
     }
 
     /**
@@ -50,31 +48,37 @@ class DaftarKelas extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
         //validate form
-        $this->validate($request, [
-            'nama_kelas'  => 'required',
-            'deskripsi'   => 'required',
-            'harga'       => 'required',
-            'kuota'   => 'required',
-            'gambar_kelas' => 'required|image|mimes:png,jpg,jpeg,pdf'
-        ]);
-        //upload image
-        $image = $request->file('gambar_kelas');
-        $image->storeAs('public/gambar_kelas', $image->hashName());
-
-        //create post
-        Kelas::create([
-            'nama_kelas'            => $request->nama_kelas,
-            'deskripsi'             => $request->deskripsi,
-            'harga'                 => $request->harga,
-            'gambar_kelas'          => $image->hashName(),
-        ]);
-        $kelas = new Kelas();
-        $kelas->kuota = request('kuota');
-        $kelas->save();
-        //redirect to index
-        return redirect()->route('dashboard-admin.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        try {
+            $this->validate($request, [
+                'nama_kelas'  => 'required',
+                'deskripsi'   => 'required',
+                'harga'       => 'required',
+                'kuota'   => 'required',
+                'hari'   => 'required',
+                'jam'   => 'required',
+                'gambar_kelas' => 'required|image|mimes:png,jpg,jpeg,pdf'
+            ]);
+            //upload image
+            $image = $request->file('gambar_kelas');
+            $image->storeAs('public/gambar_kelas', $image->hashName());
+    
+            $kelas = new Kelas();
+            $kelas->nama_kelas = request('nama_kelas');
+            $kelas->deskripsi = request('deskripsi');
+            $kelas->harga = request('harga');
+            $kelas->kuota = request('kuota');
+            $kelas->hari = request('hari');
+            $kelas->jam = request('jam');
+            $kelas->gambar_kelas = $image->hashName();
+            $kelas->save();
+            //redirect to index
+            return redirect()->route('dashboard-admin.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        
     }
 
     /**
@@ -109,13 +113,15 @@ class DaftarKelas extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         if ($request->file('gambar_kelas') == "") {
             //validate form
             $this->validate($request, [
                 'nama_kelas'     => 'required',
                 'deskripsi'     => 'required',
                 'harga'   => 'required',
+                'hari'   => 'required',
+                'jam'   => 'required',
                 'kuota'   => 'required',
             ]);
         } else {
@@ -124,24 +130,26 @@ class DaftarKelas extends Controller
                 'nama_kelas'     => 'required',
                 'deskripsi'     => 'required',
                 'harga'   => 'required',
+                'hari'   => 'required',
+                'jam'   => 'required',
                 'kuota'   => 'required',
                 'gambar_kelas' => 'required|image|mimes:png,jpg,jpeg,pdf'
             ]);
         }
 
         $kelas = Kelas::findOrFail($id);
-       
+
         // dd($request->kuota);
         if ($request->file('gambar_kelas') == "") {
 
-            $kelas->update([
-                'nama_kelas'     => $request->nama_kelas,
-                'deskripsi'     => $request->deskripsi,
-                'harga'         => $request->harga,
-                'kuota'         => $request->kuota,
-            ]);
+            $kelas->nama_kelas = request('nama_kelas');
+            $kelas->deskripsi = request('deskripsi');
+            $kelas->harga = request('harga');
             $kelas->kuota = request('kuota');
+            $kelas->hari = request('hari');
+            $kelas->jam = request('jam');
             $kelas->save();
+
         } else {
 
             //hapus old image
@@ -151,14 +159,13 @@ class DaftarKelas extends Controller
             $image = $request->file('gambar_kelas');
             $image->storeAs('public/gambar_kelas', $image->hashName());
 
-            $kelas->update([
-                'nama_kelas'     => $request->nama_kelas,
-                'deskripsi'      => $request->deskripsi,
-                'harga'          => $request->harga,
-                'kuota'          => $request->kuota,
-                'gambar_kelas'   => $image->hashName(),
-            ]);
+            $kelas->nama_kelas = request('nama_kelas');
+            $kelas->deskripsi = request('deskripsi');
+            $kelas->harga = request('harga');
             $kelas->kuota = request('kuota');
+            $kelas->hari = request('hari');
+            $kelas->jam = request('jam');
+            $kelas->gambar_kelas = $image->hashName();
             $kelas->save();
         }
         //redirect to index
@@ -168,8 +175,7 @@ class DaftarKelas extends Controller
                 ->with([
                     'success' => 'Data Berhasil Diubah!'
                 ]);
-        }
-         else {
+        } else {
             return redirect()
                 ->back()
                 ->withInput()

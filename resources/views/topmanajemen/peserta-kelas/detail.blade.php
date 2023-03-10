@@ -20,13 +20,13 @@
                                             <button type="button"
                                                 class="btn btn-danger rounded  px-3 mb-2 mb-lg-0 p-2 my-3 "><a
                                                     class="text-white text-decoration-none"
-                                                    href="{{ route('peserta-kelas') }}"> <i
+                                                    href="{{ route('peserta-kelas-topmanajemen') }}"> <i
                                                         class="fa fa-arrow-left"></i>Kembali</a></button>
                                             <button type="button"
                                                 class="btn btn-success rounded  px-3 mb-2 mb-lg-0 p-2 my-3 "><a
                                                     class="text-white text-decoration-none"
                                                     href="{{ route('kelas-peserta-export', $data->id) }}"> <i
-                                                        class="fa fa-download"></i>Export Kelas Peserta</a></button>
+                                                        class="fa fa-download"></i>Export Data Peserta</a></button>
                                         </div>
                                         <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
                                             style="position: relative;">

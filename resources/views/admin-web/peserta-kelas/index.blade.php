@@ -16,12 +16,32 @@
                                 <div class="card">
                                     <div class="card-body p-0">
                                         <div class="card-body px-0">
-                                            <h5 class="card-title text-uppercase mb-0">Jadwal Kelas</h5>
-                                            <button type="button"
-                                                class="btn btn-primary rounded  px-3 mb-2 mb-lg-0 p-2 my-3 "><a
-                                                    class="text-white text-decoration-none"
-                                                    href="{{ route('daftar-kelas.create') }}">Tambah
-                                                    Kelas</a></button>
+                                            <h5 class="card-title text-uppercase mb-0">Laporan Peserta Kelas</h5>
+                                            <form action="{{ route('cari-peserta-kelas') }}" method="GET">
+                                                <div class="input-group mt-5  justify-content-between">
+                                                    <div class="w-50 d-flex">
+                                                    <button type="button" class="btn btn-success rounded "><a
+                                                            class="text-white text-decoration-none"
+                                                            href="{{ route('admin-export-user') }}">  <i
+                                                            class="fa fa-download"></i>Export Member</a></button>
+                                                    <button type="button" class="btn btn-success rounded ms-4"><a
+                                                            class="text-white text-decoration-none"
+                                                            href="{{ route('admin-export-nonuser') }}">  <i
+                                                            class="fa fa-download"></i>Export Non Member</a></button>
+                                                    </div>
+                                                    <div class="w-50 d-flex">
+                                                        <input type="text" name="keyword"
+                                                            value="{{ request()->keyword }}" class="form-control "
+                                                            placeholder="Search...">
+                                                        <button class="btn btn-color">Search</button>
+                                                        <select name="filter" class="ms-4 form-control" onchange="this.form.submit()">
+                                                            <option @if(request()->filter == 'all') selected @endif value="all">All</option>
+                                                            <option @if(request()->filter == 'user') selected @endif value="user">Member</option>
+                                                            <option @if(request()->filter == 'nonuser') selected @endif value="nonuser">Non Member</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                         <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
                                             style="position: relative; height: 700px">
@@ -29,62 +49,51 @@
                                                 <thead style="background-color: #B693FB;">
                                                     <tr class="font">
                                                         <th scope="col">No</th>
-                                                        <th scope="col">Nama Kelas</th>
-                                                        <th scope="col">Deskripsi</th>
-                                                        <th scope="col">Harga</th>
-                                                        <th scope="col">Kuota</th>
-                                                        <th scope="col">Gambar</th>
-                                                        <th scope="col">Manage</th>
-                                                        <th scope="col">Peserta</th>
+                                                        <th scope="col">Nama</th>
+                                                        <th scope="col">Email</th>
+                                                        <th scope="col">Alamat</th>
+                                                        <th scope="col">No Telp</th>
+                                                        <th scope="col">Nama Orang Tua</th>
+                                                        <th scope="col">Role</th>
+                                                        <th scope="col">Kelas Yang Mengikuti</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php $i = 1; ?>
-                                                    @foreach ($datakelas as $item)
+                                                    @foreach ($datauser as $item)
                                                         <tr>
                                                             <td class="pl-4 text-center">{{ $i++ }}</td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">{{ $item['nama_kelas'] }}</span>
-                                                            </td>
-                                                            <td class="w-25">
-                                                                <span
-                                                                    class="text-muted">{{ \Illuminate\Support\Str::limit($item['deskripsi'], 50, $end = '...') }}</span><br />
+                                                                <span class="text-muted">{{ $item->name }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">Rp @convert($item['harga'])</span><br />
+                                                                <span class="text-muted">{{ $item->email }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">{{ $item['kuota'] }}</span><br />
+                                                                <span class="text-muted">{{ $item->alamat }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <a href="{{ url('storage/gambar_kelas/' . $item->gambar_kelas) }}"
-                                                                    target="_blank" style="text-decoration:none">
-                                                                    <img src="{{ url('storage/gambar_kelas/' . $item->gambar_kelas) }}"
-                                                                        alt="job image" width="50" height="100"
-                                                                        class="object-fit-cover"  title="job image">
-                                                                </a>
+                                                                <span class="text-muted">{{ $item->no_telp }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <form style="height: 50px; width:50px; display:contents;"
-                                                                    onsubmit="return confirm('Apakah Anda Yakin ?');"
-                                                                    action="{{ route('daftar-kelas.destroy', $item->id) }}"
-                                                                    method="POST">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit" class="btn btn-danger"><i
-                                                                            class="fa fa-trash"></i></button>
-                                                                </form>
-                                                                <a href="{{ route('daftar-kelas.edit', $item->id) }}">
-                                                                    <button type="button" class="btn btn-warning"><i
-                                                                            class="fa fa-edit"></i></button>
-                                                                </a>
+                                                                <span class="text-muted">{{ $item->nama_orangtua }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <a href="{{ route('peserta-kelas', $item->id) }}">
+                                                                <span class="text-muted">
+                                                                    @if ($item->role == 'user')
+                                                                        <span class="text-muted">Member</span>
+                                                                    @elseif($item->role == 'nonuser')
+                                                                        <span class="text-muted">Non Member</span>
+                                                                    @endif 
+                                                                </span>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <a href="{{ route('detail-peserta-kelas', $item->id) }}">
                                                                     <button type="button" class="btn btn-info"><i
-                                                                            class="fa-solid fa-users"></i></button>
+                                                                            class="fa-solid fa-landmark"></i></button>
                                                                 </a>
                                                             </td>
+
                                                         </tr>
                                                     @endforeach
 
@@ -101,14 +110,21 @@
         </section>
     </div>
     <style type="text/css">
-    .melengkung{
-        border-radius: 20px;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    }
+        .melengkung {
+            border-radius: 20px;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        }
+
         html,
         body,
         .intro {
             height: 100%;
+        }
+
+        .btn-color {
+            color: #f6f6f7 !important;
+            background-color: #9d6efc !important;
+            border-color: #8C52FF !important;
         }
 
         table td,
@@ -162,7 +178,7 @@
         }
 
         .container {
-            max-width: 90% !important;
+            max-width: 100% !important;
         }
 
         .card {
@@ -185,9 +201,11 @@
             font-size: 18px;
             line-height: 23px;
         }
-        .font{
+
+        .font {
             text-align: center;
         }
+
         .text-muted {
             color: #8898aa !important;
         }

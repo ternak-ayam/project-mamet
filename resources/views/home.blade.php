@@ -25,9 +25,9 @@
                 </div>
                 <div class="container px-4 px-lg-5 my-5">
                     <div class="text-center text-black d-flex flex-col">
-                        <p class="lead fw-normal text-stickleft bottom-align-text text-white mb-0">Gokreatif adalah
+                        <h5 class="lead fw-bold text-stickleft bottom-align-text text-white mb-0">Gokreatif adalah
                             sebuah wadah bagi
-                            masyarakat luas untuk meningkatkan kreatifitas dan keterampilan mereka</p>
+                            masyarakat luas untuk meningkatkan kreatifitas dan keterampilan mereka</h5>
 
                     </div>
                 </div>
@@ -218,7 +218,7 @@
             }
 
             .b-responsive {
-                padding: 100px 70px 168px 70px;
+                padding: 100px 70px 50px 70px;
             }
 
             .flex-col {

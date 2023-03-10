@@ -13,6 +13,8 @@
             <a class="navbar-brand ps-3" href="{{ route('dashboard-admin.index') }}">Halaman Staf Administrator</a>
         @elseif(Auth::user()->role == 'user')
             <a class="navbar-brand ps-3" href="{{ route('dashboard-user') }}">Halaman Member</a>
+        @elseif(Auth::user()->role == 'adminweb')
+            <a class="navbar-brand ps-3" href="{{ route('dashboard-adminweb') }}">Halaman Admin Web</a>
         @elseif(Auth::user()->role == 'topmanajemen')
             <a class="navbar-brand ps-3" href="{{ route('dashboard-topmanajemen') }}">Halaman Top Manajemen</a>
         @endif

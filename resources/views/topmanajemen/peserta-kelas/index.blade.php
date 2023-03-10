@@ -17,16 +17,16 @@
                                     <div class="card-body p-0">
                                         <div class="card-body px-0">
                                             <h5 class="card-title text-uppercase mb-0">Laporan Peserta Kelas</h5>
-                                            <form action="{{ route('cari-peserta-kelas') }}" method="GET">
+                                            <form action="{{ route('cari-peserta-kelas-topmanajemen') }}" method="GET">
                                                 <div class="input-group mt-5  justify-content-between">
                                                     <div class="w-50 d-flex">
                                                     <button type="button" class="btn btn-success rounded "><a
                                                             class="text-white text-decoration-none"
-                                                            href="{{ route('admin-export-user') }}">  <i
+                                                            href="{{ route('topmanajemen-export-user') }}">  <i
                                                             class="fa fa-download"></i>Export Member</a></button>
                                                     <button type="button" class="btn btn-success rounded ms-4"><a
                                                             class="text-white text-decoration-none"
-                                                            href="{{ route('admin-export-nonuser') }}">  <i
+                                                            href="{{ route('topmanajemen-export-nonuser') }}">  <i
                                                             class="fa fa-download"></i>Export Non Member</a></button>
                                                     </div>
                                                     <div class="w-50 d-flex">
@@ -36,6 +36,8 @@
                                                         <button class="btn btn-color">Search</button>
                                                         <select name="filter" class="ms-4 form-control" onchange="this.form.submit()">
                                                             <option @if(request()->filter == 'all') selected @endif value="all">All</option>
+                                                            <option @if(request()->filter == 'admin') selected @endif value="admin">Admin</option>
+                                                            <option @if(request()->filter == 'topmanajemen') selected @endif value="topmanajemen">Top Manajemen</option>
                                                             <option @if(request()->filter == 'user') selected @endif value="user">Member</option>
                                                             <option @if(request()->filter == 'nonuser') selected @endif value="nonuser">Non Member</option>
                                                         </select>
@@ -53,7 +55,6 @@
                                                         <th scope="col">Email</th>
                                                         <th scope="col">Alamat</th>
                                                         <th scope="col">No Telp</th>
-                                                        <th scope="col">Nama Orang Tua</th>
                                                         <th scope="col">Role</th>
                                                         <th scope="col">Kelas Yang Mengikuti</th>
                                                     </tr>
@@ -76,11 +77,12 @@
                                                                 <span class="text-muted">{{ $item->no_telp }}</span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <span class="text-muted">{{ $item->nama_orangtua }}</span>
-                                                            </td>
-                                                            <td class="text-center">
                                                                 <span class="text-muted">
-                                                                    @if ($item->role == 'user')
+                                                                    @if ($item->role == 'admin')
+                                                                        <span class="text-muted">Admin</span>
+                                                                    @elseif($item->role == 'topmanajemen')
+                                                                        <span class="text-muted">Top Manajemen</span>
+                                                                    @elseif($item->role == 'user')
                                                                         <span class="text-muted">Member</span>
                                                                     @elseif($item->role == 'nonuser')
                                                                         <span class="text-muted">Non Member</span>
@@ -88,7 +90,7 @@
                                                                 </span>
                                                             </td>
                                                             <td class="text-center">
-                                                                <a href="{{ route('detail-peserta-kelas', $item->id) }}">
+                                                                <a href="{{ route('detail-peserta-kelas-topmanajemen', $item->id) }}">
                                                                     <button type="button" class="btn btn-info"><i
                                                                             class="fa-solid fa-landmark"></i></button>
                                                                 </a>
@@ -178,7 +180,7 @@
         }
 
         .container {
-            max-width: 100% !important;
+            max-width: 90% !important;
         }
 
         .card {

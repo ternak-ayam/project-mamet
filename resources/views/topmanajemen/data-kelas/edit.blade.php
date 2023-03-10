@@ -1,6 +1,6 @@
 @extends('dashboard')
 @section('content')
-    <form action="{{ route('daftar-kelas.update', $data->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('update-data-kelas-topmanajemen', $data->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <div class="row">
@@ -57,24 +57,6 @@
                     </div>
                 @enderror
             </div>
-            <div class="col-12 col-md-8 text-center form-floating mb-3" style="margin: 0 auto">
-                <input type="text" class="form-control" id="floatingInput" name="hari"  value="{{ old('hari', $data->hari) }}" placeholder="name@example.com">
-                <label class="mx-2" for="floatingInput">Hari</label>
-                @error('hari')
-                    <div class="alert alert-danger mt-2">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-            <div class="col-12 col-md-8 text-center form-floating mb-3" style="margin: 0 auto">
-                <input type="text" class="form-control" id="floatingInput" name="jam" value="{{ old('jam', $data->jam) }}" placeholder="name@example.com">
-                <label class="mx-2" for="floatingInput">Jam Kelas</label>
-                @error('jam_kelas')
-                    <div class="alert alert-danger mt-2">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
         </div>
         <div class="row">
             <div class="col-12 col-md-6 mx-auto">
@@ -83,7 +65,7 @@
                         <button class="btn btn-primary" type="submit"><a> Submit </a></button>
                     </div>
                     <div class="d-grid gap-1 col-6 col-md-6 ">
-                        <a class="btn btn-danger" href="{{ route('dashboard-admin.index') }}">Kembali </a>
+                        <a class="btn btn-danger" href="{{ route('data-kelas') }}">Kembali </a>
                     </div>
                 </div>
             </div>
