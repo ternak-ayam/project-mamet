@@ -116,7 +116,7 @@ class PembelianController extends Controller
             $this->validate($request, [
                 'user_id' => 'required',
                 'kelas_id' => 'required',
-                'sertifikat'     => 'required|mimes:image/png,png,jpg,jpeg,pdf',
+                'sertifikat'     => 'required|mimes:png,jpg,jpeg,pdf',
                 'bukti_pembayaran' => 'required',
             ]);
             //get data Blog by ID
