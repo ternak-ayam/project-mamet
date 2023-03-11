@@ -5,7 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Response;
+use Illuminate\Http\Response;
+
 
 class AdminWebMiddleware
 {
@@ -23,7 +24,7 @@ class AdminWebMiddleware
             return $next($request);
         } else{
             // abort(403, 'Wrong Accept Header');
-            return new Response(view('notauthorized')->with('role', 'adminweb', 'topmanajemen'));
+            return new Response(view('notauthorize')->with('role', 'adminweb'));
 
         }
     }

@@ -1,7 +1,7 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark"
     style="background-color:white !important; text-color:#B693FB">
 
-    <a class="navbar-brand ps-3" style="font-weight:400" href="{{ route('dashboard-admin.index') }}">Go Kreatif</a>
+    <a class="navbar-brand ps-3" style="font-weight:400" href="{{ route('home') }}">Go Kreatif</a>
 
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i

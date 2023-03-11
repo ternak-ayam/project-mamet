@@ -22,7 +22,7 @@ class UserMiddleware
             return $next($request);
         } else{
             // abort(403, 'Wrong Accept Header');
-            return new Response(view('notauthorized')->with('role', 'user', 'topmanajemen'));
+            return new Response(view('notauthorize')->with('role', 'user', 'topmanajemen'));
 
         }
     }

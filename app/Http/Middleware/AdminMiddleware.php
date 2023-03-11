@@ -22,7 +22,7 @@ class AdminMiddleware
             return $next($request);
         } else{
             // abort(403, 'Wrong Accept Header');
-            return new Response(view('notauthorized')->with('role', 'admin'));
+            return new Response(view('notauthorize')->with('role', 'admin'));
 
         }
     }

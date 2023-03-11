@@ -50,8 +50,12 @@
                                         
                                         <td>
                                             @if ($item->status_pembayaran == '-')
-                                                <span class="text-muted">Sabar ya, Bukti Pembayaran sedang
-                                                    ditinjau</span><br />
+                                            <a href="{{ route('dashboard-user-cetak', $item->id) }}">
+                                                <button type="button"
+                                                    class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2">
+                                                    <i class="fa fa-print"></i>
+                                                </button>
+                                            </a>
                                             @elseif($item->status_pembayaran == '1')
                                                 <a href="{{ route('dashboard-user-cetak', $item->id) }}">
                                                     <button type="button"
