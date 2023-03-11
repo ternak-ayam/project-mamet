@@ -46,8 +46,6 @@ class PembelianController extends Controller
             $this->validate($request, [
                 'user_id'     => 'required',
                 'kelas_id'   => 'required',
-                'days_id' => 'required',
-                'times_id' => 'required',
                 'bukti_pembayaran'     => 'required|image|mimes:png,jpg,jpeg,pdf',
                 'sertifikat' => 'nullable'
             ]);
@@ -58,8 +56,6 @@ class PembelianController extends Controller
             $pembelian = Pembelian::create([
                 'user_id'     => $request->user_id,
                 'kelas_id'   => $request->kelas_id,
-                'days_id'          => $request->days_id,
-                'times_id'          => $request->times_id,
                 'bukti_pembayaran'     => $image->hashName(),
                 'sertifikat'     => '-',
             ]);
@@ -120,8 +116,6 @@ class PembelianController extends Controller
             $this->validate($request, [
                 'user_id' => 'required',
                 'kelas_id' => 'required',
-                'days_id' => 'required',
-                'times_id' => 'required',
                 'sertifikat'     => 'required|mimes:image/png,png,jpg,jpeg,pdf',
                 'bukti_pembayaran' => 'required',
             ]);
@@ -138,8 +132,6 @@ class PembelianController extends Controller
             $pembelian->update([
                 'user_id'           => $request->user_id,
                 'kelas_id'          => $request->kelas_id,
-                'days_id'          => $request->days_id,
-                'times_id'          => $request->times_id,
                 'sertifikat'        => $sertifikat->hashName(),
                 'bukti_pembayaran'  => $request->bukti_pembayaran,
             ]);

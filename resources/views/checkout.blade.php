@@ -39,22 +39,7 @@
                             <label for="inputAddress" class="form-label">Harga Kelas</label>
                             <input type="text" class="form-control" value="{{ $data->harga }}" readonly>
                         </div>
-                        <div class="col-md-6">
-                            <label for="inputAddress" class="form-label">Pilih Hari Kelas</label>
-                            <select class="form-select" name="days_id">
-                                @foreach ($days as $item)
-                                <option value="{{ $item->id }}">{{ $item->daysname }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputAddress" class="form-label">Pilih Jam Kelas</label>
-                            <select class="form-select" name="times_id">
-                                @foreach ($times as $item)
-                                <option value="{{ $item->id }}">{{ $item->jam_kelas }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Input File Bukti Pembayaran</label>
                             <div class="form-text text-black-50">Please Upload file with this type: png, jpg, jpeg, pdf

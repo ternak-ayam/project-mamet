@@ -35,14 +35,8 @@
             <div class="form-group col-12 col-md-8  mb-3" style="margin: 0 auto">
                 <label class="mx-2">Role</label>
                 <select class="form-control" id="name" name="role">
-
-                    @foreach ($role as $item)
-                        @if ($data['role'] == $item->role)
-                            <option value="{{ $data['role'] }}" selected>{{ $data['role'] }}</option>
-                        @else
-                        <option value="{{ $item->role }}">{{ $item->role }}</option>
-                        @endif
-                    @endforeach
+                            <option value="user" selected>Member</option>
+                            <option value="nonuser" selected>Non Member</option>
                 </select>
             </div>
         </div>
