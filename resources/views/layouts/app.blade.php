@@ -174,6 +174,15 @@
                                         </span>
                                     </a>
                                 </li>
+                            @elseif(Auth::user()->role == 'adminweb')
+                                <li class="nav-item">
+                                    <a href="{{ route('dashboard-adminweb') }}"
+                                        class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0 mx-1">
+                                        <span class="d-flex align-items-center">
+                                            <span class="small">Dashboard</span>
+                                        </span>
+                                    </a>
+                                </li>
                             @endif
                         @endguest
                     </ul>

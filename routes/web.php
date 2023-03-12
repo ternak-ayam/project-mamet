@@ -116,17 +116,17 @@ Route::group(['middleware' => ['auth', 'topmanajemen']], function() {
 
 
     // laporan peserta kelas
-    Route::get('peserta-kelas-topmanajemen', 'TopmanajemenController@index_topmanajemen')->name('peserta-kelas-topmanajemen');
-    Route::get('peserta-kelas-topmanajemen/add', 'TopmanajemenController@create_topmanajemen')->name('add-peserta-kelas-topmanajemen');
-    Route::post('peserta-kelas-topmanajemen/add', 'TopmanajemenController@store_topmanajemen')->name('store-peserta-kelas-topmanajemen');
-    Route::get('peserta-kelas-topmanajemen/{id}/kelas-peserta', 'TopmanajemenController@detail_member_topmanajemen')->name('detail-peserta-kelas-topmanajemen');
-    Route::get('peserta-kelas-topmanajemen/{id}/edit-kelas', 'TopmanajemenController@edit_topmanajemen')->name('edit-peserta-kelas-topmanajemen');
-    Route::patch('peserta-kelas-topmanajemen/{id}/update-payment-status', 'TopmanajemenController@update_payment_topmanajemen')->name('update_payment_status-topmanajemen');
-    Route::patch('peserta-kelas-topmanajemen/{id}', 'TopmanajemenController@update_topmanajemen')->name('update-peserta-kelas-topmanajemen');
-    Route::get('peserta-kelas-topmanajemen/{id}/edit-sertif', 'TopmanajemenController@edit_sertif_topmanajemen')->name('edit-sertif-peserta-kelas-topmanajemen');
-    Route::patch('peserta-kelas-topmanajemen/{id}', 'TopmanajemenController@update_sertif_topmanajemen')->name('update-sertif-peserta-kelas-topmanajemen');
-    Route::delete('delete-peserta-kelas-topmanajemen/{id}', 'TopmanajemenController@destroy_topmanajemen')->name('delete-peserta-kelas-topmanajemen');
-    Route::get('cari-peserta-kelas-topmanajemen/cari', 'TopmanajemenController@cari_topmanajemen')->name('cari-peserta-kelas-topmanajemen');
+    Route::get('peserta-kelas-topmanajemen', 'TopManajemenController@index_topmanajemen')->name('peserta-kelas-topmanajemen');
+    Route::get('peserta-kelas-topmanajemen/add', 'TopManajemenController@create_topmanajemen')->name('add-peserta-kelas-topmanajemen');
+    Route::post('peserta-kelas-topmanajemen/add', 'TopManajemenController@store_topmanajemen')->name('store-peserta-kelas-topmanajemen');
+    Route::get('peserta-kelas-topmanajemen/{id}/kelas-peserta', 'TopManajemenController@detail_member_topmanajemen')->name('detail-peserta-kelas-topmanajemen');
+    Route::get('peserta-kelas-topmanajemen/{id}/edit-kelas', 'TopManajemenController@edit_topmanajemen')->name('edit-peserta-kelas-topmanajemen');
+    Route::patch('peserta-kelas-topmanajemen/{id}/update-payment-status', 'TopManajemenController@update_payment_topmanajemen')->name('update_payment_status-topmanajemen');
+    Route::patch('peserta-kelas-topmanajemen/{id}', 'TopManajemenController@update_topmanajemen')->name('update-peserta-kelas-topmanajemen');
+    Route::get('peserta-kelas-topmanajemen/{id}/edit-sertif', 'TopManajemenController@edit_sertif_topmanajemen')->name('edit-sertif-peserta-kelas-topmanajemen');
+    Route::patch('peserta-kelas-topmanajemen/{id}', 'TopManajemenController@update_sertif_topmanajemen')->name('update-sertif-peserta-kelas-topmanajemen');
+    Route::delete('delete-peserta-kelas-topmanajemen/{id}', 'TopManajemenController@destroy_topmanajemen')->name('delete-peserta-kelas-topmanajemen');
+    Route::get('cari-peserta-kelas-topmanajemen/cari', 'TopManajemenController@cari_topmanajemen')->name('cari-peserta-kelas-topmanajemen');
 
     // export export
     Route::get('dashboard-topmanajemen/user/export_excel', 'ExportUserController@export_excel')->name('topmanajemen-export-user');
