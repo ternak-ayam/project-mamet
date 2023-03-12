@@ -7,6 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
+        
         <section class="intro my-5">
             <div class="bg-image h-auto p-5 melengkung" style="background-color: #f5f7fa;">
                 <div class="mask d-flex align-items-center h-100">

@@ -53,6 +53,7 @@
                                                                     method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
+                                                                    <input type="hidden" name="idkelas" value="{{ $item->nama_kelas->id }}">
                                                                     <button type="submit" class="btn btn-danger"><i
                                                                             class="fa fa-trash"></i></button>
                                                                 </form>

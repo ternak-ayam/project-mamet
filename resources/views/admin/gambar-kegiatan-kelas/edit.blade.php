@@ -5,7 +5,7 @@
         @csrf
         <div class="row">
             <div class=" col-12 col-md-8 fs-1 my-3 " style="margin: 0 auto">
-                <p>Tambah Gambar Kegiatan Kelas</p>
+                <p>Edit Gambar Kegiatan Kelas</p>
             </div>
             <div class="form-group col-12 col-md-8  mb-3 " style="margin: 0 auto">
             <label class="mx-2">Nama Kelas</label>

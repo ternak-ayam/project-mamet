@@ -7,6 +7,7 @@ use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File as FacadesFile;
 use Illuminate\Support\Facades\Storage;
+
 class GambarKegiatanKelasController extends Controller
 {
     /**
@@ -45,7 +46,7 @@ class GambarKegiatanKelasController extends Controller
     //  */
     public function store(Request $request)
     {
-        try {
+        // try {
             $this->validate($request, [
                 'jenis_kelas_id'  => 'required',
                 'images' => 'required'
@@ -53,6 +54,9 @@ class GambarKegiatanKelasController extends Controller
             if ($request->hasFile('images')) {
                 $files = $request->file('images');
                 foreach ($files as $file) {
+                    if ($file->getSize() >= 2000000) {
+                        return redirect()->route('add-gambar-kegiatan-kelas')->with(['error' => 'Gambar tidak boleh lebih besar dari 2 mb']);
+                    }
                     $filename = $file->hashName();
                     $request['gambar']  = $filename;
                     $file->storeAs('public/gambar_kegiatan_kelas', $file->hashName());
@@ -60,9 +64,9 @@ class GambarKegiatanKelasController extends Controller
                 }
             }
             return redirect()->route('gambar-kegiatan-kelas')->with(['success' => 'Data Berhasil Disimpan!']);
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
+        // } catch (\Exception $e) {
+        //     return $e->getMessage();
+        // }
     }
 
     // /**
@@ -97,7 +101,7 @@ class GambarKegiatanKelasController extends Controller
     //  */
     public function update(Request $request, $id)
     {
-        try {
+        // try {
             $this->validate($request, [
                 'jenis_kelas_id'  => 'required',
                 'images' => 'required'
@@ -107,6 +111,9 @@ class GambarKegiatanKelasController extends Controller
             if ($request->hasFile('images')) {
                 $files = $request->file('images');
                 foreach ($files as $file) {
+                    if ($file->getSize() >= 2000000) {
+                        return redirect()->route('add-gambar-kegiatan-kelas')->with(['error' => 'Gambar tidak boleh lebih besar dari 2 mb']);
+                    }
                     $filename = $file->hashName();
                     $request['gambar']  = $filename;
                     Storage::disk('local')->delete('public/gambar_kegiatan_kelas/' . $gambarKegiatanKelas->gambar);
@@ -116,10 +123,9 @@ class GambarKegiatanKelasController extends Controller
                 }
             }
             return redirect()->route('gambar-kegiatan-kelas')->with(['success' => 'Data Berhasil Disimpan!']);
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-
+        // } catch (\Exception $e) {
+        //     return $e->getMessage();
+        // }
     }
 
     // /**
@@ -128,20 +134,21 @@ class GambarKegiatanKelasController extends Controller
     //  * @param  int  $id
     //  * @return \Illuminate\Http\Response
     //  */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        // dd($request);
         $kelas = GambarKegiatanKelas::findOrFail($id);
-         Storage::disk('local')->delete('public/gambar_kegiatan_kelas/' . $kelas->gambar);
+        Storage::disk('local')->delete('public/gambar_kegiatan_kelas/' . $kelas->gambar);
         $kelas->delete();
         if ($kelas) {
             return redirect()
-                ->route('gambar-kegiatan-kelas')
+                ->route('detail-gambar-kegiatan-kelas', $request->idkelas)
                 ->with([
                     'success' => 'Data berhasil dihapus!'
                 ]);
         } else {
             return redirect()
-                ->route('gambar-kegiatan-kelas')
+                ->route('detail-gambar-kegiatan-kelas', $request->idkelas)
                 ->with([
                     'error' => 'Ada beberapa kesalahan, mohon ulang lagi'
                 ]);

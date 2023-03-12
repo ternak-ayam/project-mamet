@@ -27,7 +27,7 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
     // menu admin gambar
     Route::get('gambar-kegiatan-kelas', 'GambarKegiatanKelasController@index')->name('gambar-kegiatan-kelas');
     Route::get('gambar-kegiatan-kelas/add', 'GambarKegiatanKelasController@create')->name('add-gambar-kegiatan-kelas');
-    Route::post('gambar-kegiatan-kelas/add', 'GambarKegiatanKelasController@store')->name('store-gambar-kegiatan-kelas');
+    Route::post('gambar-kegiatan-kelas/store', 'GambarKegiatanKelasController@store')->name('store-gambar-kegiatan-kelas');
     Route::get('gambar-kegiatan-kelas/{id}/gambar', 'GambarKegiatanKelasController@detail_gambar')->name('detail-gambar-kegiatan-kelas');
     Route::get('gambar-kegiatan-kelas/{id}/edit-gambar', 'GambarKegiatanKelasController@edit')->name('edit-gambar-kegiatan-kelas');
     Route::patch('gambar-kegiatan-kelas/{id}', 'GambarKegiatanKelasController@update')->name('update-gambar-kegiatan-kelas');
