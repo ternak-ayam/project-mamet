@@ -39,7 +39,7 @@
                         <img src="{{ url('/img/home/art.jpg') }}" class="img-fluid max-widths">
                         <a href="{{ route('gallery') }}/#artandcraft" class="text-black text-decoration-none">
                             <div class="card display rounded-pill">
-                                <p class="text-center m-0 display-7">Kelas Merakit Bunga</p>
+                                <p class="text-center m-0 display-7">Kelas Kerajinan</p>
                             </div>
                         </a>
                     </div>
@@ -47,7 +47,7 @@
                         <img src="{{ url('/img/home/flower.jpg') }}" class="img-fluid max-widths">
                         <a href="{{ route('gallery') }}/#flowerclass" class="text-black text-decoration-none">
                             <div class="card display rounded-pill">
-                                <p class="text-center m-0 display-7">Kelas Mewarnai</p>
+                                <p class="text-center m-0 display-7">Kelas Merakit Bunga</p>
                             </div>
                         </a>
                     </div>
@@ -55,7 +55,7 @@
                         <img src="{{ url('/img/home/painting.jpg') }}" class="img-fluid max-widths">
                         <a href="{{ route('gallery') }}/#paintingclass" class="text-black text-decoration-none">
                             <div class="card display rounded-pill">
-                                <p class="text-center m-0 display-7">Kelas Kerajinan</p>
+                                <p class="text-center m-0 display-7">Kelas Mewarnai</p>
                             </div>
                         </a>
                     </div>
