@@ -15,15 +15,21 @@
         <div class="p-responsive">
             {{-- section 2 --}}
             <div class="ratio ratio-16x9 mt-5 w-75 text-center" style="margin:0 auto">
-                <iframe src="https://www.youtube.com/embed/EJwwfXOH1ZY" title="YouTube video player" frameborder="0"
+                {{-- <iframe src="https://www.youtube.com/embed/EJwwfXOH1ZY" title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen class="rounded" style="max-width: 100%; height: 100%;"></iframe>
+                    allowfullscreen class="rounded" style="max-width: 100%; height: 100%;"></iframe> --}}
+                <iframe src="https://www.youtube.com/embed/4B-mDBXue5M" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    style="width: 100%; height: 100%;" class="rounded" allowfullscreen></iframe>
             </div>
 
 
 
             <p class="purple text-center" id="paintingclass">Go Kreatif aktivity on Painting Class</p>
-
+            <p class="text-center fs-4 mb-3" id="flowerclass">Kelas mewarnai anak-anak adalah sebuah kelas yang dirancang khusus untuk mengajarkan anak-anak bagaimana cara mewarnai dengan benar dan membuat karya seni yang indah. Kelas ini cocok bagi anak-anak yang senang dengan seni dan ingin mengembangkan kreativitas mereka melalui seni mewarnai.
+            </p>
+            <p class="text-center fs-4" id="flowerclass">
+                Dalam kelas ini, anak-anak akan belajar mengenai warna, komposisi dan teknik-teknik mewarnai yang berbeda, seperti blending atau shading. Mereka akan diajarkan bagaimana memilih warna yang tepat untuk menghasilkan karya seni yang harmonis dan menarik.</p>
             <div id="owl-demo" class="owl-carousel owl-theme w-75 my-0 mx-auto p-4">
 
                 @foreach ($painting as $item)
@@ -37,6 +43,14 @@
                 <div class="next"></i></div>
             </div>
             <p class="purple text-center" id="flowerclass">Go Kreatif aktivity on Flower Class</p>
+            <p class="text-center fs-4 mb-3" id="flowerclass">Kelas merakit bunga untuk anak-anak adalah sebuah kelas yang
+                dirancang khusus untuk mengajarkan anak-anak bagaimana membuat bunga buatan mereka sendiri. Kelas ini cocok
+                bagi anak-anak yang senang dengan kerajinan tangan dan ingin belajar membuat bunga yang indah dan menarik.
+            </p>
+            <p class="text-center fs-4" id="flowerclass">
+                Dalam kelas ini, anak-anak akan belajar cara membuat bunga dari berbagai bahan seperti kertas, kain flanel,
+                atau kain perca. Mereka akan belajar teknik-teknik sederhana seperti memotong, melipat, dan merekatkan
+                bahan-bahan tersebut untuk membuat bunga.</p>
 
             <div id="owl-demo2" class="owl-carousel owl-theme w-75 my-0 mx-auto p-4">
                 @foreach ($flower as $item)
@@ -51,7 +65,10 @@
                 <div class="next"></i></div>
             </div>
             <p class="purple text-center" id="artandcraft">Go Kreatif aktivity on Art and Craft</p>
-
+            <p class="text-center fs-4 mb-3" id="flowerclass">Kelas membuat kerajinan anak-anak adalah sebuah kelas yang dirancang khusus untuk mengajarkan anak-anak bagaimana cara membuat kerajinan tangan yang kreatif dan menarik. Kelas ini cocok bagi anak-anak yang senang dengan kerajinan tangan dan ingin mengembangkan kreativitas mereka melalui membuat kerajinan tangan.
+            </p>
+            <p class="text-center fs-4" id="flowerclass">
+                Dalam kelas ini, anak-anak akan belajar membuat kerajinan tangan dari bahan-bahan yang mudah didapat, seperti kertas, kain flanel, kayu, dan lain sebagainya. Mereka akan diajarkan teknik-teknik dasar seperti memotong, menempel, dan menghias bahan-bahan tersebut untuk membuat kerajinan yang cantik dan menarik.</p>
             <div id="owl-demo3" class="owl-carousel owl-theme w-75 my-0 mx-auto p-4">
 
                 @foreach ($art as $item)
@@ -72,6 +89,15 @@
 
 
     <style>
+        p#flowerclass {
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        p.purple#flowerclass {
+            margin-bottom: 42px;
+        }
+
         button.owl-prev {
             position: absolute;
             left: 0;
@@ -113,9 +139,9 @@
         }
 
         .purple {
-            margin: 60px 0;
+            margin: 60px 0 30px 0;
             word-wrap: break-word;
-            font-size: 1.5rem;
+            font-size: 2.6rem;
             color: #B693FB !important;
             font-weight: bolder !important;
         }
@@ -142,7 +168,7 @@
         }
 
         .p-responsive {
-            padding: 79px 0;
+            padding: 23px 0;
         }
 
         .display-1 {
@@ -209,7 +235,7 @@
             }
 
             .p-responsive {
-                padding: 100px 0 0 0;
+                padding: 23px 0 0 0;
             }
 
             .b-responsive {

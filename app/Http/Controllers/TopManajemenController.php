@@ -289,10 +289,7 @@ class TopManajemenController extends Controller
     public function detail_member_topmanajemen($id)
     {
         $users = Pembelian::where('user_id', $id)->with('kelas')->get();
-        
         $data = User::findOrFail($id);
-
-        // dd($users);
         return view('topmanajemen.peserta-kelas.detail', compact('users', 'data'));
     }
     public function index_topmanajemen()

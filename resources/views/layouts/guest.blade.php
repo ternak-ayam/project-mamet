@@ -24,10 +24,17 @@
     <link rel="stylesheet" href="https://demo.getstisla.com/assets/modules/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="https://demo.getstisla.com/assets/modules/bootstrap-social/bootstrap-social.css">
     <link rel="stylesheet" href="https://demo.getstisla.com/assets/css/components.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
 </head>
 
 
 <style>
+    body {
+        font-family: 'Josefin Sans', sans-serif;
+    }
+
     .nav-pills .nav-item .nav-link.active {
         color: #B693FB;
         background-color: transparent !important;
@@ -133,8 +140,9 @@
         </nav> --}}
         <nav id="navbar-example2" class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
             <div class="container ">
-               
-                <a  href="{{ route('home') }}"> <img src="{{ asset('img/logo.jpg') }}" style="width:120px" alt="GoKreatif"></a>
+
+                <a href="{{ route('home') }}"> <img src="{{ asset('img/logo.jpg') }}" style="width:120px"
+                        alt="GoKreatif"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation">

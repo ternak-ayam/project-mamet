@@ -13,7 +13,7 @@
     <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0"
         style="background-color: #F8F7F6 !important;">
         {{-- section 1 --}}
-        <header class=" py-5" id="scrollspyHeading1">
+        <header class=" pt-5" id="scrollspyHeading1">
             <section class="d-flex flex-md-row flex-column p-responsive">
                 <div class="container px-4 px-lg-5 my-5 ">
                     <div class="text-center text-black">
@@ -36,8 +36,7 @@
             <section class=" b-responsive">
                 <div class="d-flex flex-md-row " style="overflow-x:scroll; ">
                     <div class="mx-auto row rows mx-6 mx-md-0 my-3 flexgrow">
-                        <img src="{{ url('/img/home/art.jpg')}}"
-                            class="img-fluid max-widths">
+                        <img src="{{ url('/img/home/art.jpg') }}" class="img-fluid max-widths">
                         <a href="{{ route('gallery') }}/#artandcraft" class="text-black text-decoration-none">
                             <div class="card display rounded-pill">
                                 <p class="text-center m-0 display-7"> Art and Craft </p>
@@ -45,8 +44,7 @@
                         </a>
                     </div>
                     <div class="mx-auto row rows mx-6 mx-md-0 my-3 flexgrow">
-                        <img src="{{ url('/img/home/flower.jpg') }}"
-                            class="img-fluid max-widths">
+                        <img src="{{ url('/img/home/flower.jpg') }}" class="img-fluid max-widths">
                         <a href="{{ route('gallery') }}/#flowerclass" class="text-black text-decoration-none">
                             <div class="card display rounded-pill">
                                 <p class="text-center m-0 display-7"> Flower Class </p>
@@ -54,8 +52,7 @@
                         </a>
                     </div>
                     <div class="mx-auto row rows mx-6 mx-md-0 my-3 flexgrow">
-                        <img src="{{ url('/img/home/painting.jpg') }}"
-                            class="img-fluid max-widths">
+                        <img src="{{ url('/img/home/painting.jpg') }}" class="img-fluid max-widths">
                         <a href="{{ route('gallery') }}/#paintingclass" class="text-black text-decoration-none">
                             <div class="card display rounded-pill">
                                 <p class="text-center m-0 display-7"> Painting Class </p>
@@ -65,27 +62,73 @@
                 </div>
             </section>
             <div class="text-center d-flex w-75 my-0 mx-auto flex-col justify-content-start">
+                <p class="purple1 text-center" id="artandcraft">Visi Go Kreatif</p>
+            <p class="text-center fs-4 mb-3" id="flowerclass">Visi GoKreatif adalah
+                terwujudnya wadah bagi masyarakat untuk meningkatkan kreativitas dan keterampilan mendukung
+                kemajuan Teknologi.
+            </p>
+                <p class="purple1 text-center" id="artandcraft">Misi Go Kreatif</p>
+            <p class="text-center fs-4 mb-4" id="flowerclass">Misi GoKreatif adalah
+                menyelenggarakan kelas ketrampilan yang kreatif,
+                Menciptakan masyarakat yang memiliki kompetensi dan professional,
+                Memberikan tempat bagi masyarakat untuk mengembangkan kreatifitas,
+                Menjalin kerjasama dengan berbagai bidang.
+            </p>
+            {{-- <p class="text-center fs-4" id="flowerclass">
+                Dalam kelas ini, anak-anak akan belajar membuat kerajinan tangan dari bahan-bahan yang mudah didapat, seperti kertas, kain flanel, kayu, dan lain sebagainya. Mereka akan diajarkan teknik-teknik dasar seperti memotong, menempel, dan menghias bahan-bahan tersebut untuk membuat kerajinan yang cantik dan menarik.</p>
                 <p class="fw-bold font-size text-stickleft bottom-align-text text-center text-black">
-                    Visi GoKreatif
+                    Visi Go Kreatif
                 </p>
-                <p class="lead fw-normal text-stickleft bottom-align-text text-center text-black mb-5">
+                <p class="lead fw-normal text-stickleft bottom-align-text text-center text-black mb-5" style="margin-top: 10px !important">
                     Visi GoKreatif adalah
                     terwujudnya wadah bagi masyarakat untuk meningkatkan kreativitas dan keterampilan mendukung
                     kemajuan Teknologi.
                 </p>
                 <p class="fw-bold font-size text-stickleft bottom-align-text text-center text-black">
-                    Misi GoKreatif </p>
-                <p class="lead fw-normal text-stickleft bottom-align-text text-center text-black mb-5">
+                    Misi Go Kreatif </p>
+                <p class="lead fw-normal text-stickleft bottom-align-text text-center text-black mb-5" style="margin-top: 10px !important">
                     Misi GoKreatif adalah
                     menyelenggarakan kelas ketrampilan yang kreatif,
                     Menciptakan masyarakat yang memiliki kompetensi dan professional,
                     Memberikan tempat bagi masyarakat untuk mengembangkan kreatifitas,
-                    Menjalin kerjasama dengan berbagai bidang.</p>
-            </div>
+                    {{-- Menjalin kerjasama dengan berbagai bidang.</p> --}}
+            </div> 
+
+            <p class="mt-4"
+                style="background-color:#B794FE; padding:20px; font-size:2rem; font-weight:700; text-align:center">UP
+                COMING
+                EVENT</p>
+            <section class="upcoming-class">
+            </section>
+
         </header>
     </div>
     </section>
     <style>
+
+        p.purple#flowerclass {
+            margin-bottom: 42px;
+        }
+        .purple1 {
+            margin: 60px 0 30px 0;
+            word-wrap: break-word;
+            font-size: 2.6rem;
+            color: #000000 !important;
+            font-weight: bolder !important;
+        }
+        .upcoming-class {
+            height: 100vh;
+            background-image: url("{{ asset('img/Go_Kreatiff.png') }}");
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .card.display.rounded-pill:hover {
+            width: 80%;
+            transition: 0.3s;
+        }
+
         .purple {
             margin: 60px 0;
             word-wrap: break-word;
@@ -168,7 +211,7 @@
             .font-size {
                 font-size: 2rem;
                 text-align: start;
-            margin-bottom: 30px;
+                margin-bottom: 30px;
             }
 
             .display {
@@ -205,6 +248,7 @@
 
             .text-stickleft {
                 text-align: left;
+                margin-top: 31px;
             }
 
             .p-responsive {
@@ -238,6 +282,14 @@
         }
 
         @media screen and (max-width: 550px) {
+            .upcoming-class {
+                height: 30vh;
+                background-image: url("{{ asset('img/Go_Kreatiff.png') }}");
+                background-size: cover;
+                background-position: center;
+                position: relative;
+            }
+
             .w-75 {
                 width: 87% !important;
             }
