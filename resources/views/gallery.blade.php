@@ -25,7 +25,7 @@
 
 
 
-            <p class="purple text-center" id="paintingclass">Go Kreatif aktivity on Painting Class</p>
+            <p class="purple text-center" id="paintingclass">Go Kreatif activities on Kegiatan Kelas Mewarnai</p>
             <p class="text-center fs-4 mb-3" id="flowerclass">Kelas mewarnai anak-anak adalah sebuah kelas yang dirancang khusus untuk mengajarkan anak-anak bagaimana cara mewarnai dengan benar dan membuat karya seni yang indah. Kelas ini cocok bagi anak-anak yang senang dengan seni dan ingin mengembangkan kreativitas mereka melalui seni mewarnai.
             </p>
             <p class="text-center fs-4" id="flowerclass">
@@ -42,7 +42,7 @@
                 <div class="prev"></i></div>
                 <div class="next"></i></div>
             </div>
-            <p class="purple text-center" id="flowerclass">Go Kreatif aktivity on Flower Class</p>
+            <p class="purple text-center" id="flowerclass">Go Kreatif activities on Kegiatan Kelas Merakit Bunga</p>
             <p class="text-center fs-4 mb-3" id="flowerclass">Kelas merakit bunga untuk anak-anak adalah sebuah kelas yang
                 dirancang khusus untuk mengajarkan anak-anak bagaimana membuat bunga buatan mereka sendiri. Kelas ini cocok
                 bagi anak-anak yang senang dengan kerajinan tangan dan ingin belajar membuat bunga yang indah dan menarik.
@@ -64,7 +64,7 @@
                 <div class="prev"></i></div>
                 <div class="next"></i></div>
             </div>
-            <p class="purple text-center" id="artandcraft">Go Kreatif aktivity on Art and Craft</p>
+            <p class="purple text-center" id="artandcraft">Go Kreatif activities on Kegiatan Kelas Kerajinan</p>
             <p class="text-center fs-4 mb-3" id="flowerclass">Kelas membuat kerajinan anak-anak adalah sebuah kelas yang dirancang khusus untuk mengajarkan anak-anak bagaimana cara membuat kerajinan tangan yang kreatif dan menarik. Kelas ini cocok bagi anak-anak yang senang dengan kerajinan tangan dan ingin mengembangkan kreativitas mereka melalui membuat kerajinan tangan.
             </p>
             <p class="text-center fs-4" id="flowerclass">

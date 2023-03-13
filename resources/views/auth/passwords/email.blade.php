@@ -1,8 +1,8 @@
 @extends('layouts.guest')
 
 @section('content')
-<div class="container mt-5">
-    <div class="row justify-content-center">
+<div class="container " style="min-height:300px !important">
+    <div class="row justify-content-center"  style="margin-top:200px !important">
         <div class="col-md-8">
             <div class="card card-primary">
                 <div class="card-header">{{ __('Reset Password') }}</div>

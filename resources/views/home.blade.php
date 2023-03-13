@@ -39,7 +39,7 @@
                         <img src="{{ url('/img/home/art.jpg') }}" class="img-fluid max-widths">
                         <a href="{{ route('gallery') }}/#artandcraft" class="text-black text-decoration-none">
                             <div class="card display rounded-pill">
-                                <p class="text-center m-0 display-7"> Art and Craft </p>
+                                <p class="text-center m-0 display-7">Kelas Merakit Bunga</p>
                             </div>
                         </a>
                     </div>
@@ -47,7 +47,7 @@
                         <img src="{{ url('/img/home/flower.jpg') }}" class="img-fluid max-widths">
                         <a href="{{ route('gallery') }}/#flowerclass" class="text-black text-decoration-none">
                             <div class="card display rounded-pill">
-                                <p class="text-center m-0 display-7"> Flower Class </p>
+                                <p class="text-center m-0 display-7">Kelas Mewarnai</p>
                             </div>
                         </a>
                     </div>
@@ -55,7 +55,7 @@
                         <img src="{{ url('/img/home/painting.jpg') }}" class="img-fluid max-widths">
                         <a href="{{ route('gallery') }}/#paintingclass" class="text-black text-decoration-none">
                             <div class="card display rounded-pill">
-                                <p class="text-center m-0 display-7"> Painting Class </p>
+                                <p class="text-center m-0 display-7">Kelas Kerajinan</p>
                             </div>
                         </a>
                     </div>
@@ -117,7 +117,7 @@
             font-weight: bolder !important;
         }
         .upcoming-class {
-            height: 100vh;
+            height: 50vw;
             background-image: url("{{ asset('img/Go_Kreatiff.png') }}");
             background-size: cover;
             background-position: center;
@@ -283,7 +283,8 @@
 
         @media screen and (max-width: 550px) {
             .upcoming-class {
-                height: 30vh;
+                height: 50vw;
+
                 background-image: url("{{ asset('img/Go_Kreatiff.png') }}");
                 background-size: cover;
                 background-position: center;

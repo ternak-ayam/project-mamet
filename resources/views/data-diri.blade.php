@@ -5,6 +5,13 @@
             <div class="row gx-4 gx-lg-5 align-items-center">
                 <div class="col-md-12 text-black">
                     <h1 class="mb-4">Input Data Diri</h1>
+                    
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>{{ $message }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
                     <form action="{{ route('storedatadiri') }}" method="POST" enctype="multipart/form-data" class="row g-3">
                         @csrf
                         <div class="col-md-6">
@@ -36,10 +43,4 @@
         </div>
         </div>
     </section>
-    <!-- Footer-->
-    <footer class="py-5" style="background-color:#FFFFFF">
-        <div class="container">
-            <p class="m-0 text-center text-dark">Copyright &copy; Your Website 2022</p>
-        </div>
-    </footer>
 @endsection

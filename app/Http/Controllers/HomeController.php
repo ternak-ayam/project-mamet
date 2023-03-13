@@ -112,6 +112,11 @@ class HomeController extends Controller
                     'no_telp' => 'required', 'string', 'max:255',
                     'alamat' => 'required', 'string', 'max:255',
                 ]);
+                
+                if (User::where('name', '=', $request->name)->orWhere('email', '=', $request->email)->exists()) {
+                    return redirect()->route('datadiri', $id)
+                        ->with(['success' => 'User Sudah Ada Akun!']);
+                }
                 //create post
                 User::create([
                     'name' => $request->name,
