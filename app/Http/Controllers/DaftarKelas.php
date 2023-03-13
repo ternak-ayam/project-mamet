@@ -6,6 +6,7 @@ use App\Models\Days;
 use App\Models\Kelas;
 use App\Models\Pembelian;
 use App\Models\Time;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -196,8 +197,11 @@ class DaftarKelas extends Controller
     public function destroy($id)
     {
         $kelas = Kelas::findOrFail($id);
+        $user = Pembelian::where('kelas_id',$id)->get();
         Storage::disk('local')->delete('public/gambar_kelas/' . $kelas->gambar_kelas);
+        $user->each->delete();
         $kelas->delete();
+
 
         if ($kelas) {
             return redirect()

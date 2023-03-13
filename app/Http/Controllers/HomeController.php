@@ -113,7 +113,7 @@ class HomeController extends Controller
                     'alamat' => 'required', 'string', 'max:255',
                 ]);
                 
-                if (User::where('name', '=', $request->name)->orWhere('email', '=', $request->email)->exists()) {
+                if (User::where('email', '=', $request->email)->exists()) {
                     return redirect()->route('datadiri', $id)
                         ->with(['success' => 'User Sudah Ada Akun!']);
                 }

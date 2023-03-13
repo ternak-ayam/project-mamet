@@ -69,7 +69,7 @@
                                                                     target="_blank" style="text-decoration:none">
                                                                     <img src="{{ url('storage/gambar_kelas/' . $item->gambar_kelas) }}"
                                                                         alt="job image" width="50" height="100"
-                                                                        class="object-fit-cover"  title="job image">
+                                                                        class="object-fit-cover" title="job image">
                                                                 </a>
                                                             </td>
                                                             <td class="text-center">
@@ -109,10 +109,11 @@
         </section>
     </div>
     <style type="text/css">
-    .melengkung{
-        border-radius: 20px;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    }
+        .melengkung {
+            border-radius: 20px;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        }
+
         html,
         body,
         .intro {
@@ -193,9 +194,11 @@
             font-size: 18px;
             line-height: 23px;
         }
-        .font{
+
+        .font {
             text-align: center;
         }
+
         .text-muted {
             color: #8898aa !important;
         }

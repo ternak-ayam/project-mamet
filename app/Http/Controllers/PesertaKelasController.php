@@ -18,7 +18,7 @@ class PesertaKelasController extends Controller
         return view('admin.peserta-kelas.detail', compact('users', 'data'));
     }
     public function index()
-    {
+    { 
         $datauser = User::where('role', 'user')->orWhere('role', 'nonuser')->get();
         // dd($datakelas);
         return view('admin.peserta-kelas.index', compact('datauser'));
