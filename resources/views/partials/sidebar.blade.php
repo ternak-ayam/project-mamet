@@ -60,7 +60,7 @@
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                 <a class="nav-link collapsed" href="{{ route('adminweb-peserta-kelas') }}">
-                                    Laporan Peserta Kelas
+                                    Laporan Users
                                 </a>
                             </nav>
                         </div>

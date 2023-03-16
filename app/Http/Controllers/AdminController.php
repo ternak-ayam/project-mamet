@@ -6,10 +6,12 @@ use App\Models\Kelas;
 use App\Models\Pembelian;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Jorenvh\Share\Share;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -91,7 +93,16 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Kelas::findOrFail($id);
+        // Share button 1
+        $share = new Share;
+        $shareButtons1 = $share->page('https://mamet.arkaya.tech/dashboard-admin/' . $id , 'Ada Kelas Baru Go Kreatif untuk Meningkatkan Kreatifitas Anda ! %0aAyo Daftar Sekarang Melalui tautan berikut ! %0a')
+            ->facebook()
+            ->twitter()
+            ->telegram()
+            ->whatsapp();
+
+        return view('admin.show', compact('data', 'shareButtons1'));
     }
 
     /**

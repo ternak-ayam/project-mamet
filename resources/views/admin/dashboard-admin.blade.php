@@ -37,6 +37,7 @@
                                                         <th scope="col">Jam Kelas</th>
                                                         <th scope="col">Gambar</th>
                                                         <th scope="col">Manage</th>
+                                                        <th scope="col">Share</th>
                                                         <th scope="col">Peserta</th>
                                                     </tr>
                                                 </thead>
@@ -73,7 +74,7 @@
                                                                 </a>
                                                             </td>
                                                             <td class="text-center">
-                                                                <form style="height: 50px; width:50px; display:contents;"
+                                                                {{-- <form style="height: 50px; width:50px; display:contents;"
                                                                     onsubmit="return confirm('Apakah Anda Yakin ?');"
                                                                     action="{{ route('daftar-kelas.destroy', $item->id) }}"
                                                                     method="POST">
@@ -81,12 +82,18 @@
                                                                     @method('DELETE')
                                                                     <button type="submit" class="btn btn-danger"><i
                                                                             class="fa fa-trash"></i></button>
-                                                                </form>
+                                                                </form> --}}
                                                                 <a href="{{ route('daftar-kelas.edit', $item->id) }}">
                                                                     <button type="button" class="btn btn-warning"><i
                                                                             class="fa fa-edit"></i></button>
                                                                 </a>
                                                             </td>
+                                                            <td class="text-center">
+                                                                <a href="{{ route('dashboard-admin.show', $item->id) }}">
+                                                                    <button type="button" class="btn btn-info"><i class="fa-solid fa-share-nodes"></i></button>
+                                                                </a>
+                                                            </td>
+                                                          
                                                             <td class="text-center">
                                                                 <a href="{{ route('admin-peserta-kelas', $item->id) }}">
                                                                     <button type="button" class="btn btn-info"><i
@@ -247,4 +254,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.1/echarts.min.js"
         integrity="sha512-OTbGFYPLe3jhy4bUwbB8nls0TFgz10kn0TLkmyA+l3FyivDs31zsXCjOis7YGDtE2Jsy0+fzW+3/OVoPVujPmQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="{{ asset('js/share.js') }}"></script>
 @endsection

@@ -16,7 +16,7 @@
                                 <div class="card">
                                     <div class="card-body p-0">
                                         <div class="card-body px-0">
-                                            <h5 class="card-title text-uppercase mb-0">Laporan Users</h5>
+                                            <h5 class="card-title text-uppercase mb-0">LAPORAN PESERTA KELAS</h5>
                                             <form action="{{ route('cari-peserta-kelas') }}" method="GET">
                                                 <div class="input-group mt-5  justify-content-between">
                                                     <div class="w-50 d-flex">

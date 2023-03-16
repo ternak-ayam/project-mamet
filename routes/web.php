@@ -19,10 +19,11 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Auth::routes();
-Route::group(['middleware' => ['auth', 'admin']], function() {
+Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::resource('dashboard-admin', 'AdminController');
     Route::get('peserta/{id}', 'DaftarKelas@peserta')->name('admin-peserta-kelas');
     Route::resource('daftar-kelas', 'DaftarKelas');
+    
 
     // menu admin gambar
     Route::get('gambar-kegiatan-kelas', 'GambarKegiatanKelasController@index')->name('gambar-kegiatan-kelas');
@@ -32,6 +33,7 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
     Route::get('gambar-kegiatan-kelas/{id}/edit-gambar', 'GambarKegiatanKelasController@edit')->name('edit-gambar-kegiatan-kelas');
     Route::patch('gambar-kegiatan-kelas/{id}', 'GambarKegiatanKelasController@update')->name('update-gambar-kegiatan-kelas');
     Route::delete('delete-gambar-kegiatan-kelas/{id}', 'GambarKegiatanKelasController@destroy')->name('delete-gambar-kegiatan-kelas');
+
 
 
     // menu admin list member
@@ -46,7 +48,7 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
     Route::delete('delete-list-member/{id}', 'ListMemberController@destroy')->name('delete-list-member');
     Route::get('cari-list-member/cari', 'ListMemberController@cari')->name('cari-list-member');
 
-// laporan data kelas
+    // laporan data kelas
     Route::get('data-kelas', 'LaporanDataKelasController@index')->name('data-kelas');
     Route::get('data-kelas/add', 'LaporanDataKelasController@create')->name('add-data-kelas');
     Route::post('data-kelas/add', 'LaporanDataKelasController@store')->name('store-data-kelas');
@@ -60,7 +62,7 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
     Route::get('cari-data-kelas/cari', 'LaporanDataKelasController@cari')->name('cari-data-kelas');
 
 
-// laporan peserta kelas
+    // laporan peserta kelas
     Route::get('peserta-kelas', 'PesertaKelasController@index')->name('peserta-kelas');
     Route::get('peserta-kelas/add', 'PesertaKelasController@create')->name('add-peserta-kelas');
     Route::post('peserta-kelas/add', 'PesertaKelasController@store')->name('store-peserta-kelas');
@@ -89,7 +91,7 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 });
 
 
-Route::group(['middleware' => ['auth', 'user']], function() {
+Route::group(['middleware' => ['auth', 'user']], function () {
     Route::get('/dashboard-user', 'UserController@index')->name('dashboard-user');
     Route::get('/dashboard-user/cetak-pdf/{id}', 'UserController@cetakPdf')->name('dashboard-user-cetak');
     Route::get('/dashboard-user/cetak-sertif/{id}', 'UserController@cetakSertifikat')->name('dashboard-user-sertifikat');
@@ -100,7 +102,7 @@ Route::group(['middleware' => ['auth', 'user']], function() {
     Route::patch('profile/{id}', 'UserController@profile_update')->name('update-profile');
 });
 
-Route::group(['middleware' => ['auth', 'topmanajemen']], function() {
+Route::group(['middleware' => ['auth', 'topmanajemen']], function () {
     // laporan data kelas
     Route::get('/dashboard-topmanajemen', 'TopManajemenController@index')->name('dashboard-topmanajemen');
     Route::get('data-kelas-topmanajemen/add', 'TopManajemenController@create')->name('add-data-kelas-topmanajemen');
@@ -142,7 +144,7 @@ Route::group(['middleware' => ['auth', 'topmanajemen']], function() {
 
 
 
-Route::group(['middleware' => ['auth', 'adminweb']], function() {
+Route::group(['middleware' => ['auth', 'adminweb']], function () {
     Route::get('/dashboard-adminweb', 'AdminWebController@index')->name('dashboard-adminweb');
     Route::get('/dashboard-adminweb/cari', 'AdminWebController@cari')->name('dashboard-adminweb-search');
     Route::get('/dashboard-adminweb/add', 'AdminWebController@create')->name('dashboard-adminweb-add');
@@ -160,7 +162,6 @@ Route::group(['middleware' => ['auth', 'adminweb']], function() {
     Route::get('dashboard-adminweb/jadwal/export_excel', 'ExportUserController@jadwal_export_excel')->name('adminweb-export-jadwal');
     Route::get('dashboard-adminweb/peserta/export_excel', 'ExportUserController@peserta_export_excel')->name('adminweb-export-peserta');
     Route::get('dashboard-adminweb/kelas-peserta/export_excel/{id}', 'ExportUserController@kelaspeserta_export_excel')->name('adminweb-kelas-peserta-export');
-
 });
 
 
@@ -174,9 +175,9 @@ Route::get('/data-diri/{id}', 'HomeController@filldatadiri')->name('datadiri');
 Route::post('/data-diri', 'HomeController@storedatadiri')->name('storedatadiri');
 
 
-Route::get('dashboard-nonuser','HomeController@dashboardNonUser')->name('dashboard-nonuser');
-Route::get('dashboard-nonuser/register','HomeController@viewregisterNonUser')->name('view-register-nonuser');
-Route::patch('dashboard-nonuser/register','HomeController@registerNonUser')->name('register-nonuser');
+Route::get('dashboard-nonuser', 'HomeController@dashboardNonUser')->name('dashboard-nonuser');
+Route::get('dashboard-nonuser/register', 'HomeController@viewregisterNonUser')->name('view-register-nonuser');
+Route::patch('dashboard-nonuser/register', 'HomeController@registerNonUser')->name('register-nonuser');
 
 
 Route::get('/detail-product/{id}', 'HomeController@show')->name('detail-product');

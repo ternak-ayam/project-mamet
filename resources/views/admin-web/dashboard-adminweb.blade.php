@@ -59,7 +59,7 @@
                                                                 <span class="text-muted">{{ $item->role }}</span>
                                                             </td>
                                                              <td class="text-center">
-                                                                <form style="height: 50px; width:50px; display:contents;"
+                                                                {{-- <form style="height: 50px; width:50px; display:contents;"
                                                                     onsubmit="return confirm('Apakah Anda Yakin ?');"
                                                                     action="{{ route('dashboard-adminweb-delete', $item->id) }}"
                                                                     method="POST">
@@ -67,7 +67,7 @@
                                                                     @method('DELETE')
                                                                     <button type="submit" class="btn btn-danger"><i
                                                                             class="fa fa-trash"></i></button>
-                                                                </form>
+                                                                </form> --}}
                                                                 <a href="{{ route('dashboard-adminweb-edit', $item->id) }}">
                                                                     <button type="button" class="btn btn-warning"><i
                                                                             class="fa fa-edit"></i></button>
