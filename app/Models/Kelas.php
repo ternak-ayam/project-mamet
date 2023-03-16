@@ -14,6 +14,7 @@ class Kelas extends Model
         'harga',
         'kouta',
         'gambar_kelas',
+        'status',
     ];
     public function pembelian(){
         return $this->hasMany(Pembelian::class);

@@ -8,6 +8,7 @@ use App\Models\Kelas;
 use App\Models\Nonusers;
 use App\Models\Pembelian;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -163,6 +164,14 @@ class HomeController extends Controller
         // dd($id);
         $data = Pembelian::where('user_id', $id)->with(['user', 'kelas'])->latest()->get();
         return view('nonuser.dashboard-nonuser', compact('data'));
+    }
+    public function cetakPdf($id)
+    {
+        // $id = session('idusers');
+        // dd($id);
+        $data = Pembelian::with('user', 'kelas')->findOrFail($id);
+        $pdf = PDF::loadview('nonuser.cetak_pdf', ['data' => $data]);
+        return $pdf->download('Bukti-Pembayaran.pdf');
     }
     public function viewregisterNonUser()
     {

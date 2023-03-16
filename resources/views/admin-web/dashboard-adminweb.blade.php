@@ -41,6 +41,7 @@
                                                         <th scope="col">Nama User</th>
                                                         <th scope="col">Email</th>
                                                         <th scope="col">Role</th>
+                                                        <th scope="col">Status</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
@@ -58,6 +59,9 @@
                                                             <td class="text-center">
                                                                 <span class="text-muted">{{ $item->role }}</span>
                                                             </td>
+                                                            <td class="text-center">
+                                                                <span class="text-muted">{{ $item->status }}</span>
+                                                             </td>
                                                              <td class="text-center">
                                                                 {{-- <form style="height: 50px; width:50px; display:contents;"
                                                                     onsubmit="return confirm('Apakah Anda Yakin ?');"

@@ -78,6 +78,7 @@ class AdminWebController extends Controller
                 'email_verified_at' => Carbon::now(),
                 'password' => Hash::make($request->password),
                 'role' =>  $request->role,
+                'status' =>  'aktif',
             ]);
             return redirect()->route('dashboard-adminweb')->with(['success' => 'Akun Berhasil Dibuat!']);
         } catch (\Exception $e) {
@@ -113,6 +114,7 @@ class AdminWebController extends Controller
                 'no_telp' => 'required', 'string', 'max:255',
                 'alamat' => 'required', 'string', 'max:255',
                 'role' => 'required',
+                'status' => 'required',
             ]);
             // dd($request);
 
@@ -125,6 +127,7 @@ class AdminWebController extends Controller
                 'alamat' =>  $request->alamat,
                 'email_verified_at' => Carbon::now(),
                 'role' =>  $request->role,
+                'status' =>  $request->status,
             ]);
             return redirect()->route('dashboard-adminweb')->with(['success' => 'Role Berhasil Diubah!']);
         } catch (\Exception $e) {

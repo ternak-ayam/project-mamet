@@ -39,6 +39,24 @@
                     <option value="topmanajemen" selected>Top Manajemen</option>
                 </select>
             </div>
+            <div class="form-group col-12 col-md-8  mb-3" style="margin: 0 auto">
+                <label class="mx-2" for="floatingInput">Status</label>
+                <select name="status" class="form-control" >
+                    @if (old('status', $data->status) == 'aktif')
+                    <option value="aktif" selected>Aktif</option>
+                    <option value="nonaktif" >Non Aktif</option>
+                    @else
+                    <option value="nonaktif" selected>Non Aktif</option>
+                    <option value="aktif" >Aktif</option>
+
+                    @endif
+                </select>
+                @error('status')
+                    <div class="alert alert-danger mt-2">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
         </div>
         <div class="row">
             <div class="col-12 col-md-6 mx-auto">

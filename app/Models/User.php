@@ -25,6 +25,7 @@ class User extends Authenticatable
         'alamat',
         'password',
         'role',
+        'status',
         'email_verified_at'
     ];
 

@@ -75,6 +75,24 @@
                     </div>
                 @enderror
             </div>
+            <div class="col-12 col-md-8 text-center form-floating mb-3" style="margin: 0 auto">
+                <select name="status" class="form-control" >
+                    @if (old('status', $data->status) == 'aktif')
+                    <option value="aktif" selected>Aktif</option>
+                    <option value="nonaktif" >Non Aktif</option>
+                    @else
+                    <option value="nonaktif" selected>Non Aktif</option>
+                    <option value="aktif" >Aktif</option>
+
+                    @endif
+                </select>
+                <label class="mx-2" for="floatingInput">Status</label>
+                @error('status')
+                    <div class="alert alert-danger mt-2">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
         </div>
         <div class="row">
             <div class="col-12 col-md-6 mx-auto">

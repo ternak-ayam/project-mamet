@@ -80,6 +80,7 @@ class ListMemberController extends Controller
                 'email_verified_at' => Carbon::now(),
                 'password' => Hash::make($request->password),
                 'role' =>  $request->role,
+                'status' =>  'aktif',
             ]);
             return redirect()->route('list-member')->with(['success' => 'Akun Berhasil Dibuat!']);
         } catch (\Exception $e) {
@@ -128,7 +129,6 @@ class ListMemberController extends Controller
     //  */
     public function updaterole(Request $request, $id)
     {
-
         try {
             $this->validate($request, [
                 'name' => 'required', 'string', 'max:255',
@@ -137,19 +137,18 @@ class ListMemberController extends Controller
                 'no_telp' => 'required', 'string', 'max:255',
                 'alamat' => 'required', 'string', 'max:255',
                 'role' => 'required',
+                'status' => 'required',
             ]);
-            // dd($request);
-
             $user = User::findOrFail($id);
-            $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
-                'nama_orangtua' => $request->nama_orangtua,
-                'no_telp' =>  $request->no_telp,
-                'alamat' =>  $request->alamat,
-                'email_verified_at' => Carbon::now(),
-                'role' =>  $request->role,
-            ]);
+            $user->name= $request->name;
+            $user->email = $request->email;
+            $user->nama_orangtua = $request->nama_orangtua;
+            $user->no_telp =  $request->no_telp;
+            $user->alamat = $request->alamat;
+            $user->email_verified_at =  Carbon::now();
+            $user->role = $request->role;
+            $user->status = $request->status;
+            $user->save();
             return redirect()->route('list-member')->with(['success' => 'Role Berhasil Diubah!']);
         } catch (\Exception $e) {
             return $e->getMessage();

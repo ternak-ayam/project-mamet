@@ -178,6 +178,7 @@ Route::post('/data-diri', 'HomeController@storedatadiri')->name('storedatadiri')
 Route::get('dashboard-nonuser', 'HomeController@dashboardNonUser')->name('dashboard-nonuser');
 Route::get('dashboard-nonuser/register', 'HomeController@viewregisterNonUser')->name('view-register-nonuser');
 Route::patch('dashboard-nonuser/register', 'HomeController@registerNonUser')->name('register-nonuser');
+Route::get('/dashboard-nonuser/cetak-pdf/{id}', 'HomeController@cetakPdf')->name('dashboard-nonuser-cetak');
 
 
 Route::get('/detail-product/{id}', 'HomeController@show')->name('detail-product');

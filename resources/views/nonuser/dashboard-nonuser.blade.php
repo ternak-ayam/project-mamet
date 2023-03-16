@@ -8,77 +8,31 @@
             </div>
         @endif
         <div class="row">
-            <div class="col-md-12">
-                <div class="card p-4 rounded">
-                    <div class="card-body">
-                        <h5 class="card-title text-uppercase mb-0">Kelas Yang Dibeli</h5>
+            <div class="col-md-6 my-0 mx-auto">
+                <div class="card p-4 mb-4 rounded">
+                    <div class="card w-auto">
+                        @foreach ($data as $item)
+                            
+                        <p class="text-center">Silahkan Download Bukti Pembayaran dan Konfirmasi Pembayaran Via Whatsapp 0898989891</p>
+                        <a class="text-center" href="{{ route('dashboard-nonuser-cetak', $item->id) }}">
+                            <button type="button"
+                                class="btn btn-success ml-2">
+                                <i class="fa fa-print"></i> Download Bukti Pembayaran
+                            </button>
+                        </a>
+                        @endforeach
                     </div>
-                    <div class="table-responsive">
-                        <table class="table no-wrap user-table mb-0">
-                            <thead class="text-center">
-                                <tr>
-                                    <th scope="col" class="border-0 text-uppercase font-medium pl-4">
-                                        #
-                                    </th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium">
-                                        Nama Kelas
-                                    </th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium">
-                                        Deskripsi
-                                    </th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium">
-                                        Harga
-                                    </th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium">
-                                        Sertifikat
-                                    </th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium">
-                                        Cetak Bukti Pembelian
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-center">
-                                <?php $i = 1; ?>
-                                @foreach ($data as $item)
-                                    <tr>
-                                        <td class="pl-4">{{ $i++ }}</td>
-                                        <td colspan="4">
-                                            <h5 class="font-medium mb-0">Kamu harus registrasi dulu nih supaya dapet sertifikat!</h5>
-                                            <button type="button" class="btn btn-primary p-2 m-3"><a class="text-white text-decoration-none"
-                                                href="{{ route('view-register-nonuser') }} " >Register</a></button>
-                                        </td>
-                                        
-                                        <td>
-                                            @if ($item->status_pembayaran == '-')
-                                            <a href="{{ route('dashboard-user-cetak', $item->id) }}">
-                                                <button type="button"
-                                                    class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2">
-                                                    <i class="fa fa-print"></i>
-                                                </button>
-                                            </a>
-                                            @elseif($item->status_pembayaran == '1')
-                                                <a href="{{ route('dashboard-user-cetak', $item->id) }}">
-                                                    <button type="button"
-                                                        class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2">
-                                                        <i class="fa fa-print"></i>
-                                                    </button>
-                                                </a>
-                                            @else
-                                                <span class="text-muted">Bukti Pembayaran Belum Sesuai nih, Upload Ulang
-                                                    Yaa!</span><br />
-                                                <hr>
-                                                <a href="{{ route('dashboard-user-view-update-bp', $item->id) }}">
-                                                    <button type="button"
-                                                        class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2">
-                                                        <i class="fa fa-pen-to-square"></i>
-                                                    </button>
-                                                </a>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                </div>
+                <div class="card p-4 rounded">
+                    <div class="card w-auto">
+                        <p class="text-center">Silahkan Register Untuk Menjadi Member Go Kreatif Untuk Melihat Info Jadwal Kelas dan Sertifikat</p>
+                        <img src="{{ asset('img/logo.jpg') }}" class="my-4 mx-auto" style="width: 150px" alt="">
+                        <a class="text-center" href="{{ route('register-nonuser') }}">
+                            <button type="button"
+                                class="btn btn-primary ml-2">
+                                <i class="fa-regular fa-address-card"></i> Register
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>

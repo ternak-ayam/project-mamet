@@ -59,10 +59,18 @@
                                 </div>
                             </div>
                             <!-- Product actions-->
+                            @if ($item['status']== 'nonaktif')
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-primary rounded-pill mt-auto"
+                                        >Kelas Sudah Tidak Aktif</a></div>
+                            </div>
+                            @else
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center"><a class="btn btn-primary rounded-pill mt-auto"
                                         href="{{ route('detail-product', $item->id) }}">Daftar Sekarang</a></div>
                             </div>
+                            @endif
+                            
                         </div>
                     </div>
                     @endif

@@ -73,6 +73,7 @@ class DaftarKelas extends Controller
             $kelas->hari = request('hari');
             $kelas->jam = request('jam');
             $kelas->gambar_kelas = $image->hashName();
+            $kelas->status = 'aktif';
             $kelas->save();
             //redirect to index
             return redirect()->route('dashboard-admin.index')->with(['success' => 'Data Berhasil Disimpan!']);
@@ -124,6 +125,7 @@ class DaftarKelas extends Controller
                 'hari'   => 'required',
                 'jam'   => 'required',
                 'kuota'   => 'required',
+                'status'   => 'required',
             ]);
         } else {
             //validate form
@@ -134,7 +136,8 @@ class DaftarKelas extends Controller
                 'hari'   => 'required',
                 'jam'   => 'required',
                 'kuota'   => 'required',
-                'gambar_kelas' => 'required|image|mimes:png,jpg,jpeg,pdf'
+                'gambar_kelas' => 'required|image|mimes:png,jpg,jpeg,pdf',
+                'status'   => 'required',
             ]);
         }
 
@@ -149,6 +152,7 @@ class DaftarKelas extends Controller
             $kelas->kuota = request('kuota');
             $kelas->hari = request('hari');
             $kelas->jam = request('jam');
+            $kelas->status = request('status');
             $kelas->save();
 
         } else {
@@ -167,6 +171,7 @@ class DaftarKelas extends Controller
             $kelas->hari = request('hari');
             $kelas->jam = request('jam');
             $kelas->gambar_kelas = $image->hashName();
+            $kelas->status = request('status');
             $kelas->save();
         }
         //redirect to index
