@@ -299,7 +299,8 @@ ul.social li{
           	<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
           		<tr>
           			<td class="logo" style="text-align: center;">
-			            <h1><a href="#">e-Verify</a></h1>
+			            <h1><a href="{{ route('home') }}"> <img src="{{ asset('img/logo.jpg') }}" style="width:120px"
+                            alt="GoKreatif"></a></h1>
 			          </td>
           		</tr>
           	</table>
@@ -321,11 +322,9 @@ ul.social li{
 				          	<img src="images/person_2.jpg" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
 				          	<h3 class="name">{{ $name }}</h3>
 				          	<span class="position">{{ $email }}</span>
-				          	<span class="position">{{ $phone_number }}</span>
-				          	<span class="position">{{ $subject }}</span>
-				          	<span class="position">{{ $user_message }}</span>
-				           	<p><a href="#" class="btn btn-primary">Accept Request</a></p>
-				           	<p><a href="#" class="btn-custom">Ignore Request</a></p>
+				          	<span class="position">{{ $phone_number }}</span><br>
+				          	<span class="position">{{ $subject }}</span><br>
+				          	<span class="position">{{ $user_message }}</span><br>
 			           	</div>
 			          </td>
 			        </tr>
@@ -334,59 +333,43 @@ ul.social li{
 	      </tr><!-- end tr -->
       <!-- 1 Column Text + Button : END -->
       </table>
-      <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
-      	<tr>
-          <td valign="middle" class="bg_light footer email-section">
-            <table>
-            	<tr>
-                <td valign="top" width="33.333%" style="padding-top: 20px;">
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                    <tr>
-                      <td style="text-align: left; padding-right: 10px;">
-                      	<h3 class="heading">About</h3>
-                      	<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-                <td valign="top" width="33.333%" style="padding-top: 20px;">
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                    <tr>
-                      <td style="text-align: left; padding-left: 5px; padding-right: 5px;">
-                      	<h3 class="heading">Contact Info</h3>
-                      	<ul>
-					                <li><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-					                <li><span class="text">+2 392 3929 210</span></a></li>
-					              </ul>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-                <td valign="top" width="33.333%" style="padding-top: 20px;">
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                    <tr>
-                      <td style="text-align: left; padding-left: 10px;">
-                      	<h3 class="heading">Useful Links</h3>
-                      	<ul>
-					                <li><a href="#">Home</a></li>
-					                <li><a href="#">About</a></li>
-					                <li><a href="#">Services</a></li>
-					                <li><a href="#">Work</a></li>
-					              </ul>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr><!-- end: tr -->
-        <tr>
-          <td class="bg_light" style="text-align: center;">
-          	<p>No longer want to receive these email? You can <a href="#" style="color: rgba(0,0,0,.8);">Unsubscribe here</a></p>
-          </td>
-        </tr>
-      </table>
+	  <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
+		<tr>
+		<td valign="middle" class="bg_light footer email-section">
+		  <table>
+			  <tr>
+			  <td valign="top" width="33.333%" style="padding-top: 20px;">
+				<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+				  <tr>
+					<td style="text-align: left; padding-right: 10px;">
+						<h3 class="heading">About</h3>
+						<p>Gokreatif adalah sebuah wadah bagi masyarakat luas untuk meningkatkan kreatifitas dan keterampilan mereka</p>
+					</td>
+				  </tr>
+				</table>
+			  </td>
+			  <td valign="top" width="33.333%" style="padding-top: 20px;">
+				<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+				  <tr>
+					<td style="text-align: left; padding-left: 5px; padding-right: 5px;">
+						<h3 class="heading">Contact Info</h3>
+						<ul>
+								  <li><span class="text">Jalan Dahlia Raya, Pecatu, Kuta Selatan, Kabupaten Badung, Bali</span></li>
+								  <li><span class="text">+62 822 3797 9199</span></a></li>
+								</ul>
+					</td>
+				  </tr>
+				</table>
+			</tr>
+		  </table>
+		</td>
+	  </tr><!-- end: tr -->
+	  <tr>
+		<td class="bg_light" style="text-align: center;">
+			<p>Thank you!</a></p>
+		</td>
+	  </tr>
+	</table>
 
     </div>
   </center>
