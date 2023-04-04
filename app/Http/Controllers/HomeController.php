@@ -255,13 +255,12 @@ class HomeController extends Controller
             array(
                 'name' => $request->get('name'),
                 'email' => $request->get('email'),
-                'subject' => $request->get('subject'),
                 'phone_number' => $request->get('phone_number'),
                 'user_message' => $request->get('message'),
             ),
             function ($message) use ($request) {
                 $message->from($request->email);
-                $message->to('admin@example.com');
+                $message->to('admin@example.com')->subject($request->subject);
             }
         );
 

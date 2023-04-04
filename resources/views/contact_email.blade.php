@@ -317,13 +317,13 @@ ul.social li{
             		</td>
             	</tr>
             	<tr>
-			          <td style="text-align: center;">
+			          <td style="text-align: left;">
 			          	<div class="text-author">
 				          	<img src="images/person_2.jpg" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
-				          	<h3 class="name">{{ $name }}</h3>
-				          	<span class="position">{{ $email }}</span>
-				          	<span class="position">{{ $phone_number }}</span><br>
-				          	<span class="position">{{ $subject }}</span><br>
+				          	<h3 class="name">Nama Sender : {{ $name }}</h3>
+				          	<span class="position">Email : {{ $email }}</span><br>
+				          	<span class="position">Nomor Hp : {{ $phone_number }}</span><br>
+				          	<h4 class=" name">Pesan</h4>
 				          	<span class="position">{{ $user_message }}</span><br>
 			           	</div>
 			          </td>

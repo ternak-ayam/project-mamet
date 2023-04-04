@@ -312,7 +312,7 @@ ul.social li{
             	<tr>
             		<td style="padding: 0 2.5em; text-align: center; padding-bottom: 3em;">
             			<div class="text">
-            				<h2>Hallo sahabatku...</h2>
+            				<h2>Selamat datang di Go Kreatif!</h2>
             			</div>
             		</td>
             	</tr>
@@ -320,12 +320,8 @@ ul.social li{
 			          <td style="text-align: center;">
 			          	<div class="text-author">
 				          	<img src="images/person_2.jpg" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
-				          	{{-- {{-- <h3 class="name">{{ $name }}</h3> --}}
-				          	<span class="position">Ada Kelas Baru Go Kreatif untuk Meningkatkan Kreatifitas Anda ! <br>
-								Ayo Daftar Sekarang Melalui tautan berikut !  </span>
-				          	{{-- <span class="position">{{ $phone_number }}</span>
-				          	<span class="position">{{ $subject }}</span>
-				          	<span class="position">{{ $user_message }}</span> --}}
+				          	<span class="position">Kami dengan bangga mempersembahkan kelas baru kami untuk seni kreatif anak-anak yang penuh dengan keceriaan dan imajinasi!<br>
+								Ayo Daftar Sekarang Melalui tautan berikut ! </span>
 				           	<p><a href="{{ $link }}" class="btn btn-primary">Lihat Kelas</a></p>
 			           	</div>
 			          </td>
