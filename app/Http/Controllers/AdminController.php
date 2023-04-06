@@ -108,24 +108,25 @@ class AdminController extends Controller
     public function sendEmail(Request $request)
     {
         // ini logika mass email
-        $link = 'http://127.0.0.1:8000/detail-product/' . $request->id;
-        $datas = [];
+        $link = url('/detail-product/' . $request->id);
         $data = User::where('role', 'user')->orWhere('role', 'nonuser')->get();
-        foreach ($data as $items => $key) {
-            $datas[] = $key->email;
-        }
-        $emails = $datas;
+
         $request->merge([
             'link' => $link,
         ]);
 
-        Mail::send('mass_email', array(
-            'id' => $request->get('id'),
-            'link' => $request->get('link'),
-        ), function ($message) use ($emails) {
-            $message->from('admin@example.com');
-            $message->to($emails)->subject('Ada Kelas Baru nih di Go Kreatif !');
-        });
+        foreach ($data as $value) {
+            $input['email'] = $value->email;
+            $input['name'] = $value->name;
+            \Mail::send('mass_email', [
+                'id' => $request->get('id'),
+                'link' => $request->get('link')
+            ], function($message) use($input){
+                $message->to($input['email'], $input['name'])
+                    ->subject('Ada Kelas Baru nih di Go Kreatif !');
+            });
+        }
+
         var_dump(Mail::failures());
         // exit;
         return redirect()->route('dashboard-admin.index')->with('success', 'Email berhasil dikirimkan kepada user!');
